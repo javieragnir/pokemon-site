@@ -16,6 +16,10 @@ module.exports = {
           isAlphanumeric: true
         }
       },
+      password_hash: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       created_at: {
         type: DataTypes.DATE
       },

@@ -5,7 +5,15 @@ require('express-async-errors')
 const { PORT } = require('./util/config')
 const { connectToDatabase } = require('./util/db')
 
+const usersRouter = require('./controllers/users')
+
+const { errorHandler } = require('./util/middleware')
+
 app.use(express.json())
+
+app.use('/api/users', usersRouter)
+
+app.use(errorHandler)
 
 const start = async () => {
   await connectToDatabase()
