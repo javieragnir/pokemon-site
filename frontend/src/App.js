@@ -9,6 +9,7 @@ import {
   Toolbar,
   Button,
   Typography,
+  Paper
 } from '@mui/material'
 
 import {
@@ -49,8 +50,8 @@ const App = () => {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
+      <Router>
       <Container sx={{ bgcolor: 'background' }}>
-        <Router>
           <AppBar position="static">
             <Toolbar>
               <Button color="inherit" component={Link} to="/">
@@ -67,11 +68,22 @@ const App = () => {
             <Route path="/" element={<Home />} />
           </Routes>
 
-          <Container>
-            <Typography><i>Pokemon app, Javier Agnir 2022</i></Typography>
+          <Container sx={{
+            display: 'flex',
+            justifyContent: 'center'
+          }}>
+            <Paper sx={{
+              position: 'fixed',
+              bottom: 0,
+              width: '50%',
+              textAlign: 'center',
+              padding: '0.1em'
+            }}>
+                <Typography><i>Pokemon app, Javier Agnir 2022</i></Typography>
+            </Paper>
           </Container>
-        </Router>
       </Container>
+      </Router>
     </ThemeProvider>
   )
 }
