@@ -24,7 +24,7 @@ import useApi from './hooks/useApi'
 
 const Home = () => {
   const [pokemonFilter, setPokemonFilter] = useState('')
-  const [pokemonToSearch, setPokemonToSearch] = useState('pikachu')
+  const [pokemonToSearch, setPokemonToSearch] = useState('')
 
   const { data: allPokemon, isLoading: listLoading } = useApi(`https://pokeapi.co/api/v2/pokemon/?limit=${2000}`)
   const { data: pokemon, error, isLoading } = useApi(`https://pokeapi.co/api/v2/pokemon/${pokemonToSearch}`)
@@ -36,8 +36,6 @@ const Home = () => {
   const pokemonList = allPokemon.results
 
   const setPokemon = () => {
-    console.log(pokemonToSearch)
-
     if (pokemonFilter) {
       setPokemonToSearch(pokemonFilter)
     }
@@ -79,7 +77,7 @@ const Home = () => {
       </Button>
       {isLoading && <Typography>Loading...</Typography>}
       {error && <Typography>Error!</Typography>}
-      {pokemonToSearch && !isLoading && pokemon &&
+      {!isLoading && pokemon && pokemon.sprites &&
         <Paper>
           <img src={pokemon.sprites.front_default} alt={pokemon.species.name} />
         </Paper>
