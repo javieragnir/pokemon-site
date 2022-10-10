@@ -74,7 +74,7 @@ const Home = () => {
         }
         {!isLoading && pokemon && pokemon.sprites &&
           <Grid item xs={12}>
-            <Paper>
+            <Paper sx={{ padding: 2, width: 'max-content' }}>
               <img src={pokemon.sprites.front_default} alt={pokemon.species.name} />
             </Paper>
           </Grid>

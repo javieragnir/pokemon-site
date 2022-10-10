@@ -17,6 +17,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { darkTheme } from './theme'
 
 import Home from './components/Home'
+import Posts from './components/Posts'
 
 const About = () => {
   return (
@@ -42,6 +43,9 @@ const App = () => {
               <Button color="inherit" component={Link} to="/">
                 Home
               </Button>
+              <Button color="inherit" component={Link} to="/posts">
+                Posts
+              </Button>
               <Button color="inherit" component={Link} to="/about">
                 About
               </Button>
@@ -49,6 +53,7 @@ const App = () => {
           </AppBar>
 
           <Routes>
+            <Route path="/posts" element={<Posts />} />
             <Route path="/about" element={<About />} />
             <Route path="/" element={<Home />} />
           </Routes>
