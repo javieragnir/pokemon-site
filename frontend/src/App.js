@@ -18,6 +18,7 @@ import { darkTheme } from './theme'
 
 import Home from './components/Home'
 import Posts from './components/Posts'
+import Login from './components/Login'
 
 const About = () => {
   return (
@@ -49,12 +50,16 @@ const App = () => {
               <Button color="inherit" component={Link} to="/about">
                 About
               </Button>
+              <Button color="inherit" component={Link} to="/login">
+                Log In
+              </Button>
             </Toolbar>
           </AppBar>
 
           <Routes>
             <Route path="/posts" element={<Posts />} />
             <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/" element={<Home />} />
           </Routes>
 
