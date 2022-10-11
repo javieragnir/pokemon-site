@@ -10,7 +10,8 @@ import {
   Typography,
   Modal,
   TextField,
-  Fade
+  Fade,
+  Link,
 } from '@mui/material'
 
 const style = {
@@ -75,6 +76,18 @@ const Posts = () => {
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.pokemon}.png`} alt={post.pokemon} />
                   </Box>
                   <Box>
+                    <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1 }}>
+                      <Link
+                        href="#"
+                        color="inherit"
+                        underline="hover"
+                        variant="h6"
+                        sx={{ display: 'inline' }}
+                      >
+                        {post.user}
+                      </Link>
+                      <Typography variant="body2">{post.date.toString().substring(4, 24)} </Typography>
+                    </Box>
                     {post.content}
                   </Box>
                 </Stack>
