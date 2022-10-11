@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   Container,
   Typography,
@@ -20,6 +21,8 @@ const Login = () => {
   const [passwordMessage, setPasswordMessage] = useState('')
   const [wrongCredentials, setWrongCredentials] = useState(false)
   const [user, setUser] = useState(null)
+
+  const navigate = useNavigate()
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -48,6 +51,7 @@ const Login = () => {
         setUser(user)
         setUsername('')
         setPassword('')
+        navigate('/')
       } catch (exception) {
         setUsernameErrorState(true)
         setPasswordErrorState(true)
