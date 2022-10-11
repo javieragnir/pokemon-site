@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 require('express-async-errors')
 
 const { PORT } = require('./util/config')
@@ -10,6 +11,7 @@ const loginRouter = require('./controllers/login')
 
 const { errorHandler } = require('./util/middleware')
 
+app.use(cors())
 app.use(express.json())
 
 app.use('/api/users', usersRouter)

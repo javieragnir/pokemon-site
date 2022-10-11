@@ -13,13 +13,17 @@ router.post('/', async (req, res) => {
   console.log('user model', User)
 
   if (!req.body.username || !req.body.password) {
-    res.status(400).json({ error: 'New user requests must include username and password'})
+    return res.status(400).json({ error: 'New user requests must include username and password'})
   }
 
   const { username, password } = req.body
 
   if (password.length < 8) {
-    res.status(400).json({ error: 'Password must be at least 8 characters long'})
+    return res.status(400).json({ error: 'Password must be at least 8 characters long'})
+  }
+
+  if (!password.match(/^[a-z0-9]+$/i)) {
+    return res.status(400).json({ error: 'Password must consist of alphanumeric characters only' })
   }
 
   const saltRounds = 10
