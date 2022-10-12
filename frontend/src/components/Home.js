@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import useApi from '../hooks/useApi'
+import PokemonPicker from './PokemonPicker'
 
 import {
   Container,
@@ -15,12 +16,7 @@ const Home = () => {
   const [pokemonFilter, setPokemonFilter] = useState('')
   const [pokemonToSearch, setPokemonToSearch] = useState('')
 
-  const { data: allPokemon, isLoading: listLoading } = useApi(`https://pokeapi.co/api/v2/pokemon/?limit=${2000}`)
   const { data: pokemon, error, isLoading } = useApi(`https://pokeapi.co/api/v2/pokemon-form/${pokemonToSearch}`)
-
-  if (listLoading) {
-    return <Container><Typography>Loading...</Typography></Container>
-  }
 
   const setPokemon = () => {
     if (pokemonFilter) {
@@ -48,21 +44,7 @@ const Home = () => {
           </Typography>
         </Grid>
         <Grid item xs={12}>        
-          <Autocomplete
-            disablePortal
-            id="pokemonFilter"
-            sx={{ width: 300 }}
-            options={allPokemon.results}
-            autoHighlight
-            getOptionLabel={(option) => option.name[0].toUpperCase() + option.name.slice(1).toLowerCase()}
-            onChange={changeFilter}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Choose a pokemon"
-              />
-            )}
-          />
+          <PokemonPicker onChange={changeFilter} />
           <Button variant="contained" onClick={setPokemon}>
             Search
           </Button>
