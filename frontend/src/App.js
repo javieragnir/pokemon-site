@@ -11,6 +11,7 @@ import {
   Button,
   Typography,
   Paper,
+  Box
 } from '@mui/material'
 
 import { ThemeProvider } from '@mui/material/styles'
@@ -47,6 +48,11 @@ const App = () => {
     }
   }, [])
 
+  const logout = () => {
+    setUser(null)
+    window.localStorage.removeItem('loggedUser')
+  }
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -63,9 +69,21 @@ const App = () => {
               <Button color="inherit" component={Link} to="/about">
                 About
               </Button>
-              <Button color="inherit" component={Link} to="/login">
-                Log In
-              </Button>
+              {!user &&
+                <Button color="inherit" component={Link} to="/login" sx={{ marginLeft: 'auto' }}>
+                  Log In
+                </Button>
+              }
+              {user &&
+              <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: 1 }}>
+                <Typography>
+                  Signed in as <strong>{user.username}</strong>
+                </Typography>
+                <Button color="inherit" onClick={logout}>
+                  Log out
+                </Button>
+              </Box>
+              }
             </Toolbar>
           </AppBar>
 
