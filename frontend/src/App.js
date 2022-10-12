@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Routes, Route, Link
@@ -35,6 +36,17 @@ const About = () => {
 }
 
 const App = () => {
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      // set token functions (e.g. noteService.setToken(user.token))
+    }
+  }, [])
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -60,7 +72,7 @@ const App = () => {
           <Routes>
             <Route path="/posts" element={<Posts />} />
             <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login setUser={setUser}/>} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/" element={<Home />} />
           </Routes>

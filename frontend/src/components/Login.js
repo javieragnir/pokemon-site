@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import loginService from '../services/login'
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [usernameErrorState, setUsernameErrorState] = useState(false)
@@ -21,7 +21,6 @@ const Login = () => {
   const [usernameMessage, setUsernameMessage] = useState('')
   const [passwordMessage, setPasswordMessage] = useState('')
   const [wrongCredentials, setWrongCredentials] = useState(false)
-  const [user, setUser] = useState(null)
 
   const navigate = useNavigate()
 
