@@ -19,7 +19,7 @@ import { darkTheme } from './theme'
 import Home from './components/Home'
 import Posts from './components/Posts'
 import Login from './components/Login'
-import SignUp from './components/SignUp'
+import Signup from './components/Signup'
 
 const About = () => {
   return (
@@ -61,7 +61,7 @@ const App = () => {
             <Route path="/posts" element={<Posts />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/" element={<Home />} />
           </Routes>
 

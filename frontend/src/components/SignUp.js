@@ -9,30 +9,30 @@ import {
   Alert,
   Paper,
   Box,
-  Link,
 } from '@mui/material'
-import loginService from '../services/login'
+import usersService from '../services/users'
 
-const SignUp = () => {
+const Signup = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [usernameErrorState, setUsernameErrorState] = useState(false)
   const [passwordErrorState, setPasswordErrorState] = useState(false)
   const [usernameMessage, setUsernameMessage] = useState('')
   const [passwordMessage, setPasswordMessage] = useState('')
-  const [wrongCredentials, setWrongCredentials] = useState(false)
-  const [user, setUser] = useState(null)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [success, setSuccess] = useState(false)
 
   const navigate = useNavigate()
 
-  const handleLogin = async (event) => {
+  const handleSignup = async (event) => {
     event.preventDefault()
 
     setUsernameErrorState(false)
     setPasswordErrorState(false)
     setUsernameMessage('')
     setPasswordMessage('')
-    setWrongCredentials(false)
+    setSuccess(false)
+    setErrorMessage('')
 
     if (!username) {
       setUsernameErrorState(true)
@@ -44,26 +44,30 @@ const SignUp = () => {
       setPasswordMessage('Field is required')
     }
 
+    if (password.length < 8) {
+      setPasswordMessage('Password must be at least 8 characters long')
+    }
+  
+    if (!password.match(/^[a-z0-9]+$/i)) {
+      setPasswordMessage('Password must consist of alphanumeric characters only' )
+    }
+  
+
     if (username && password) {
       try {
-        const user = await loginService.login({
+        await usersService.signup({
           username, password,
         })
 
-        window.localStorage.setItem(
-          'loggedUser', JSON.stringify(user)
-        )
-
-        setUser(user)
-        setUsername('')
-        setPassword('')
-        navigate('/')
+        setSuccess(true)
+        setTimeout(() => navigate('/login'), 3000)
       } catch (exception) {
+        console.log('exception', exception)
         setUsernameErrorState(true)
         setPasswordErrorState(true)
         setUsernameMessage('')
         setPasswordMessage('')
-        setWrongCredentials(true)
+        setErrorMessage(exception.response.data.error)
       }
     }
 
@@ -88,12 +92,17 @@ const SignUp = () => {
                 error={passwordErrorState} helperText={passwordErrorState ? passwordMessage : ''}
                 sx={{ width: '100%' }}
               />
-              {wrongCredentials &&
+              {errorMessage &&
                 <Alert severity="error" sx={{ width: '100%' }}>
-                  Username or password is incorrect.
+                  {errorMessage}
                 </Alert>
               }
-              <Button variant="contained" onClick={handleLogin} sx={{ width: '100%' }}>
+              {success &&
+                <Alert severity="success" sx={{ width: '100%' }}>
+                  Account creation successful!
+                </Alert>
+              }
+              <Button variant="contained" onClick={handleSignup} sx={{ width: '100%' }}>
                 Sign up
               </Button>
             </Stack>
@@ -103,4 +112,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default Signup
