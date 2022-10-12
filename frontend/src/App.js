@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import {
   BrowserRouter as Router,
   Routes, Route, Link
@@ -19,21 +19,15 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { darkTheme } from './theme'
 
 import Home from './components/Home'
+import About from './components/About'
 import Posts from './components/Posts'
 import Login from './components/Login'
 import Signup from './components/Signup'
 
-const About = () => {
-  return (
-    <Container>
-      <Typography variant="h2">
-        About
-      </Typography>
-      <Typography variant="body1">
-        This is the about page.
-      </Typography>
-    </Container>
-  )
+const UserContext = createContext()
+
+const UserProvider = ({ user, children }) => {
+  return <UserContext.Provider value={user}>{children}</UserContext.Provider>
 }
 
 const App = () => {
@@ -54,64 +48,66 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <Router>
-      <Container sx={{ bgcolor: 'background' }}>
-          <AppBar position="static">
-            <Toolbar>
-              <Button color="inherit" component={Link} to="/">
-                Home
-              </Button>
-              <Button color="inherit" component={Link} to="/posts">
-                Posts
-              </Button>
-              <Button color="inherit" component={Link} to="/about">
-                About
-              </Button>
-              {!user &&
-                <Button color="inherit" component={Link} to="/login" sx={{ marginLeft: 'auto' }}>
-                  Log In
+    <UserProvider user={user}>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Router>
+        <Container sx={{ bgcolor: 'background' }}>
+            <AppBar position="static">
+              <Toolbar>
+                <Button color="inherit" component={Link} to="/">
+                  Home
                 </Button>
-              }
-              {user &&
-              <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: 1 }}>
-                <Typography>
-                  Signed in as <strong>{user.username}</strong>
-                </Typography>
-                <Button color="inherit" onClick={logout}>
-                  Log out
+                <Button color="inherit" component={Link} to="/posts">
+                  Posts
                 </Button>
-              </Box>
-              }
-            </Toolbar>
-          </AppBar>
+                <Button color="inherit" component={Link} to="/about">
+                  About
+                </Button>
+                {!user &&
+                  <Button color="inherit" component={Link} to="/login" sx={{ marginLeft: 'auto' }}>
+                    Log In
+                  </Button>
+                }
+                {user &&
+                <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: 1 }}>
+                  <Typography>
+                    Signed in as <strong>{user.username}</strong>
+                  </Typography>
+                  <Button color="inherit" size="small" onClick={logout}>
+                    Log out
+                  </Button>
+                </Box>
+                }
+              </Toolbar>
+            </AppBar>
 
-          <Routes>
-            <Route path="/posts" element={<Posts />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login setUser={setUser}/>} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/" element={<Home />} />
-          </Routes>
+            <Routes>
+              <Route path="/posts" element={<Posts />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login setUser={setUser}/>} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/" element={<Home />} />
+            </Routes>
 
-          <Container sx={{
-            display: 'flex',
-            justifyContent: 'center'
-          }}>
-            <Paper sx={{
-              position: 'fixed',
-              bottom: 0,
-              width: '50%',
-              textAlign: 'center',
-              padding: '0.1em'
+            <Container sx={{
+              display: 'flex',
+              justifyContent: 'center'
             }}>
-                <Typography variant="body2"><i>Pokemon app, Javier Agnir 2022</i></Typography>
-            </Paper>
-          </Container>
-      </Container>
-      </Router>
-    </ThemeProvider>
+              <Paper sx={{
+                position: 'fixed',
+                bottom: 0,
+                width: '50%',
+                textAlign: 'center',
+                padding: '0.1em'
+              }}>
+                  <Typography variant="body2"><i>Pokemon app, Javier Agnir 2022</i></Typography>
+              </Paper>
+            </Container>
+        </Container>
+        </Router>
+      </ThemeProvider>
+    </UserProvider>
   )
 }
 

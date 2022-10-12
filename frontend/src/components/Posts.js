@@ -30,6 +30,7 @@ const style = {
 const Posts = () => {
   const [open, setOpen] = useState(false)
   const [pokemon, setPokemon] = useState('')
+  const [content, setContent] = useState('')
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -59,6 +60,8 @@ const Posts = () => {
               <TextField
                 multiline
                 rows={5}
+                value={content}
+                onChange={(event) => setContent(event.target.value)}
               />
               <Button variant="contained">
                 Submit
