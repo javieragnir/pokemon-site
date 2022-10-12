@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import posts from '../data/posts'
+import PokemonPicker from './PokemonPicker';
 import {
   Container,
   Grid,
@@ -28,6 +29,8 @@ const style = {
 
 const Posts = () => {
   const [open, setOpen] = useState(false)
+  const [pokemon, setPokemon] = useState('')
+
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
@@ -52,9 +55,7 @@ const Posts = () => {
                 Add post
             </Typography>
             <Stack spacing={2}>
-              <TextField
-
-              />
+              <PokemonPicker setFunction={setPokemon} />
               <TextField
                 multiline
                 rows={5}

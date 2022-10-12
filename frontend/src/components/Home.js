@@ -24,12 +24,6 @@ const Home = () => {
     }
   }
 
-  const changeFilter = (event, value) => {
-    if (value) {
-      setPokemonFilter(value.name)
-    }
-  }
-
   return (
     <Container>
       <Grid container spacing={2}>
@@ -44,7 +38,7 @@ const Home = () => {
           </Typography>
         </Grid>
         <Grid item xs={12}>        
-          <PokemonPicker onChange={changeFilter} sx={{ width: 300 }}/>
+          <PokemonPicker setFunction={setPokemonFilter} sx={{ width: 300 }}/>
           <Button variant="contained" onClick={setPokemon}>
             Search
           </Button>

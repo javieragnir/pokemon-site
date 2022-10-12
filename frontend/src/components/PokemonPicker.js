@@ -3,11 +3,17 @@ import { Typography, Autocomplete, TextField } from '@mui/material'
 
 // provide an onChange prop
 
-const PokemonPicker = ({onChange, sx}) => {
+const PokemonPicker = ({setFunction, sx}) => {
   // hard coded to match number of pokemon entries from API plus some
   const { data: allPokemon, isLoading } = useApi(`https://pokeapi.co/api/v2/pokemon/?limit=${1160}`)
-
+  
   const options = isLoading ? [] : allPokemon.results
+
+  const onChange = (event, value) => {
+    if (value) {
+      setFunction(value.name)
+    }
+  }
 
   return (
     <Autocomplete
