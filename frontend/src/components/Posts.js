@@ -87,7 +87,7 @@ const Posts = () => {
                       >
                         {post.user}
                       </Link>
-                      <Typography variant="body2">{post.date.toString().substring(4, 24)} </Typography>
+                      <Typography variant="body2">{`${post.date.toLocaleDateString()} ${post.date.toLocaleTimeString()}`} </Typography>
                     </Box>
                     {post.content}
                   </Box>

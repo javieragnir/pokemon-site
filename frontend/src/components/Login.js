@@ -8,9 +8,24 @@ import {
   Stack,
   Alert,
   Paper,
-  Box
+  Box,
+  Link,
+  Modal,
+  Fade
 } from '@mui/material'
 import loginService from '../services/login'
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -21,6 +36,11 @@ const Login = () => {
   const [passwordMessage, setPasswordMessage] = useState('')
   const [wrongCredentials, setWrongCredentials] = useState(false)
   const [user, setUser] = useState(null)
+
+  const [open, setOpen] = useState(false)
+
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   const navigate = useNavigate()
 
@@ -72,7 +92,7 @@ const Login = () => {
     <Container>
       <Typography variant="h2">Log In</Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Paper sx={{ width: 400, padding: 4 }}>
+        <Paper sx={{ width: 400, padding: 4, paddingBottom: 2 }}>
             <Stack alignItems="center" spacing={2} sx={{ width: '100%' }}>
               <TextField
                 id="username" label="Username" variant="outlined"
@@ -95,9 +115,33 @@ const Login = () => {
               <Button variant="contained" onClick={handleLogin} sx={{ width: '100%' }}>
                 Submit
               </Button>
+              <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 0.5 }}>
+                <Typography variant="body2">Don't have an account?</Typography>
+                <Link
+                  component="button"
+                  variant="body2"
+                  color="inherit"
+                  onClick={handleOpen}
+                >
+                  Sign up
+                </Link>
+              </Box>
             </Stack>
         </Paper>
       </Box>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+      >
+        <Fade in={open}>
+          <Box sx={style}>
+            <Typography variant="h5" sx={{ marginBottom: 1 }}>
+                Add post
+            </Typography>
+          </Box>
+        </Fade>
+      </Modal>
     </Container>
   )
 }
