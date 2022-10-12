@@ -9,11 +9,11 @@ import {
   Alert,
   Paper,
   Box,
-  Link
+  Link,
 } from '@mui/material'
 import loginService from '../services/login'
 
-const Login = () => {
+const SignUp = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [usernameErrorState, setUsernameErrorState] = useState(false)
@@ -71,9 +71,9 @@ const Login = () => {
 
   return (
     <Container>
-      <Typography variant="h2">Log In</Typography>
+      <Typography variant="h2">Sign Up</Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <Paper sx={{ width: 400, padding: 3, paddingBottom: 2 }}>
+        <Paper sx={{ width: 400, padding: 3 }}>
             <Stack alignItems="center" spacing={2} sx={{ width: '100%' }}>
               <TextField
                 id="username" label="Username" variant="outlined"
@@ -94,19 +94,8 @@ const Login = () => {
                 </Alert>
               }
               <Button variant="contained" onClick={handleLogin} sx={{ width: '100%' }}>
-                Sign in
+                Sign up
               </Button>
-              <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 0.5 }}>
-                <Typography variant="body2">Don't have an account?</Typography>
-                <Link
-                  component="button"
-                  variant="body2"
-                  color="inherit"
-                  onClick={() => navigate('/signup')}
-                >
-                  Sign up
-                </Link>
-              </Box>
             </Stack>
         </Paper>
       </Box>
@@ -114,4 +103,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default SignUp
