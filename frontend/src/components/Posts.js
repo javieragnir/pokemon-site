@@ -75,8 +75,8 @@ const Posts = () => {
                   <Box>
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.pokemon}.png`} alt={post.pokemon} />
                   </Box>
-                  <Box>
-                    <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1 }}>
+                  <Box sx={{ width: '100%' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                       <Link
                         href="#"
                         color="inherit"

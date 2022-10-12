@@ -16,7 +16,7 @@ const Home = () => {
   const [pokemonToSearch, setPokemonToSearch] = useState('')
 
   const { data: allPokemon, isLoading: listLoading } = useApi(`https://pokeapi.co/api/v2/pokemon/?limit=${2000}`)
-  const { data: pokemon, error, isLoading } = useApi(`https://pokeapi.co/api/v2/pokemon/${pokemonToSearch}`)
+  const { data: pokemon, error, isLoading } = useApi(`https://pokeapi.co/api/v2/pokemon-form/${pokemonToSearch}`)
 
   if (listLoading) {
     return <Container><Typography>Loading...</Typography></Container>
@@ -75,7 +75,7 @@ const Home = () => {
         {!isLoading && pokemon && pokemon.sprites &&
           <Grid item xs={12}>
             <Paper sx={{ padding: 2, width: 'max-content' }}>
-              <img src={pokemon.sprites.front_default} alt={pokemon.species.name} />
+              <img src={pokemon.sprites.front_default} alt={pokemon.pokemon.name} />
             </Paper>
           </Grid>
         }
