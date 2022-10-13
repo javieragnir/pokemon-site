@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize')
 module.exports = {
   up: async ({ context: queryInterface }) => {
     await queryInterface.createTable('pokemon', {
-      api_id: {
+      id: {
         type: DataTypes.INTEGER,
         primaryKey: true
       },

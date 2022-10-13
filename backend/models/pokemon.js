@@ -5,7 +5,7 @@ const { sequelize } = require('../util/db')
 class Pokemon extends Model {}
 
 Pokemon.init({
-  apiId: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true
   },
