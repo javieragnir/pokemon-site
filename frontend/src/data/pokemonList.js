@@ -1,3 +1,5 @@
+export const pokemonMap = new Map()
+
 const pokemonList = [
   {
   name: "bulbasaur",
@@ -4616,5 +4618,9 @@ const pokemonList = [
   apiId: 10249
   }
   ]
+
+pokemonList.forEach(entry => {
+  pokemonMap.set(entry.name, entry.apiId)
+})
 
 export default pokemonList
