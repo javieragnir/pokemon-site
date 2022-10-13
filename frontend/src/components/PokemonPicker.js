@@ -1,7 +1,7 @@
 import useApi from '../hooks/useApi'
-import { Typography, Autocomplete, TextField } from '@mui/material'
+import { Autocomplete, TextField } from '@mui/material'
 
-// provide an onChange prop
+// provide a setFunction to onChange to make controlled component
 
 const PokemonPicker = ({setFunction, sx}) => {
   // hard coded to match number of pokemon entries from API plus some

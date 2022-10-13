@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from 'react'
+import { useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Routes, Route, Link
@@ -23,12 +23,7 @@ import About from './components/About'
 import Posts from './components/Posts'
 import Login from './components/Login'
 import Signup from './components/Signup'
-
-const UserContext = createContext()
-
-const UserProvider = ({ user, children }) => {
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>
-}
+import UserProvider from './contexts/UserContext'
 
 const App = () => {
   const [user, setUser] = useState(null)

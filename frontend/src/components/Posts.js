@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import posts from '../data/posts'
+import { UserContext } from '../contexts/UserContext';
 import PokemonPicker from './PokemonPicker';
 import {
   Container,
@@ -32,17 +33,25 @@ const Posts = () => {
   const [pokemon, setPokemon] = useState('')
   const [content, setContent] = useState('')
 
+  const user = useContext(UserContext)
+
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const handleSubmit = () => {
+    console.log(pokemon, content)
+  }
 
   return (
     <Container>
       <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
         <Typography variant="h2">Posts</Typography>
             <Box marginBottom={1}>
+              {user &&
               <Button onClick={handleOpen} variant="contained" sx={{ height: 'max-content' }}>
                 Add post
               </Button>
+              }
             </Box>
       </Stack>
       <Modal
@@ -63,7 +72,7 @@ const Posts = () => {
                 value={content}
                 onChange={(event) => setContent(event.target.value)}
               />
-              <Button variant="contained">
+              <Button variant="contained" onClick={handleSubmit}>
                 Submit
               </Button>
             </Stack>
@@ -74,27 +83,40 @@ const Posts = () => {
         {
           posts.map(post => 
             <Grid item xs={12} key={post.id}>
-              <Paper sx={{ padding: 2, textAlign: 'justify', paddingRight: 4 }}>         
-                <Stack spacing={1} direction='row'>
-                  <Box>
-                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.pokemon}.png`} alt={post.pokemon} />
+              <Paper sx={{
+                padding: 2,
+                textAlign: 'justify',
+                paddingRight: 4,
+                display: 'flex',
+                gap: 2}}
+              >     
+                <Box sx={{ boxSizing: 'border-box', height: 120, width: 120, flexShrink: 0 }}>
+                  <Paper elevation={3} sx={{ textAlign: 'center' }}>
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.pokemonOffered}.png`} alt={post.pokemonOffered} />
+                    <Typography variant="overline">Offering</Typography>
+                  </Paper>
+                </Box>
+                <Box sx={{ boxSizing: 'border-box', height: 120, width: 120, flexShrink: 0 }}>
+                  <Paper elevation={3} sx={{ textAlign: 'center' }}>
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.pokemonRequested}.png`} alt={post.pokemonRequested} />
+                    <Typography variant="overline">Requesting</Typography>
+                  </Paper>
+                </Box>
+                <Box sx={{ width: '100%' }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                    <Link
+                      href="#"
+                      color="inherit"
+                      underline="hover"
+                      variant="h6"
+                      sx={{ display: 'inline' }}
+                    >
+                      {post.user}
+                    </Link>
+                    <Typography variant="body2">{`${post.date.toLocaleDateString()} ${post.date.toLocaleTimeString()}`} </Typography>
                   </Box>
-                  <Box sx={{ width: '100%' }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                      <Link
-                        href="#"
-                        color="inherit"
-                        underline="hover"
-                        variant="h6"
-                        sx={{ display: 'inline' }}
-                      >
-                        {post.user}
-                      </Link>
-                      <Typography variant="body2">{`${post.date.toLocaleDateString()} ${post.date.toLocaleTimeString()}`} </Typography>
-                    </Box>
-                    {post.content}
+                  {post.content}
                   </Box>
-                </Stack>
               </Paper>
             </Grid>
           )
