@@ -12,7 +12,7 @@ const PokemonPicker = ({setFunction, sx}) => {
 
   const onChange = (event, value) => {
     if (value) {
-      setFunction(value.name)
+      setFunction(value)
     }
   }
 

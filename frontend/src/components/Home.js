@@ -20,7 +20,7 @@ const Home = () => {
 
   const setPokemon = () => {
     if (pokemonFilter) {
-      setPokemonToSearch(pokemonFilter)
+      setPokemonToSearch(pokemonFilter.name)
     }
   }
 
