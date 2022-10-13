@@ -15,6 +15,7 @@ import {
   Fade,
   Link,
 } from '@mui/material'
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 
 const style = {
   position: 'absolute',
@@ -88,18 +89,22 @@ const Posts = () => {
                 textAlign: 'justify',
                 paddingRight: 4,
                 display: 'flex',
-                gap: 2}}
+                gap: 2,
+              }}
               >     
-                <Box sx={{ boxSizing: 'border-box', height: 120, width: 120, flexShrink: 0 }}>
+                <Box sx={{ boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0 }}>
                   <Paper elevation={3} sx={{ textAlign: 'center' }}>
-                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.pokemonOffered}.png`} alt={post.pokemonOffered} />
                     <Typography variant="overline">Offering</Typography>
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.offeredId}.png`} alt={post.pokemonOffered} />
+                    <Typography variant="overline">{post.pokemonOffered}</Typography>
                   </Paper>
                 </Box>
-                <Box sx={{ boxSizing: 'border-box', height: 120, width: 120, flexShrink: 0 }}>
+                <SwapHorizIcon sx={{ alignSelf: 'center' }}/>
+                <Box sx={{ boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0 }}>
                   <Paper elevation={3} sx={{ textAlign: 'center' }}>
-                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.pokemonRequested}.png`} alt={post.pokemonRequested} />
                     <Typography variant="overline">Requesting</Typography>
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.requestedId}.png`} alt={post.pokemonRequested} />
+                    <Typography variant="overline">{post.pokemonRequested}</Typography>
                   </Paper>
                 </Box>
                 <Box sx={{ width: '100%' }}>
