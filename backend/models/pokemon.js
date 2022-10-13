@@ -17,6 +17,7 @@ Pokemon.init({
   sequelize,
   underscored: true,
   timestamps: false,
+  freezeTableName: true,
   modelName: 'pokemon'
 })
 
