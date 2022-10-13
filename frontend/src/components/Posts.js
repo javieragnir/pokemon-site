@@ -90,6 +90,7 @@ const Posts = () => {
                 paddingRight: 4,
                 display: 'flex',
                 gap: 2,
+                alignItems: 'center'
               }}
               >     
                 <Box sx={{ boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0 }}>
@@ -99,7 +100,7 @@ const Posts = () => {
                     <Typography variant="overline">{post.pokemonOffered}</Typography>
                   </Paper>
                 </Box>
-                <SwapHorizIcon sx={{ alignSelf: 'center' }}/>
+                <SwapHorizIcon/>
                 <Box sx={{ boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0 }}>
                   <Paper elevation={3} sx={{ textAlign: 'center' }}>
                     <Typography variant="overline">Requesting</Typography>
@@ -107,7 +108,7 @@ const Posts = () => {
                     <Typography variant="overline">{post.pokemonRequested}</Typography>
                   </Paper>
                 </Box>
-                <Box sx={{ width: '100%' }}>
+                <Box sx={{ width: '100%', alignSelf: 'flex-start' }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                     <Link
                       href="#"
