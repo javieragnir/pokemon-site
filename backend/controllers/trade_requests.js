@@ -1,10 +1,14 @@
 const router = require('express').Router()
-const { TradeRequest } = require('../models')
+const { TradeRequest, User } = require('../models')
 const { sequelize } = require('../util/db')
 
 router.get('/', async (req, res) => {
   const trades = await TradeRequest.findAll({
     include: [
+      {
+        model: User,
+        attributes: ['id', 'username']
+      },
       'offered',
       'requested',
     ],

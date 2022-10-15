@@ -31,7 +31,8 @@ const style = {
 
 const Posts = () => {
   const [open, setOpen] = useState(false)
-  const [pokemon, setPokemon] = useState('')
+  const [offeredPokemon, setOfferedPokemon] = useState('')
+  const [requestedPokemon, setRequestedPokemon] = useState('')
   const [content, setContent] = useState('')
   const [posts, setPosts] = useState(null)
 
@@ -48,7 +49,7 @@ const Posts = () => {
   const handleClose = () => setOpen(false)
 
   const handleSubmit = () => {
-    console.log(pokemon, content)
+    console.log(offeredPokemon, requestedPokemon, content)
   }
 
   return (
@@ -74,7 +75,8 @@ const Posts = () => {
                 Add post
             </Typography>
             <Stack spacing={2}>
-              <PokemonPicker setFunction={setPokemon} />
+              <PokemonPicker setFunction={setOfferedPokemon} />
+              <PokemonPicker setFunction={setRequestedPokemon} />
               <TextField
                 multiline
                 rows={5}
@@ -93,50 +95,50 @@ const Posts = () => {
           posts.map(post => {
             const date = new Date(post.createdAt)
             return (
-              <Grid item xs={12} key={post.id}>
-                <Paper sx={{
-                  padding: 2,
-                  textAlign: 'justify',
-                  paddingRight: 4,
-                  display: 'flex',
-                  gap: 2,
-                  alignItems: 'center'
-                }}
-                >     
-                  <Box sx={{ boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0 }}>
-                    <Paper elevation={3} sx={{ textAlign: 'center' }}>
-                      <Typography variant="overline">Offering</Typography>
-                      <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.offeredId}.png`} alt={post.pokemonOffered} />
-                      <Typography variant="overline">{post.pokemonOffered}</Typography>
-                    </Paper>
-                  </Box>
-                  <SwapHorizIcon/>
-                  <Box sx={{ boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0 }}>
-                    <Paper elevation={3} sx={{ textAlign: 'center' }}>
-                      <Typography variant="overline">Requesting</Typography>
-                      <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.requestedId}.png`} alt={post.pokemonRequested} />
-                      <Typography variant="overline">{post.pokemonRequested}</Typography>
-                    </Paper>
-                  </Box>
-                  <Box sx={{ width: '100%', alignSelf: 'flex-start' }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                      <Link
-                        href="#"
-                        color="inherit"
-                        underline="hover"
-                        variant="h6"
-                        sx={{ display: 'inline' }}
-                      >
-                        {post.user}
-                      </Link>
-                      <Typography variant="body2">{`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`} </Typography>
+                <Grid item xs={12} key={post.id}>
+                  <Paper sx={{
+                    padding: 2,
+                    textAlign: 'justify',
+                    paddingRight: 4,
+                    display: 'flex',
+                    gap: 2,
+                    alignItems: 'center'
+                  }}
+                  >     
+                    <Box sx={{ boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0 }}>
+                      <Paper elevation={3} sx={{ textAlign: 'center' }}>
+                        <Typography variant="overline">Offering</Typography>
+                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.offeredId}.png`} alt={post.pokemonOffered} />
+                        <Typography variant="overline">{post.offered.name}</Typography>
+                      </Paper>
                     </Box>
-                    {post.content}
+                    <SwapHorizIcon/>
+                    <Box sx={{ boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0 }}>
+                      <Paper elevation={3} sx={{ textAlign: 'center' }}>
+                        <Typography variant="overline">Requesting</Typography>
+                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.requestedId}.png`} alt={post.pokemonRequested} />
+                        <Typography variant="overline">{post.requested.name}</Typography>
+                      </Paper>
                     </Box>
-                </Paper>
-              </Grid>
-            )
-          }
+                    <Box sx={{ width: '100%', alignSelf: 'flex-start' }}>
+                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                        <Link
+                          href="#"
+                          color="inherit"
+                          underline="hover"
+                          variant="h6"
+                          sx={{ display: 'inline' }}
+                        >
+                          {post.user.username}
+                        </Link>
+                        <Typography variant="body2">{`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`} </Typography>
+                      </Box>
+                      {post.content}
+                      </Box>
+                  </Paper>
+                </Grid>
+              )
+            }
           )
         }
       </Grid>
