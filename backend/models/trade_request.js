@@ -10,21 +10,6 @@ TradeRequest.init({
     primaryKey: true,
     autoIncrement: true
   },
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: { model: 'users', key: 'id' }
-  },
-  offeredId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: { model: 'pokemon', key: 'id' }
-  },
-  requestedId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: { model: 'pokemon', key: 'id' }
-  },
   content: {
     type: DataTypes.STRING,
     allowNull: false

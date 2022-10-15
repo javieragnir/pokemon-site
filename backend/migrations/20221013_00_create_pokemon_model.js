@@ -5,6 +5,7 @@ module.exports = {
     await queryInterface.createTable('pokemon', {
       id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         primaryKey: true
       },
       name: {

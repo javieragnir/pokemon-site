@@ -4624,7 +4624,6 @@ router.post('/populate', async (req, res) => {
   try {
     await Pokemon.destroy({
       where: {},
-      truncate: true
     })
     await Pokemon.bulkCreate(pokemonList)
     res.status(204).end()

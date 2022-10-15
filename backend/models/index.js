@@ -5,8 +5,8 @@ const TradeRequest = require('./trade_request')
 User.hasMany(TradeRequest)
 TradeRequest.belongsTo(User)
 
-User.belongsToMany(Pokemon, { through: TradeRequest })
-Pokemon.belongsToMany(User, { through: TradeRequest })
+TradeRequest.belongsTo(Pokemon, { as: 'offered' })
+TradeRequest.belongsTo(Pokemon, { as: 'requested' })
 
 module.exports = {
   User,

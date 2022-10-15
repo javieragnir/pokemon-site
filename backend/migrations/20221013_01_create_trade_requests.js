@@ -8,21 +8,6 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true
       },
-      user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: { model: 'users', key: 'id' }
-      },
-      offered_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: { model: 'pokemon', key: 'id' }
-      },
-      requested_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: { model: 'pokemon', key: 'id' }
-      },
       content: {
         type: DataTypes.STRING,
         allowNull: false
@@ -31,6 +16,21 @@ module.exports = {
         type: DataTypes.DATE,
         allowNull: false
       }
+    })
+    await queryInterface.addColumn('trade_requests', 'user_id', {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'users', key: 'id' }
+    })
+    await queryInterface.addColumn('trade_requests', 'offered_id', {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'pokemon', key: 'id' }
+    })
+    await queryInterface.addColumn('trade_requests', 'requested_id', {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'pokemon', key: 'id' }
     })
   },
   down: async ({ context: queryInterface }) => {
