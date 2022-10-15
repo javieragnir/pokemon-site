@@ -3,4619 +3,4619 @@ export const pokemonMap = new Map()
 const pokemonList = [
   {
   name: "bulbasaur",
-  apiId: 1
+  id: 1
   },
   {
   name: "ivysaur",
-  apiId: 2
+  id: 2
   },
   {
   name: "venusaur",
-  apiId: 3
+  id: 3
   },
   {
   name: "charmander",
-  apiId: 4
+  id: 4
   },
   {
   name: "charmeleon",
-  apiId: 5
+  id: 5
   },
   {
   name: "charizard",
-  apiId: 6
+  id: 6
   },
   {
   name: "squirtle",
-  apiId: 7
+  id: 7
   },
   {
   name: "wartortle",
-  apiId: 8
+  id: 8
   },
   {
   name: "blastoise",
-  apiId: 9
+  id: 9
   },
   {
   name: "caterpie",
-  apiId: 10
+  id: 10
   },
   {
   name: "metapod",
-  apiId: 11
+  id: 11
   },
   {
   name: "butterfree",
-  apiId: 12
+  id: 12
   },
   {
   name: "weedle",
-  apiId: 13
+  id: 13
   },
   {
   name: "kakuna",
-  apiId: 14
+  id: 14
   },
   {
   name: "beedrill",
-  apiId: 15
+  id: 15
   },
   {
   name: "pidgey",
-  apiId: 16
+  id: 16
   },
   {
   name: "pidgeotto",
-  apiId: 17
+  id: 17
   },
   {
   name: "pidgeot",
-  apiId: 18
+  id: 18
   },
   {
   name: "rattata",
-  apiId: 19
+  id: 19
   },
   {
   name: "raticate",
-  apiId: 20
+  id: 20
   },
   {
   name: "spearow",
-  apiId: 21
+  id: 21
   },
   {
   name: "fearow",
-  apiId: 22
+  id: 22
   },
   {
   name: "ekans",
-  apiId: 23
+  id: 23
   },
   {
   name: "arbok",
-  apiId: 24
+  id: 24
   },
   {
   name: "pikachu",
-  apiId: 25
+  id: 25
   },
   {
   name: "raichu",
-  apiId: 26
+  id: 26
   },
   {
   name: "sandshrew",
-  apiId: 27
+  id: 27
   },
   {
   name: "sandslash",
-  apiId: 28
+  id: 28
   },
   {
   name: "nidoran-f",
-  apiId: 29
+  id: 29
   },
   {
   name: "nidorina",
-  apiId: 30
+  id: 30
   },
   {
   name: "nidoqueen",
-  apiId: 31
+  id: 31
   },
   {
   name: "nidoran-m",
-  apiId: 32
+  id: 32
   },
   {
   name: "nidorino",
-  apiId: 33
+  id: 33
   },
   {
   name: "nidoking",
-  apiId: 34
+  id: 34
   },
   {
   name: "clefairy",
-  apiId: 35
+  id: 35
   },
   {
   name: "clefable",
-  apiId: 36
+  id: 36
   },
   {
   name: "vulpix",
-  apiId: 37
+  id: 37
   },
   {
   name: "ninetales",
-  apiId: 38
+  id: 38
   },
   {
   name: "jigglypuff",
-  apiId: 39
+  id: 39
   },
   {
   name: "wigglytuff",
-  apiId: 40
+  id: 40
   },
   {
   name: "zubat",
-  apiId: 41
+  id: 41
   },
   {
   name: "golbat",
-  apiId: 42
+  id: 42
   },
   {
   name: "oddish",
-  apiId: 43
+  id: 43
   },
   {
   name: "gloom",
-  apiId: 44
+  id: 44
   },
   {
   name: "vileplume",
-  apiId: 45
+  id: 45
   },
   {
   name: "paras",
-  apiId: 46
+  id: 46
   },
   {
   name: "parasect",
-  apiId: 47
+  id: 47
   },
   {
   name: "venonat",
-  apiId: 48
+  id: 48
   },
   {
   name: "venomoth",
-  apiId: 49
+  id: 49
   },
   {
   name: "diglett",
-  apiId: 50
+  id: 50
   },
   {
   name: "dugtrio",
-  apiId: 51
+  id: 51
   },
   {
   name: "meowth",
-  apiId: 52
+  id: 52
   },
   {
   name: "persian",
-  apiId: 53
+  id: 53
   },
   {
   name: "psyduck",
-  apiId: 54
+  id: 54
   },
   {
   name: "golduck",
-  apiId: 55
+  id: 55
   },
   {
   name: "mankey",
-  apiId: 56
+  id: 56
   },
   {
   name: "primeape",
-  apiId: 57
+  id: 57
   },
   {
   name: "growlithe",
-  apiId: 58
+  id: 58
   },
   {
   name: "arcanine",
-  apiId: 59
+  id: 59
   },
   {
   name: "poliwag",
-  apiId: 60
+  id: 60
   },
   {
   name: "poliwhirl",
-  apiId: 61
+  id: 61
   },
   {
   name: "poliwrath",
-  apiId: 62
+  id: 62
   },
   {
   name: "abra",
-  apiId: 63
+  id: 63
   },
   {
   name: "kadabra",
-  apiId: 64
+  id: 64
   },
   {
   name: "alakazam",
-  apiId: 65
+  id: 65
   },
   {
   name: "machop",
-  apiId: 66
+  id: 66
   },
   {
   name: "machoke",
-  apiId: 67
+  id: 67
   },
   {
   name: "machamp",
-  apiId: 68
+  id: 68
   },
   {
   name: "bellsprout",
-  apiId: 69
+  id: 69
   },
   {
   name: "weepinbell",
-  apiId: 70
+  id: 70
   },
   {
   name: "victreebel",
-  apiId: 71
+  id: 71
   },
   {
   name: "tentacool",
-  apiId: 72
+  id: 72
   },
   {
   name: "tentacruel",
-  apiId: 73
+  id: 73
   },
   {
   name: "geodude",
-  apiId: 74
+  id: 74
   },
   {
   name: "graveler",
-  apiId: 75
+  id: 75
   },
   {
   name: "golem",
-  apiId: 76
+  id: 76
   },
   {
   name: "ponyta",
-  apiId: 77
+  id: 77
   },
   {
   name: "rapidash",
-  apiId: 78
+  id: 78
   },
   {
   name: "slowpoke",
-  apiId: 79
+  id: 79
   },
   {
   name: "slowbro",
-  apiId: 80
+  id: 80
   },
   {
   name: "magnemite",
-  apiId: 81
+  id: 81
   },
   {
   name: "magneton",
-  apiId: 82
+  id: 82
   },
   {
   name: "farfetchd",
-  apiId: 83
+  id: 83
   },
   {
   name: "doduo",
-  apiId: 84
+  id: 84
   },
   {
   name: "dodrio",
-  apiId: 85
+  id: 85
   },
   {
   name: "seel",
-  apiId: 86
+  id: 86
   },
   {
   name: "dewgong",
-  apiId: 87
+  id: 87
   },
   {
   name: "grimer",
-  apiId: 88
+  id: 88
   },
   {
   name: "muk",
-  apiId: 89
+  id: 89
   },
   {
   name: "shellder",
-  apiId: 90
+  id: 90
   },
   {
   name: "cloyster",
-  apiId: 91
+  id: 91
   },
   {
   name: "gastly",
-  apiId: 92
+  id: 92
   },
   {
   name: "haunter",
-  apiId: 93
+  id: 93
   },
   {
   name: "gengar",
-  apiId: 94
+  id: 94
   },
   {
   name: "onix",
-  apiId: 95
+  id: 95
   },
   {
   name: "drowzee",
-  apiId: 96
+  id: 96
   },
   {
   name: "hypno",
-  apiId: 97
+  id: 97
   },
   {
   name: "krabby",
-  apiId: 98
+  id: 98
   },
   {
   name: "kingler",
-  apiId: 99
+  id: 99
   },
   {
   name: "voltorb",
-  apiId: 100
+  id: 100
   },
   {
   name: "electrode",
-  apiId: 101
+  id: 101
   },
   {
   name: "exeggcute",
-  apiId: 102
+  id: 102
   },
   {
   name: "exeggutor",
-  apiId: 103
+  id: 103
   },
   {
   name: "cubone",
-  apiId: 104
+  id: 104
   },
   {
   name: "marowak",
-  apiId: 105
+  id: 105
   },
   {
   name: "hitmonlee",
-  apiId: 106
+  id: 106
   },
   {
   name: "hitmonchan",
-  apiId: 107
+  id: 107
   },
   {
   name: "lickitung",
-  apiId: 108
+  id: 108
   },
   {
   name: "koffing",
-  apiId: 109
+  id: 109
   },
   {
   name: "weezing",
-  apiId: 110
+  id: 110
   },
   {
   name: "rhyhorn",
-  apiId: 111
+  id: 111
   },
   {
   name: "rhydon",
-  apiId: 112
+  id: 112
   },
   {
   name: "chansey",
-  apiId: 113
+  id: 113
   },
   {
   name: "tangela",
-  apiId: 114
+  id: 114
   },
   {
   name: "kangaskhan",
-  apiId: 115
+  id: 115
   },
   {
   name: "horsea",
-  apiId: 116
+  id: 116
   },
   {
   name: "seadra",
-  apiId: 117
+  id: 117
   },
   {
   name: "goldeen",
-  apiId: 118
+  id: 118
   },
   {
   name: "seaking",
-  apiId: 119
+  id: 119
   },
   {
   name: "staryu",
-  apiId: 120
+  id: 120
   },
   {
   name: "starmie",
-  apiId: 121
+  id: 121
   },
   {
   name: "mr-mime",
-  apiId: 122
+  id: 122
   },
   {
   name: "scyther",
-  apiId: 123
+  id: 123
   },
   {
   name: "jynx",
-  apiId: 124
+  id: 124
   },
   {
   name: "electabuzz",
-  apiId: 125
+  id: 125
   },
   {
   name: "magmar",
-  apiId: 126
+  id: 126
   },
   {
   name: "pinsir",
-  apiId: 127
+  id: 127
   },
   {
   name: "tauros",
-  apiId: 128
+  id: 128
   },
   {
   name: "magikarp",
-  apiId: 129
+  id: 129
   },
   {
   name: "gyarados",
-  apiId: 130
+  id: 130
   },
   {
   name: "lapras",
-  apiId: 131
+  id: 131
   },
   {
   name: "ditto",
-  apiId: 132
+  id: 132
   },
   {
   name: "eevee",
-  apiId: 133
+  id: 133
   },
   {
   name: "vaporeon",
-  apiId: 134
+  id: 134
   },
   {
   name: "jolteon",
-  apiId: 135
+  id: 135
   },
   {
   name: "flareon",
-  apiId: 136
+  id: 136
   },
   {
   name: "porygon",
-  apiId: 137
+  id: 137
   },
   {
   name: "omanyte",
-  apiId: 138
+  id: 138
   },
   {
   name: "omastar",
-  apiId: 139
+  id: 139
   },
   {
   name: "kabuto",
-  apiId: 140
+  id: 140
   },
   {
   name: "kabutops",
-  apiId: 141
+  id: 141
   },
   {
   name: "aerodactyl",
-  apiId: 142
+  id: 142
   },
   {
   name: "snorlax",
-  apiId: 143
+  id: 143
   },
   {
   name: "articuno",
-  apiId: 144
+  id: 144
   },
   {
   name: "zapdos",
-  apiId: 145
+  id: 145
   },
   {
   name: "moltres",
-  apiId: 146
+  id: 146
   },
   {
   name: "dratini",
-  apiId: 147
+  id: 147
   },
   {
   name: "dragonair",
-  apiId: 148
+  id: 148
   },
   {
   name: "dragonite",
-  apiId: 149
+  id: 149
   },
   {
   name: "mewtwo",
-  apiId: 150
+  id: 150
   },
   {
   name: "mew",
-  apiId: 151
+  id: 151
   },
   {
   name: "chikorita",
-  apiId: 152
+  id: 152
   },
   {
   name: "bayleef",
-  apiId: 153
+  id: 153
   },
   {
   name: "meganium",
-  apiId: 154
+  id: 154
   },
   {
   name: "cyndaquil",
-  apiId: 155
+  id: 155
   },
   {
   name: "quilava",
-  apiId: 156
+  id: 156
   },
   {
   name: "typhlosion",
-  apiId: 157
+  id: 157
   },
   {
   name: "totodile",
-  apiId: 158
+  id: 158
   },
   {
   name: "croconaw",
-  apiId: 159
+  id: 159
   },
   {
   name: "feraligatr",
-  apiId: 160
+  id: 160
   },
   {
   name: "sentret",
-  apiId: 161
+  id: 161
   },
   {
   name: "furret",
-  apiId: 162
+  id: 162
   },
   {
   name: "hoothoot",
-  apiId: 163
+  id: 163
   },
   {
   name: "noctowl",
-  apiId: 164
+  id: 164
   },
   {
   name: "ledyba",
-  apiId: 165
+  id: 165
   },
   {
   name: "ledian",
-  apiId: 166
+  id: 166
   },
   {
   name: "spinarak",
-  apiId: 167
+  id: 167
   },
   {
   name: "ariados",
-  apiId: 168
+  id: 168
   },
   {
   name: "crobat",
-  apiId: 169
+  id: 169
   },
   {
   name: "chinchou",
-  apiId: 170
+  id: 170
   },
   {
   name: "lanturn",
-  apiId: 171
+  id: 171
   },
   {
   name: "pichu",
-  apiId: 172
+  id: 172
   },
   {
   name: "cleffa",
-  apiId: 173
+  id: 173
   },
   {
   name: "igglybuff",
-  apiId: 174
+  id: 174
   },
   {
   name: "togepi",
-  apiId: 175
+  id: 175
   },
   {
   name: "togetic",
-  apiId: 176
+  id: 176
   },
   {
   name: "natu",
-  apiId: 177
+  id: 177
   },
   {
   name: "xatu",
-  apiId: 178
+  id: 178
   },
   {
   name: "mareep",
-  apiId: 179
+  id: 179
   },
   {
   name: "flaaffy",
-  apiId: 180
+  id: 180
   },
   {
   name: "ampharos",
-  apiId: 181
+  id: 181
   },
   {
   name: "bellossom",
-  apiId: 182
+  id: 182
   },
   {
   name: "marill",
-  apiId: 183
+  id: 183
   },
   {
   name: "azumarill",
-  apiId: 184
+  id: 184
   },
   {
   name: "sudowoodo",
-  apiId: 185
+  id: 185
   },
   {
   name: "politoed",
-  apiId: 186
+  id: 186
   },
   {
   name: "hoppip",
-  apiId: 187
+  id: 187
   },
   {
   name: "skiploom",
-  apiId: 188
+  id: 188
   },
   {
   name: "jumpluff",
-  apiId: 189
+  id: 189
   },
   {
   name: "aipom",
-  apiId: 190
+  id: 190
   },
   {
   name: "sunkern",
-  apiId: 191
+  id: 191
   },
   {
   name: "sunflora",
-  apiId: 192
+  id: 192
   },
   {
   name: "yanma",
-  apiId: 193
+  id: 193
   },
   {
   name: "wooper",
-  apiId: 194
+  id: 194
   },
   {
   name: "quagsire",
-  apiId: 195
+  id: 195
   },
   {
   name: "espeon",
-  apiId: 196
+  id: 196
   },
   {
   name: "umbreon",
-  apiId: 197
+  id: 197
   },
   {
   name: "murkrow",
-  apiId: 198
+  id: 198
   },
   {
   name: "slowking",
-  apiId: 199
+  id: 199
   },
   {
   name: "misdreavus",
-  apiId: 200
+  id: 200
   },
   {
   name: "unown",
-  apiId: 201
+  id: 201
   },
   {
   name: "wobbuffet",
-  apiId: 202
+  id: 202
   },
   {
   name: "girafarig",
-  apiId: 203
+  id: 203
   },
   {
   name: "pineco",
-  apiId: 204
+  id: 204
   },
   {
   name: "forretress",
-  apiId: 205
+  id: 205
   },
   {
   name: "dunsparce",
-  apiId: 206
+  id: 206
   },
   {
   name: "gligar",
-  apiId: 207
+  id: 207
   },
   {
   name: "steelix",
-  apiId: 208
+  id: 208
   },
   {
   name: "snubbull",
-  apiId: 209
+  id: 209
   },
   {
   name: "granbull",
-  apiId: 210
+  id: 210
   },
   {
   name: "qwilfish",
-  apiId: 211
+  id: 211
   },
   {
   name: "scizor",
-  apiId: 212
+  id: 212
   },
   {
   name: "shuckle",
-  apiId: 213
+  id: 213
   },
   {
   name: "heracross",
-  apiId: 214
+  id: 214
   },
   {
   name: "sneasel",
-  apiId: 215
+  id: 215
   },
   {
   name: "teddiursa",
-  apiId: 216
+  id: 216
   },
   {
   name: "ursaring",
-  apiId: 217
+  id: 217
   },
   {
   name: "slugma",
-  apiId: 218
+  id: 218
   },
   {
   name: "magcargo",
-  apiId: 219
+  id: 219
   },
   {
   name: "swinub",
-  apiId: 220
+  id: 220
   },
   {
   name: "piloswine",
-  apiId: 221
+  id: 221
   },
   {
   name: "corsola",
-  apiId: 222
+  id: 222
   },
   {
   name: "remoraid",
-  apiId: 223
+  id: 223
   },
   {
   name: "octillery",
-  apiId: 224
+  id: 224
   },
   {
   name: "delibird",
-  apiId: 225
+  id: 225
   },
   {
   name: "mantine",
-  apiId: 226
+  id: 226
   },
   {
   name: "skarmory",
-  apiId: 227
+  id: 227
   },
   {
   name: "houndour",
-  apiId: 228
+  id: 228
   },
   {
   name: "houndoom",
-  apiId: 229
+  id: 229
   },
   {
   name: "kingdra",
-  apiId: 230
+  id: 230
   },
   {
   name: "phanpy",
-  apiId: 231
+  id: 231
   },
   {
   name: "donphan",
-  apiId: 232
+  id: 232
   },
   {
   name: "porygon2",
-  apiId: 233
+  id: 233
   },
   {
   name: "stantler",
-  apiId: 234
+  id: 234
   },
   {
   name: "smeargle",
-  apiId: 235
+  id: 235
   },
   {
   name: "tyrogue",
-  apiId: 236
+  id: 236
   },
   {
   name: "hitmontop",
-  apiId: 237
+  id: 237
   },
   {
   name: "smoochum",
-  apiId: 238
+  id: 238
   },
   {
   name: "elekid",
-  apiId: 239
+  id: 239
   },
   {
   name: "magby",
-  apiId: 240
+  id: 240
   },
   {
   name: "miltank",
-  apiId: 241
+  id: 241
   },
   {
   name: "blissey",
-  apiId: 242
+  id: 242
   },
   {
   name: "raikou",
-  apiId: 243
+  id: 243
   },
   {
   name: "entei",
-  apiId: 244
+  id: 244
   },
   {
   name: "suicune",
-  apiId: 245
+  id: 245
   },
   {
   name: "larvitar",
-  apiId: 246
+  id: 246
   },
   {
   name: "pupitar",
-  apiId: 247
+  id: 247
   },
   {
   name: "tyranitar",
-  apiId: 248
+  id: 248
   },
   {
   name: "lugia",
-  apiId: 249
+  id: 249
   },
   {
   name: "ho-oh",
-  apiId: 250
+  id: 250
   },
   {
   name: "celebi",
-  apiId: 251
+  id: 251
   },
   {
   name: "treecko",
-  apiId: 252
+  id: 252
   },
   {
   name: "grovyle",
-  apiId: 253
+  id: 253
   },
   {
   name: "sceptile",
-  apiId: 254
+  id: 254
   },
   {
   name: "torchic",
-  apiId: 255
+  id: 255
   },
   {
   name: "combusken",
-  apiId: 256
+  id: 256
   },
   {
   name: "blaziken",
-  apiId: 257
+  id: 257
   },
   {
   name: "mudkip",
-  apiId: 258
+  id: 258
   },
   {
   name: "marshtomp",
-  apiId: 259
+  id: 259
   },
   {
   name: "swampert",
-  apiId: 260
+  id: 260
   },
   {
   name: "poochyena",
-  apiId: 261
+  id: 261
   },
   {
   name: "mightyena",
-  apiId: 262
+  id: 262
   },
   {
   name: "zigzagoon",
-  apiId: 263
+  id: 263
   },
   {
   name: "linoone",
-  apiId: 264
+  id: 264
   },
   {
   name: "wurmple",
-  apiId: 265
+  id: 265
   },
   {
   name: "silcoon",
-  apiId: 266
+  id: 266
   },
   {
   name: "beautifly",
-  apiId: 267
+  id: 267
   },
   {
   name: "cascoon",
-  apiId: 268
+  id: 268
   },
   {
   name: "dustox",
-  apiId: 269
+  id: 269
   },
   {
   name: "lotad",
-  apiId: 270
+  id: 270
   },
   {
   name: "lombre",
-  apiId: 271
+  id: 271
   },
   {
   name: "ludicolo",
-  apiId: 272
+  id: 272
   },
   {
   name: "seedot",
-  apiId: 273
+  id: 273
   },
   {
   name: "nuzleaf",
-  apiId: 274
+  id: 274
   },
   {
   name: "shiftry",
-  apiId: 275
+  id: 275
   },
   {
   name: "taillow",
-  apiId: 276
+  id: 276
   },
   {
   name: "swellow",
-  apiId: 277
+  id: 277
   },
   {
   name: "wingull",
-  apiId: 278
+  id: 278
   },
   {
   name: "pelipper",
-  apiId: 279
+  id: 279
   },
   {
   name: "ralts",
-  apiId: 280
+  id: 280
   },
   {
   name: "kirlia",
-  apiId: 281
+  id: 281
   },
   {
   name: "gardevoir",
-  apiId: 282
+  id: 282
   },
   {
   name: "surskit",
-  apiId: 283
+  id: 283
   },
   {
   name: "masquerain",
-  apiId: 284
+  id: 284
   },
   {
   name: "shroomish",
-  apiId: 285
+  id: 285
   },
   {
   name: "breloom",
-  apiId: 286
+  id: 286
   },
   {
   name: "slakoth",
-  apiId: 287
+  id: 287
   },
   {
   name: "vigoroth",
-  apiId: 288
+  id: 288
   },
   {
   name: "slaking",
-  apiId: 289
+  id: 289
   },
   {
   name: "nincada",
-  apiId: 290
+  id: 290
   },
   {
   name: "ninjask",
-  apiId: 291
+  id: 291
   },
   {
   name: "shedinja",
-  apiId: 292
+  id: 292
   },
   {
   name: "whismur",
-  apiId: 293
+  id: 293
   },
   {
   name: "loudred",
-  apiId: 294
+  id: 294
   },
   {
   name: "exploud",
-  apiId: 295
+  id: 295
   },
   {
   name: "makuhita",
-  apiId: 296
+  id: 296
   },
   {
   name: "hariyama",
-  apiId: 297
+  id: 297
   },
   {
   name: "azurill",
-  apiId: 298
+  id: 298
   },
   {
   name: "nosepass",
-  apiId: 299
+  id: 299
   },
   {
   name: "skitty",
-  apiId: 300
+  id: 300
   },
   {
   name: "delcatty",
-  apiId: 301
+  id: 301
   },
   {
   name: "sableye",
-  apiId: 302
+  id: 302
   },
   {
   name: "mawile",
-  apiId: 303
+  id: 303
   },
   {
   name: "aron",
-  apiId: 304
+  id: 304
   },
   {
   name: "lairon",
-  apiId: 305
+  id: 305
   },
   {
   name: "aggron",
-  apiId: 306
+  id: 306
   },
   {
   name: "meditite",
-  apiId: 307
+  id: 307
   },
   {
   name: "medicham",
-  apiId: 308
+  id: 308
   },
   {
   name: "electrike",
-  apiId: 309
+  id: 309
   },
   {
   name: "manectric",
-  apiId: 310
+  id: 310
   },
   {
   name: "plusle",
-  apiId: 311
+  id: 311
   },
   {
   name: "minun",
-  apiId: 312
+  id: 312
   },
   {
   name: "volbeat",
-  apiId: 313
+  id: 313
   },
   {
   name: "illumise",
-  apiId: 314
+  id: 314
   },
   {
   name: "roselia",
-  apiId: 315
+  id: 315
   },
   {
   name: "gulpin",
-  apiId: 316
+  id: 316
   },
   {
   name: "swalot",
-  apiId: 317
+  id: 317
   },
   {
   name: "carvanha",
-  apiId: 318
+  id: 318
   },
   {
   name: "sharpedo",
-  apiId: 319
+  id: 319
   },
   {
   name: "wailmer",
-  apiId: 320
+  id: 320
   },
   {
   name: "wailord",
-  apiId: 321
+  id: 321
   },
   {
   name: "numel",
-  apiId: 322
+  id: 322
   },
   {
   name: "camerupt",
-  apiId: 323
+  id: 323
   },
   {
   name: "torkoal",
-  apiId: 324
+  id: 324
   },
   {
   name: "spoink",
-  apiId: 325
+  id: 325
   },
   {
   name: "grumpig",
-  apiId: 326
+  id: 326
   },
   {
   name: "spinda",
-  apiId: 327
+  id: 327
   },
   {
   name: "trapinch",
-  apiId: 328
+  id: 328
   },
   {
   name: "vibrava",
-  apiId: 329
+  id: 329
   },
   {
   name: "flygon",
-  apiId: 330
+  id: 330
   },
   {
   name: "cacnea",
-  apiId: 331
+  id: 331
   },
   {
   name: "cacturne",
-  apiId: 332
+  id: 332
   },
   {
   name: "swablu",
-  apiId: 333
+  id: 333
   },
   {
   name: "altaria",
-  apiId: 334
+  id: 334
   },
   {
   name: "zangoose",
-  apiId: 335
+  id: 335
   },
   {
   name: "seviper",
-  apiId: 336
+  id: 336
   },
   {
   name: "lunatone",
-  apiId: 337
+  id: 337
   },
   {
   name: "solrock",
-  apiId: 338
+  id: 338
   },
   {
   name: "barboach",
-  apiId: 339
+  id: 339
   },
   {
   name: "whiscash",
-  apiId: 340
+  id: 340
   },
   {
   name: "corphish",
-  apiId: 341
+  id: 341
   },
   {
   name: "crawdaunt",
-  apiId: 342
+  id: 342
   },
   {
   name: "baltoy",
-  apiId: 343
+  id: 343
   },
   {
   name: "claydol",
-  apiId: 344
+  id: 344
   },
   {
   name: "lileep",
-  apiId: 345
+  id: 345
   },
   {
   name: "cradily",
-  apiId: 346
+  id: 346
   },
   {
   name: "anorith",
-  apiId: 347
+  id: 347
   },
   {
   name: "armaldo",
-  apiId: 348
+  id: 348
   },
   {
   name: "feebas",
-  apiId: 349
+  id: 349
   },
   {
   name: "milotic",
-  apiId: 350
+  id: 350
   },
   {
   name: "castform",
-  apiId: 351
+  id: 351
   },
   {
   name: "kecleon",
-  apiId: 352
+  id: 352
   },
   {
   name: "shuppet",
-  apiId: 353
+  id: 353
   },
   {
   name: "banette",
-  apiId: 354
+  id: 354
   },
   {
   name: "duskull",
-  apiId: 355
+  id: 355
   },
   {
   name: "dusclops",
-  apiId: 356
+  id: 356
   },
   {
   name: "tropius",
-  apiId: 357
+  id: 357
   },
   {
   name: "chimecho",
-  apiId: 358
+  id: 358
   },
   {
   name: "absol",
-  apiId: 359
+  id: 359
   },
   {
   name: "wynaut",
-  apiId: 360
+  id: 360
   },
   {
   name: "snorunt",
-  apiId: 361
+  id: 361
   },
   {
   name: "glalie",
-  apiId: 362
+  id: 362
   },
   {
   name: "spheal",
-  apiId: 363
+  id: 363
   },
   {
   name: "sealeo",
-  apiId: 364
+  id: 364
   },
   {
   name: "walrein",
-  apiId: 365
+  id: 365
   },
   {
   name: "clamperl",
-  apiId: 366
+  id: 366
   },
   {
   name: "huntail",
-  apiId: 367
+  id: 367
   },
   {
   name: "gorebyss",
-  apiId: 368
+  id: 368
   },
   {
   name: "relicanth",
-  apiId: 369
+  id: 369
   },
   {
   name: "luvdisc",
-  apiId: 370
+  id: 370
   },
   {
   name: "bagon",
-  apiId: 371
+  id: 371
   },
   {
   name: "shelgon",
-  apiId: 372
+  id: 372
   },
   {
   name: "salamence",
-  apiId: 373
+  id: 373
   },
   {
   name: "beldum",
-  apiId: 374
+  id: 374
   },
   {
   name: "metang",
-  apiId: 375
+  id: 375
   },
   {
   name: "metagross",
-  apiId: 376
+  id: 376
   },
   {
   name: "regirock",
-  apiId: 377
+  id: 377
   },
   {
   name: "regice",
-  apiId: 378
+  id: 378
   },
   {
   name: "registeel",
-  apiId: 379
+  id: 379
   },
   {
   name: "latias",
-  apiId: 380
+  id: 380
   },
   {
   name: "latios",
-  apiId: 381
+  id: 381
   },
   {
   name: "kyogre",
-  apiId: 382
+  id: 382
   },
   {
   name: "groudon",
-  apiId: 383
+  id: 383
   },
   {
   name: "rayquaza",
-  apiId: 384
+  id: 384
   },
   {
   name: "jirachi",
-  apiId: 385
+  id: 385
   },
   {
   name: "deoxys-normal",
-  apiId: 386
+  id: 386
   },
   {
   name: "turtwig",
-  apiId: 387
+  id: 387
   },
   {
   name: "grotle",
-  apiId: 388
+  id: 388
   },
   {
   name: "torterra",
-  apiId: 389
+  id: 389
   },
   {
   name: "chimchar",
-  apiId: 390
+  id: 390
   },
   {
   name: "monferno",
-  apiId: 391
+  id: 391
   },
   {
   name: "infernape",
-  apiId: 392
+  id: 392
   },
   {
   name: "piplup",
-  apiId: 393
+  id: 393
   },
   {
   name: "prinplup",
-  apiId: 394
+  id: 394
   },
   {
   name: "empoleon",
-  apiId: 395
+  id: 395
   },
   {
   name: "starly",
-  apiId: 396
+  id: 396
   },
   {
   name: "staravia",
-  apiId: 397
+  id: 397
   },
   {
   name: "staraptor",
-  apiId: 398
+  id: 398
   },
   {
   name: "bidoof",
-  apiId: 399
+  id: 399
   },
   {
   name: "bibarel",
-  apiId: 400
+  id: 400
   },
   {
   name: "kricketot",
-  apiId: 401
+  id: 401
   },
   {
   name: "kricketune",
-  apiId: 402
+  id: 402
   },
   {
   name: "shinx",
-  apiId: 403
+  id: 403
   },
   {
   name: "luxio",
-  apiId: 404
+  id: 404
   },
   {
   name: "luxray",
-  apiId: 405
+  id: 405
   },
   {
   name: "budew",
-  apiId: 406
+  id: 406
   },
   {
   name: "roserade",
-  apiId: 407
+  id: 407
   },
   {
   name: "cranidos",
-  apiId: 408
+  id: 408
   },
   {
   name: "rampardos",
-  apiId: 409
+  id: 409
   },
   {
   name: "shieldon",
-  apiId: 410
+  id: 410
   },
   {
   name: "bastiodon",
-  apiId: 411
+  id: 411
   },
   {
   name: "burmy",
-  apiId: 412
+  id: 412
   },
   {
   name: "wormadam-plant",
-  apiId: 413
+  id: 413
   },
   {
   name: "mothim",
-  apiId: 414
+  id: 414
   },
   {
   name: "combee",
-  apiId: 415
+  id: 415
   },
   {
   name: "vespiquen",
-  apiId: 416
+  id: 416
   },
   {
   name: "pachirisu",
-  apiId: 417
+  id: 417
   },
   {
   name: "buizel",
-  apiId: 418
+  id: 418
   },
   {
   name: "floatzel",
-  apiId: 419
+  id: 419
   },
   {
   name: "cherubi",
-  apiId: 420
+  id: 420
   },
   {
   name: "cherrim",
-  apiId: 421
+  id: 421
   },
   {
   name: "shellos",
-  apiId: 422
+  id: 422
   },
   {
   name: "gastrodon",
-  apiId: 423
+  id: 423
   },
   {
   name: "ambipom",
-  apiId: 424
+  id: 424
   },
   {
   name: "drifloon",
-  apiId: 425
+  id: 425
   },
   {
   name: "drifblim",
-  apiId: 426
+  id: 426
   },
   {
   name: "buneary",
-  apiId: 427
+  id: 427
   },
   {
   name: "lopunny",
-  apiId: 428
+  id: 428
   },
   {
   name: "mismagius",
-  apiId: 429
+  id: 429
   },
   {
   name: "honchkrow",
-  apiId: 430
+  id: 430
   },
   {
   name: "glameow",
-  apiId: 431
+  id: 431
   },
   {
   name: "purugly",
-  apiId: 432
+  id: 432
   },
   {
   name: "chingling",
-  apiId: 433
+  id: 433
   },
   {
   name: "stunky",
-  apiId: 434
+  id: 434
   },
   {
   name: "skuntank",
-  apiId: 435
+  id: 435
   },
   {
   name: "bronzor",
-  apiId: 436
+  id: 436
   },
   {
   name: "bronzong",
-  apiId: 437
+  id: 437
   },
   {
   name: "bonsly",
-  apiId: 438
+  id: 438
   },
   {
   name: "mime-jr",
-  apiId: 439
+  id: 439
   },
   {
   name: "happiny",
-  apiId: 440
+  id: 440
   },
   {
   name: "chatot",
-  apiId: 441
+  id: 441
   },
   {
   name: "spiritomb",
-  apiId: 442
+  id: 442
   },
   {
   name: "gible",
-  apiId: 443
+  id: 443
   },
   {
   name: "gabite",
-  apiId: 444
+  id: 444
   },
   {
   name: "garchomp",
-  apiId: 445
+  id: 445
   },
   {
   name: "munchlax",
-  apiId: 446
+  id: 446
   },
   {
   name: "riolu",
-  apiId: 447
+  id: 447
   },
   {
   name: "lucario",
-  apiId: 448
+  id: 448
   },
   {
   name: "hippopotas",
-  apiId: 449
+  id: 449
   },
   {
   name: "hippowdon",
-  apiId: 450
+  id: 450
   },
   {
   name: "skorupi",
-  apiId: 451
+  id: 451
   },
   {
   name: "drapion",
-  apiId: 452
+  id: 452
   },
   {
   name: "croagunk",
-  apiId: 453
+  id: 453
   },
   {
   name: "toxicroak",
-  apiId: 454
+  id: 454
   },
   {
   name: "carnivine",
-  apiId: 455
+  id: 455
   },
   {
   name: "finneon",
-  apiId: 456
+  id: 456
   },
   {
   name: "lumineon",
-  apiId: 457
+  id: 457
   },
   {
   name: "mantyke",
-  apiId: 458
+  id: 458
   },
   {
   name: "snover",
-  apiId: 459
+  id: 459
   },
   {
   name: "abomasnow",
-  apiId: 460
+  id: 460
   },
   {
   name: "weavile",
-  apiId: 461
+  id: 461
   },
   {
   name: "magnezone",
-  apiId: 462
+  id: 462
   },
   {
   name: "lickilicky",
-  apiId: 463
+  id: 463
   },
   {
   name: "rhyperior",
-  apiId: 464
+  id: 464
   },
   {
   name: "tangrowth",
-  apiId: 465
+  id: 465
   },
   {
   name: "electivire",
-  apiId: 466
+  id: 466
   },
   {
   name: "magmortar",
-  apiId: 467
+  id: 467
   },
   {
   name: "togekiss",
-  apiId: 468
+  id: 468
   },
   {
   name: "yanmega",
-  apiId: 469
+  id: 469
   },
   {
   name: "leafeon",
-  apiId: 470
+  id: 470
   },
   {
   name: "glaceon",
-  apiId: 471
+  id: 471
   },
   {
   name: "gliscor",
-  apiId: 472
+  id: 472
   },
   {
   name: "mamoswine",
-  apiId: 473
+  id: 473
   },
   {
   name: "porygon-z",
-  apiId: 474
+  id: 474
   },
   {
   name: "gallade",
-  apiId: 475
+  id: 475
   },
   {
   name: "probopass",
-  apiId: 476
+  id: 476
   },
   {
   name: "dusknoir",
-  apiId: 477
+  id: 477
   },
   {
   name: "froslass",
-  apiId: 478
+  id: 478
   },
   {
   name: "rotom",
-  apiId: 479
+  id: 479
   },
   {
   name: "uxie",
-  apiId: 480
+  id: 480
   },
   {
   name: "mesprit",
-  apiId: 481
+  id: 481
   },
   {
   name: "azelf",
-  apiId: 482
+  id: 482
   },
   {
   name: "dialga",
-  apiId: 483
+  id: 483
   },
   {
   name: "palkia",
-  apiId: 484
+  id: 484
   },
   {
   name: "heatran",
-  apiId: 485
+  id: 485
   },
   {
   name: "regigigas",
-  apiId: 486
+  id: 486
   },
   {
   name: "giratina-altered",
-  apiId: 487
+  id: 487
   },
   {
   name: "cresselia",
-  apiId: 488
+  id: 488
   },
   {
   name: "phione",
-  apiId: 489
+  id: 489
   },
   {
   name: "manaphy",
-  apiId: 490
+  id: 490
   },
   {
   name: "darkrai",
-  apiId: 491
+  id: 491
   },
   {
   name: "shaymin-land",
-  apiId: 492
+  id: 492
   },
   {
   name: "arceus",
-  apiId: 493
+  id: 493
   },
   {
   name: "victini",
-  apiId: 494
+  id: 494
   },
   {
   name: "snivy",
-  apiId: 495
+  id: 495
   },
   {
   name: "servine",
-  apiId: 496
+  id: 496
   },
   {
   name: "serperior",
-  apiId: 497
+  id: 497
   },
   {
   name: "tepig",
-  apiId: 498
+  id: 498
   },
   {
   name: "pignite",
-  apiId: 499
+  id: 499
   },
   {
   name: "emboar",
-  apiId: 500
+  id: 500
   },
   {
   name: "oshawott",
-  apiId: 501
+  id: 501
   },
   {
   name: "dewott",
-  apiId: 502
+  id: 502
   },
   {
   name: "samurott",
-  apiId: 503
+  id: 503
   },
   {
   name: "patrat",
-  apiId: 504
+  id: 504
   },
   {
   name: "watchog",
-  apiId: 505
+  id: 505
   },
   {
   name: "lillipup",
-  apiId: 506
+  id: 506
   },
   {
   name: "herdier",
-  apiId: 507
+  id: 507
   },
   {
   name: "stoutland",
-  apiId: 508
+  id: 508
   },
   {
   name: "purrloin",
-  apiId: 509
+  id: 509
   },
   {
   name: "liepard",
-  apiId: 510
+  id: 510
   },
   {
   name: "pansage",
-  apiId: 511
+  id: 511
   },
   {
   name: "simisage",
-  apiId: 512
+  id: 512
   },
   {
   name: "pansear",
-  apiId: 513
+  id: 513
   },
   {
   name: "simisear",
-  apiId: 514
+  id: 514
   },
   {
   name: "panpour",
-  apiId: 515
+  id: 515
   },
   {
   name: "simipour",
-  apiId: 516
+  id: 516
   },
   {
   name: "munna",
-  apiId: 517
+  id: 517
   },
   {
   name: "musharna",
-  apiId: 518
+  id: 518
   },
   {
   name: "pidove",
-  apiId: 519
+  id: 519
   },
   {
   name: "tranquill",
-  apiId: 520
+  id: 520
   },
   {
   name: "unfezant",
-  apiId: 521
+  id: 521
   },
   {
   name: "blitzle",
-  apiId: 522
+  id: 522
   },
   {
   name: "zebstrika",
-  apiId: 523
+  id: 523
   },
   {
   name: "roggenrola",
-  apiId: 524
+  id: 524
   },
   {
   name: "boldore",
-  apiId: 525
+  id: 525
   },
   {
   name: "gigalith",
-  apiId: 526
+  id: 526
   },
   {
   name: "woobat",
-  apiId: 527
+  id: 527
   },
   {
   name: "swoobat",
-  apiId: 528
+  id: 528
   },
   {
   name: "drilbur",
-  apiId: 529
+  id: 529
   },
   {
   name: "excadrill",
-  apiId: 530
+  id: 530
   },
   {
   name: "audino",
-  apiId: 531
+  id: 531
   },
   {
   name: "timburr",
-  apiId: 532
+  id: 532
   },
   {
   name: "gurdurr",
-  apiId: 533
+  id: 533
   },
   {
   name: "conkeldurr",
-  apiId: 534
+  id: 534
   },
   {
   name: "tympole",
-  apiId: 535
+  id: 535
   },
   {
   name: "palpitoad",
-  apiId: 536
+  id: 536
   },
   {
   name: "seismitoad",
-  apiId: 537
+  id: 537
   },
   {
   name: "throh",
-  apiId: 538
+  id: 538
   },
   {
   name: "sawk",
-  apiId: 539
+  id: 539
   },
   {
   name: "sewaddle",
-  apiId: 540
+  id: 540
   },
   {
   name: "swadloon",
-  apiId: 541
+  id: 541
   },
   {
   name: "leavanny",
-  apiId: 542
+  id: 542
   },
   {
   name: "venipede",
-  apiId: 543
+  id: 543
   },
   {
   name: "whirlipede",
-  apiId: 544
+  id: 544
   },
   {
   name: "scolipede",
-  apiId: 545
+  id: 545
   },
   {
   name: "cottonee",
-  apiId: 546
+  id: 546
   },
   {
   name: "whimsicott",
-  apiId: 547
+  id: 547
   },
   {
   name: "petilil",
-  apiId: 548
+  id: 548
   },
   {
   name: "lilligant",
-  apiId: 549
+  id: 549
   },
   {
   name: "basculin-red-striped",
-  apiId: 550
+  id: 550
   },
   {
   name: "sandile",
-  apiId: 551
+  id: 551
   },
   {
   name: "krokorok",
-  apiId: 552
+  id: 552
   },
   {
   name: "krookodile",
-  apiId: 553
+  id: 553
   },
   {
   name: "darumaka",
-  apiId: 554
+  id: 554
   },
   {
   name: "darmanitan-standard",
-  apiId: 555
+  id: 555
   },
   {
   name: "maractus",
-  apiId: 556
+  id: 556
   },
   {
   name: "dwebble",
-  apiId: 557
+  id: 557
   },
   {
   name: "crustle",
-  apiId: 558
+  id: 558
   },
   {
   name: "scraggy",
-  apiId: 559
+  id: 559
   },
   {
   name: "scrafty",
-  apiId: 560
+  id: 560
   },
   {
   name: "sigilyph",
-  apiId: 561
+  id: 561
   },
   {
   name: "yamask",
-  apiId: 562
+  id: 562
   },
   {
   name: "cofagrigus",
-  apiId: 563
+  id: 563
   },
   {
   name: "tirtouga",
-  apiId: 564
+  id: 564
   },
   {
   name: "carracosta",
-  apiId: 565
+  id: 565
   },
   {
   name: "archen",
-  apiId: 566
+  id: 566
   },
   {
   name: "archeops",
-  apiId: 567
+  id: 567
   },
   {
   name: "trubbish",
-  apiId: 568
+  id: 568
   },
   {
   name: "garbodor",
-  apiId: 569
+  id: 569
   },
   {
   name: "zorua",
-  apiId: 570
+  id: 570
   },
   {
   name: "zoroark",
-  apiId: 571
+  id: 571
   },
   {
   name: "minccino",
-  apiId: 572
+  id: 572
   },
   {
   name: "cinccino",
-  apiId: 573
+  id: 573
   },
   {
   name: "gothita",
-  apiId: 574
+  id: 574
   },
   {
   name: "gothorita",
-  apiId: 575
+  id: 575
   },
   {
   name: "gothitelle",
-  apiId: 576
+  id: 576
   },
   {
   name: "solosis",
-  apiId: 577
+  id: 577
   },
   {
   name: "duosion",
-  apiId: 578
+  id: 578
   },
   {
   name: "reuniclus",
-  apiId: 579
+  id: 579
   },
   {
   name: "ducklett",
-  apiId: 580
+  id: 580
   },
   {
   name: "swanna",
-  apiId: 581
+  id: 581
   },
   {
   name: "vanillite",
-  apiId: 582
+  id: 582
   },
   {
   name: "vanillish",
-  apiId: 583
+  id: 583
   },
   {
   name: "vanilluxe",
-  apiId: 584
+  id: 584
   },
   {
   name: "deerling",
-  apiId: 585
+  id: 585
   },
   {
   name: "sawsbuck",
-  apiId: 586
+  id: 586
   },
   {
   name: "emolga",
-  apiId: 587
+  id: 587
   },
   {
   name: "karrablast",
-  apiId: 588
+  id: 588
   },
   {
   name: "escavalier",
-  apiId: 589
+  id: 589
   },
   {
   name: "foongus",
-  apiId: 590
+  id: 590
   },
   {
   name: "amoonguss",
-  apiId: 591
+  id: 591
   },
   {
   name: "frillish",
-  apiId: 592
+  id: 592
   },
   {
   name: "jellicent",
-  apiId: 593
+  id: 593
   },
   {
   name: "alomomola",
-  apiId: 594
+  id: 594
   },
   {
   name: "joltik",
-  apiId: 595
+  id: 595
   },
   {
   name: "galvantula",
-  apiId: 596
+  id: 596
   },
   {
   name: "ferroseed",
-  apiId: 597
+  id: 597
   },
   {
   name: "ferrothorn",
-  apiId: 598
+  id: 598
   },
   {
   name: "klink",
-  apiId: 599
+  id: 599
   },
   {
   name: "klang",
-  apiId: 600
+  id: 600
   },
   {
   name: "klinklang",
-  apiId: 601
+  id: 601
   },
   {
   name: "tynamo",
-  apiId: 602
+  id: 602
   },
   {
   name: "eelektrik",
-  apiId: 603
+  id: 603
   },
   {
   name: "eelektross",
-  apiId: 604
+  id: 604
   },
   {
   name: "elgyem",
-  apiId: 605
+  id: 605
   },
   {
   name: "beheeyem",
-  apiId: 606
+  id: 606
   },
   {
   name: "litwick",
-  apiId: 607
+  id: 607
   },
   {
   name: "lampent",
-  apiId: 608
+  id: 608
   },
   {
   name: "chandelure",
-  apiId: 609
+  id: 609
   },
   {
   name: "axew",
-  apiId: 610
+  id: 610
   },
   {
   name: "fraxure",
-  apiId: 611
+  id: 611
   },
   {
   name: "haxorus",
-  apiId: 612
+  id: 612
   },
   {
   name: "cubchoo",
-  apiId: 613
+  id: 613
   },
   {
   name: "beartic",
-  apiId: 614
+  id: 614
   },
   {
   name: "cryogonal",
-  apiId: 615
+  id: 615
   },
   {
   name: "shelmet",
-  apiId: 616
+  id: 616
   },
   {
   name: "accelgor",
-  apiId: 617
+  id: 617
   },
   {
   name: "stunfisk",
-  apiId: 618
+  id: 618
   },
   {
   name: "mienfoo",
-  apiId: 619
+  id: 619
   },
   {
   name: "mienshao",
-  apiId: 620
+  id: 620
   },
   {
   name: "druddigon",
-  apiId: 621
+  id: 621
   },
   {
   name: "golett",
-  apiId: 622
+  id: 622
   },
   {
   name: "golurk",
-  apiId: 623
+  id: 623
   },
   {
   name: "pawniard",
-  apiId: 624
+  id: 624
   },
   {
   name: "bisharp",
-  apiId: 625
+  id: 625
   },
   {
   name: "bouffalant",
-  apiId: 626
+  id: 626
   },
   {
   name: "rufflet",
-  apiId: 627
+  id: 627
   },
   {
   name: "braviary",
-  apiId: 628
+  id: 628
   },
   {
   name: "vullaby",
-  apiId: 629
+  id: 629
   },
   {
   name: "mandibuzz",
-  apiId: 630
+  id: 630
   },
   {
   name: "heatmor",
-  apiId: 631
+  id: 631
   },
   {
   name: "durant",
-  apiId: 632
+  id: 632
   },
   {
   name: "deino",
-  apiId: 633
+  id: 633
   },
   {
   name: "zweilous",
-  apiId: 634
+  id: 634
   },
   {
   name: "hydreigon",
-  apiId: 635
+  id: 635
   },
   {
   name: "larvesta",
-  apiId: 636
+  id: 636
   },
   {
   name: "volcarona",
-  apiId: 637
+  id: 637
   },
   {
   name: "cobalion",
-  apiId: 638
+  id: 638
   },
   {
   name: "terrakion",
-  apiId: 639
+  id: 639
   },
   {
   name: "virizion",
-  apiId: 640
+  id: 640
   },
   {
   name: "tornadus-incarnate",
-  apiId: 641
+  id: 641
   },
   {
   name: "thundurus-incarnate",
-  apiId: 642
+  id: 642
   },
   {
   name: "reshiram",
-  apiId: 643
+  id: 643
   },
   {
   name: "zekrom",
-  apiId: 644
+  id: 644
   },
   {
   name: "landorus-incarnate",
-  apiId: 645
+  id: 645
   },
   {
   name: "kyurem",
-  apiId: 646
+  id: 646
   },
   {
   name: "keldeo-ordinary",
-  apiId: 647
+  id: 647
   },
   {
   name: "meloetta-aria",
-  apiId: 648
+  id: 648
   },
   {
   name: "genesect",
-  apiId: 649
+  id: 649
   },
   {
   name: "chespin",
-  apiId: 650
+  id: 650
   },
   {
   name: "quilladin",
-  apiId: 651
+  id: 651
   },
   {
   name: "chesnaught",
-  apiId: 652
+  id: 652
   },
   {
   name: "fennekin",
-  apiId: 653
+  id: 653
   },
   {
   name: "braixen",
-  apiId: 654
+  id: 654
   },
   {
   name: "delphox",
-  apiId: 655
+  id: 655
   },
   {
   name: "froakie",
-  apiId: 656
+  id: 656
   },
   {
   name: "frogadier",
-  apiId: 657
+  id: 657
   },
   {
   name: "greninja",
-  apiId: 658
+  id: 658
   },
   {
   name: "bunnelby",
-  apiId: 659
+  id: 659
   },
   {
   name: "diggersby",
-  apiId: 660
+  id: 660
   },
   {
   name: "fletchling",
-  apiId: 661
+  id: 661
   },
   {
   name: "fletchinder",
-  apiId: 662
+  id: 662
   },
   {
   name: "talonflame",
-  apiId: 663
+  id: 663
   },
   {
   name: "scatterbug",
-  apiId: 664
+  id: 664
   },
   {
   name: "spewpa",
-  apiId: 665
+  id: 665
   },
   {
   name: "vivillon",
-  apiId: 666
+  id: 666
   },
   {
   name: "litleo",
-  apiId: 667
+  id: 667
   },
   {
   name: "pyroar",
-  apiId: 668
+  id: 668
   },
   {
   name: "flabebe",
-  apiId: 669
+  id: 669
   },
   {
   name: "floette",
-  apiId: 670
+  id: 670
   },
   {
   name: "florges",
-  apiId: 671
+  id: 671
   },
   {
   name: "skiddo",
-  apiId: 672
+  id: 672
   },
   {
   name: "gogoat",
-  apiId: 673
+  id: 673
   },
   {
   name: "pancham",
-  apiId: 674
+  id: 674
   },
   {
   name: "pangoro",
-  apiId: 675
+  id: 675
   },
   {
   name: "furfrou",
-  apiId: 676
+  id: 676
   },
   {
   name: "espurr",
-  apiId: 677
+  id: 677
   },
   {
   name: "meowstic-male",
-  apiId: 678
+  id: 678
   },
   {
   name: "honedge",
-  apiId: 679
+  id: 679
   },
   {
   name: "doublade",
-  apiId: 680
+  id: 680
   },
   {
   name: "aegislash-shield",
-  apiId: 681
+  id: 681
   },
   {
   name: "spritzee",
-  apiId: 682
+  id: 682
   },
   {
   name: "aromatisse",
-  apiId: 683
+  id: 683
   },
   {
   name: "swirlix",
-  apiId: 684
+  id: 684
   },
   {
   name: "slurpuff",
-  apiId: 685
+  id: 685
   },
   {
   name: "inkay",
-  apiId: 686
+  id: 686
   },
   {
   name: "malamar",
-  apiId: 687
+  id: 687
   },
   {
   name: "binacle",
-  apiId: 688
+  id: 688
   },
   {
   name: "barbaracle",
-  apiId: 689
+  id: 689
   },
   {
   name: "skrelp",
-  apiId: 690
+  id: 690
   },
   {
   name: "dragalge",
-  apiId: 691
+  id: 691
   },
   {
   name: "clauncher",
-  apiId: 692
+  id: 692
   },
   {
   name: "clawitzer",
-  apiId: 693
+  id: 693
   },
   {
   name: "helioptile",
-  apiId: 694
+  id: 694
   },
   {
   name: "heliolisk",
-  apiId: 695
+  id: 695
   },
   {
   name: "tyrunt",
-  apiId: 696
+  id: 696
   },
   {
   name: "tyrantrum",
-  apiId: 697
+  id: 697
   },
   {
   name: "amaura",
-  apiId: 698
+  id: 698
   },
   {
   name: "aurorus",
-  apiId: 699
+  id: 699
   },
   {
   name: "sylveon",
-  apiId: 700
+  id: 700
   },
   {
   name: "hawlucha",
-  apiId: 701
+  id: 701
   },
   {
   name: "dedenne",
-  apiId: 702
+  id: 702
   },
   {
   name: "carbink",
-  apiId: 703
+  id: 703
   },
   {
   name: "goomy",
-  apiId: 704
+  id: 704
   },
   {
   name: "sliggoo",
-  apiId: 705
+  id: 705
   },
   {
   name: "goodra",
-  apiId: 706
+  id: 706
   },
   {
   name: "klefki",
-  apiId: 707
+  id: 707
   },
   {
   name: "phantump",
-  apiId: 708
+  id: 708
   },
   {
   name: "trevenant",
-  apiId: 709
+  id: 709
   },
   {
   name: "pumpkaboo-average",
-  apiId: 710
+  id: 710
   },
   {
   name: "gourgeist-average",
-  apiId: 711
+  id: 711
   },
   {
   name: "bergmite",
-  apiId: 712
+  id: 712
   },
   {
   name: "avalugg",
-  apiId: 713
+  id: 713
   },
   {
   name: "noibat",
-  apiId: 714
+  id: 714
   },
   {
   name: "noivern",
-  apiId: 715
+  id: 715
   },
   {
   name: "xerneas",
-  apiId: 716
+  id: 716
   },
   {
   name: "yveltal",
-  apiId: 717
+  id: 717
   },
   {
   name: "zygarde-50",
-  apiId: 718
+  id: 718
   },
   {
   name: "diancie",
-  apiId: 719
+  id: 719
   },
   {
   name: "hoopa",
-  apiId: 720
+  id: 720
   },
   {
   name: "volcanion",
-  apiId: 721
+  id: 721
   },
   {
   name: "rowlet",
-  apiId: 722
+  id: 722
   },
   {
   name: "dartrix",
-  apiId: 723
+  id: 723
   },
   {
   name: "decidueye",
-  apiId: 724
+  id: 724
   },
   {
   name: "litten",
-  apiId: 725
+  id: 725
   },
   {
   name: "torracat",
-  apiId: 726
+  id: 726
   },
   {
   name: "incineroar",
-  apiId: 727
+  id: 727
   },
   {
   name: "popplio",
-  apiId: 728
+  id: 728
   },
   {
   name: "brionne",
-  apiId: 729
+  id: 729
   },
   {
   name: "primarina",
-  apiId: 730
+  id: 730
   },
   {
   name: "pikipek",
-  apiId: 731
+  id: 731
   },
   {
   name: "trumbeak",
-  apiId: 732
+  id: 732
   },
   {
   name: "toucannon",
-  apiId: 733
+  id: 733
   },
   {
   name: "yungoos",
-  apiId: 734
+  id: 734
   },
   {
   name: "gumshoos",
-  apiId: 735
+  id: 735
   },
   {
   name: "grubbin",
-  apiId: 736
+  id: 736
   },
   {
   name: "charjabug",
-  apiId: 737
+  id: 737
   },
   {
   name: "vikavolt",
-  apiId: 738
+  id: 738
   },
   {
   name: "crabrawler",
-  apiId: 739
+  id: 739
   },
   {
   name: "crabominable",
-  apiId: 740
+  id: 740
   },
   {
   name: "oricorio-baile",
-  apiId: 741
+  id: 741
   },
   {
   name: "cutiefly",
-  apiId: 742
+  id: 742
   },
   {
   name: "ribombee",
-  apiId: 743
+  id: 743
   },
   {
   name: "rockruff",
-  apiId: 744
+  id: 744
   },
   {
   name: "lycanroc-midday",
-  apiId: 745
+  id: 745
   },
   {
   name: "wishiwashi-solo",
-  apiId: 746
+  id: 746
   },
   {
   name: "mareanie",
-  apiId: 747
+  id: 747
   },
   {
   name: "toxapex",
-  apiId: 748
+  id: 748
   },
   {
   name: "mudbray",
-  apiId: 749
+  id: 749
   },
   {
   name: "mudsdale",
-  apiId: 750
+  id: 750
   },
   {
   name: "dewpider",
-  apiId: 751
+  id: 751
   },
   {
   name: "araquanid",
-  apiId: 752
+  id: 752
   },
   {
   name: "fomantis",
-  apiId: 753
+  id: 753
   },
   {
   name: "lurantis",
-  apiId: 754
+  id: 754
   },
   {
   name: "morelull",
-  apiId: 755
+  id: 755
   },
   {
   name: "shiinotic",
-  apiId: 756
+  id: 756
   },
   {
   name: "salandit",
-  apiId: 757
+  id: 757
   },
   {
   name: "salazzle",
-  apiId: 758
+  id: 758
   },
   {
   name: "stufful",
-  apiId: 759
+  id: 759
   },
   {
   name: "bewear",
-  apiId: 760
+  id: 760
   },
   {
   name: "bounsweet",
-  apiId: 761
+  id: 761
   },
   {
   name: "steenee",
-  apiId: 762
+  id: 762
   },
   {
   name: "tsareena",
-  apiId: 763
+  id: 763
   },
   {
   name: "comfey",
-  apiId: 764
+  id: 764
   },
   {
   name: "oranguru",
-  apiId: 765
+  id: 765
   },
   {
   name: "passimian",
-  apiId: 766
+  id: 766
   },
   {
   name: "wimpod",
-  apiId: 767
+  id: 767
   },
   {
   name: "golisopod",
-  apiId: 768
+  id: 768
   },
   {
   name: "sandygast",
-  apiId: 769
+  id: 769
   },
   {
   name: "palossand",
-  apiId: 770
+  id: 770
   },
   {
   name: "pyukumuku",
-  apiId: 771
+  id: 771
   },
   {
   name: "type-null",
-  apiId: 772
+  id: 772
   },
   {
   name: "silvally",
-  apiId: 773
+  id: 773
   },
   {
   name: "minior-red-meteor",
-  apiId: 774
+  id: 774
   },
   {
   name: "komala",
-  apiId: 775
+  id: 775
   },
   {
   name: "turtonator",
-  apiId: 776
+  id: 776
   },
   {
   name: "togedemaru",
-  apiId: 777
+  id: 777
   },
   {
   name: "mimikyu-disguised",
-  apiId: 778
+  id: 778
   },
   {
   name: "bruxish",
-  apiId: 779
+  id: 779
   },
   {
   name: "drampa",
-  apiId: 780
+  id: 780
   },
   {
   name: "dhelmise",
-  apiId: 781
+  id: 781
   },
   {
   name: "jangmo-o",
-  apiId: 782
+  id: 782
   },
   {
   name: "hakamo-o",
-  apiId: 783
+  id: 783
   },
   {
   name: "kommo-o",
-  apiId: 784
+  id: 784
   },
   {
   name: "tapu-koko",
-  apiId: 785
+  id: 785
   },
   {
   name: "tapu-lele",
-  apiId: 786
+  id: 786
   },
   {
   name: "tapu-bulu",
-  apiId: 787
+  id: 787
   },
   {
   name: "tapu-fini",
-  apiId: 788
+  id: 788
   },
   {
   name: "cosmog",
-  apiId: 789
+  id: 789
   },
   {
   name: "cosmoem",
-  apiId: 790
+  id: 790
   },
   {
   name: "solgaleo",
-  apiId: 791
+  id: 791
   },
   {
   name: "lunala",
-  apiId: 792
+  id: 792
   },
   {
   name: "nihilego",
-  apiId: 793
+  id: 793
   },
   {
   name: "buzzwole",
-  apiId: 794
+  id: 794
   },
   {
   name: "pheromosa",
-  apiId: 795
+  id: 795
   },
   {
   name: "xurkitree",
-  apiId: 796
+  id: 796
   },
   {
   name: "celesteela",
-  apiId: 797
+  id: 797
   },
   {
   name: "kartana",
-  apiId: 798
+  id: 798
   },
   {
   name: "guzzlord",
-  apiId: 799
+  id: 799
   },
   {
   name: "necrozma",
-  apiId: 800
+  id: 800
   },
   {
   name: "magearna",
-  apiId: 801
+  id: 801
   },
   {
   name: "marshadow",
-  apiId: 802
+  id: 802
   },
   {
   name: "poipole",
-  apiId: 803
+  id: 803
   },
   {
   name: "naganadel",
-  apiId: 804
+  id: 804
   },
   {
   name: "stakataka",
-  apiId: 805
+  id: 805
   },
   {
   name: "blacephalon",
-  apiId: 806
+  id: 806
   },
   {
   name: "zeraora",
-  apiId: 807
+  id: 807
   },
   {
   name: "meltan",
-  apiId: 808
+  id: 808
   },
   {
   name: "melmetal",
-  apiId: 809
+  id: 809
   },
   {
   name: "grookey",
-  apiId: 810
+  id: 810
   },
   {
   name: "thwackey",
-  apiId: 811
+  id: 811
   },
   {
   name: "rillaboom",
-  apiId: 812
+  id: 812
   },
   {
   name: "scorbunny",
-  apiId: 813
+  id: 813
   },
   {
   name: "raboot",
-  apiId: 814
+  id: 814
   },
   {
   name: "cinderace",
-  apiId: 815
+  id: 815
   },
   {
   name: "sobble",
-  apiId: 816
+  id: 816
   },
   {
   name: "drizzile",
-  apiId: 817
+  id: 817
   },
   {
   name: "inteleon",
-  apiId: 818
+  id: 818
   },
   {
   name: "skwovet",
-  apiId: 819
+  id: 819
   },
   {
   name: "greedent",
-  apiId: 820
+  id: 820
   },
   {
   name: "rookidee",
-  apiId: 821
+  id: 821
   },
   {
   name: "corvisquire",
-  apiId: 822
+  id: 822
   },
   {
   name: "corviknight",
-  apiId: 823
+  id: 823
   },
   {
   name: "blipbug",
-  apiId: 824
+  id: 824
   },
   {
   name: "dottler",
-  apiId: 825
+  id: 825
   },
   {
   name: "orbeetle",
-  apiId: 826
+  id: 826
   },
   {
   name: "nickit",
-  apiId: 827
+  id: 827
   },
   {
   name: "thievul",
-  apiId: 828
+  id: 828
   },
   {
   name: "gossifleur",
-  apiId: 829
+  id: 829
   },
   {
   name: "eldegoss",
-  apiId: 830
+  id: 830
   },
   {
   name: "wooloo",
-  apiId: 831
+  id: 831
   },
   {
   name: "dubwool",
-  apiId: 832
+  id: 832
   },
   {
   name: "chewtle",
-  apiId: 833
+  id: 833
   },
   {
   name: "drednaw",
-  apiId: 834
+  id: 834
   },
   {
   name: "yamper",
-  apiId: 835
+  id: 835
   },
   {
   name: "boltund",
-  apiId: 836
+  id: 836
   },
   {
   name: "rolycoly",
-  apiId: 837
+  id: 837
   },
   {
   name: "carkol",
-  apiId: 838
+  id: 838
   },
   {
   name: "coalossal",
-  apiId: 839
+  id: 839
   },
   {
   name: "applin",
-  apiId: 840
+  id: 840
   },
   {
   name: "flapple",
-  apiId: 841
+  id: 841
   },
   {
   name: "appletun",
-  apiId: 842
+  id: 842
   },
   {
   name: "silicobra",
-  apiId: 843
+  id: 843
   },
   {
   name: "sandaconda",
-  apiId: 844
+  id: 844
   },
   {
   name: "cramorant",
-  apiId: 845
+  id: 845
   },
   {
   name: "arrokuda",
-  apiId: 846
+  id: 846
   },
   {
   name: "barraskewda",
-  apiId: 847
+  id: 847
   },
   {
   name: "toxel",
-  apiId: 848
+  id: 848
   },
   {
   name: "toxtricity-amped",
-  apiId: 849
+  id: 849
   },
   {
   name: "sizzlipede",
-  apiId: 850
+  id: 850
   },
   {
   name: "centiskorch",
-  apiId: 851
+  id: 851
   },
   {
   name: "clobbopus",
-  apiId: 852
+  id: 852
   },
   {
   name: "grapploct",
-  apiId: 853
+  id: 853
   },
   {
   name: "sinistea",
-  apiId: 854
+  id: 854
   },
   {
   name: "polteageist",
-  apiId: 855
+  id: 855
   },
   {
   name: "hatenna",
-  apiId: 856
+  id: 856
   },
   {
   name: "hattrem",
-  apiId: 857
+  id: 857
   },
   {
   name: "hatterene",
-  apiId: 858
+  id: 858
   },
   {
   name: "impidimp",
-  apiId: 859
+  id: 859
   },
   {
   name: "morgrem",
-  apiId: 860
+  id: 860
   },
   {
   name: "grimmsnarl",
-  apiId: 861
+  id: 861
   },
   {
   name: "obstagoon",
-  apiId: 862
+  id: 862
   },
   {
   name: "perrserker",
-  apiId: 863
+  id: 863
   },
   {
   name: "cursola",
-  apiId: 864
+  id: 864
   },
   {
   name: "sirfetchd",
-  apiId: 865
+  id: 865
   },
   {
   name: "mr-rime",
-  apiId: 866
+  id: 866
   },
   {
   name: "runerigus",
-  apiId: 867
+  id: 867
   },
   {
   name: "milcery",
-  apiId: 868
+  id: 868
   },
   {
   name: "alcremie",
-  apiId: 869
+  id: 869
   },
   {
   name: "falinks",
-  apiId: 870
+  id: 870
   },
   {
   name: "pincurchin",
-  apiId: 871
+  id: 871
   },
   {
   name: "snom",
-  apiId: 872
+  id: 872
   },
   {
   name: "frosmoth",
-  apiId: 873
+  id: 873
   },
   {
   name: "stonjourner",
-  apiId: 874
+  id: 874
   },
   {
   name: "eiscue-ice",
-  apiId: 875
+  id: 875
   },
   {
   name: "indeedee-male",
-  apiId: 876
+  id: 876
   },
   {
   name: "morpeko-full-belly",
-  apiId: 877
+  id: 877
   },
   {
   name: "cufant",
-  apiId: 878
+  id: 878
   },
   {
   name: "copperajah",
-  apiId: 879
+  id: 879
   },
   {
   name: "dracozolt",
-  apiId: 880
+  id: 880
   },
   {
   name: "arctozolt",
-  apiId: 881
+  id: 881
   },
   {
   name: "dracovish",
-  apiId: 882
+  id: 882
   },
   {
   name: "arctovish",
-  apiId: 883
+  id: 883
   },
   {
   name: "duraludon",
-  apiId: 884
+  id: 884
   },
   {
   name: "dreepy",
-  apiId: 885
+  id: 885
   },
   {
   name: "drakloak",
-  apiId: 886
+  id: 886
   },
   {
   name: "dragapult",
-  apiId: 887
+  id: 887
   },
   {
   name: "zacian",
-  apiId: 888
+  id: 888
   },
   {
   name: "zamazenta",
-  apiId: 889
+  id: 889
   },
   {
   name: "eternatus",
-  apiId: 890
+  id: 890
   },
   {
   name: "kubfu",
-  apiId: 891
+  id: 891
   },
   {
   name: "urshifu-single-strike",
-  apiId: 892
+  id: 892
   },
   {
   name: "zarude",
-  apiId: 893
+  id: 893
   },
   {
   name: "regieleki",
-  apiId: 894
+  id: 894
   },
   {
   name: "regidrago",
-  apiId: 895
+  id: 895
   },
   {
   name: "glastrier",
-  apiId: 896
+  id: 896
   },
   {
   name: "spectrier",
-  apiId: 897
+  id: 897
   },
   {
   name: "calyrex",
-  apiId: 898
+  id: 898
   },
   {
   name: "wyrdeer",
-  apiId: 899
+  id: 899
   },
   {
   name: "kleavor",
-  apiId: 900
+  id: 900
   },
   {
   name: "ursaluna",
-  apiId: 901
+  id: 901
   },
   {
   name: "basculegion-male",
-  apiId: 902
+  id: 902
   },
   {
   name: "sneasler",
-  apiId: 903
+  id: 903
   },
   {
   name: "overqwil",
-  apiId: 904
+  id: 904
   },
   {
   name: "enamorus-incarnate",
-  apiId: 905
+  id: 905
   },
   {
   name: "deoxys-attack",
-  apiId: 10001
+  id: 10001
   },
   {
   name: "deoxys-defense",
-  apiId: 10002
+  id: 10002
   },
   {
   name: "deoxys-speed",
-  apiId: 10003
+  id: 10003
   },
   {
   name: "wormadam-sandy",
-  apiId: 10004
+  id: 10004
   },
   {
   name: "wormadam-trash",
-  apiId: 10005
+  id: 10005
   },
   {
   name: "shaymin-sky",
-  apiId: 10006
+  id: 10006
   },
   {
   name: "giratina-origin",
-  apiId: 10007
+  id: 10007
   },
   {
   name: "rotom-heat",
-  apiId: 10008
+  id: 10008
   },
   {
   name: "rotom-wash",
-  apiId: 10009
+  id: 10009
   },
   {
   name: "rotom-frost",
-  apiId: 10010
+  id: 10010
   },
   {
   name: "rotom-fan",
-  apiId: 10011
+  id: 10011
   },
   {
   name: "rotom-mow",
-  apiId: 10012
+  id: 10012
   },
   {
   name: "castform-sunny",
-  apiId: 10013
+  id: 10013
   },
   {
   name: "castform-rainy",
-  apiId: 10014
+  id: 10014
   },
   {
   name: "castform-snowy",
-  apiId: 10015
+  id: 10015
   },
   {
   name: "basculin-blue-striped",
-  apiId: 10016
+  id: 10016
   },
   {
   name: "darmanitan-zen",
-  apiId: 10017
+  id: 10017
   },
   {
   name: "meloetta-pirouette",
-  apiId: 10018
+  id: 10018
   },
   {
   name: "tornadus-therian",
-  apiId: 10019
+  id: 10019
   },
   {
   name: "thundurus-therian",
-  apiId: 10020
+  id: 10020
   },
   {
   name: "landorus-therian",
-  apiId: 10021
+  id: 10021
   },
   {
   name: "kyurem-black",
-  apiId: 10022
+  id: 10022
   },
   {
   name: "kyurem-white",
-  apiId: 10023
+  id: 10023
   },
   {
   name: "keldeo-resolute",
-  apiId: 10024
+  id: 10024
   },
   {
   name: "meowstic-female",
-  apiId: 10025
+  id: 10025
   },
   {
   name: "aegislash-blade",
-  apiId: 10026
+  id: 10026
   },
   {
   name: "pumpkaboo-small",
-  apiId: 10027
+  id: 10027
   },
   {
   name: "pumpkaboo-large",
-  apiId: 10028
+  id: 10028
   },
   {
   name: "pumpkaboo-super",
-  apiId: 10029
+  id: 10029
   },
   {
   name: "gourgeist-small",
-  apiId: 10030
+  id: 10030
   },
   {
   name: "gourgeist-large",
-  apiId: 10031
+  id: 10031
   },
   {
   name: "gourgeist-super",
-  apiId: 10032
+  id: 10032
   },
   {
   name: "venusaur-mega",
-  apiId: 10033
+  id: 10033
   },
   {
   name: "charizard-mega-x",
-  apiId: 10034
+  id: 10034
   },
   {
   name: "charizard-mega-y",
-  apiId: 10035
+  id: 10035
   },
   {
   name: "blastoise-mega",
-  apiId: 10036
+  id: 10036
   },
   {
   name: "alakazam-mega",
-  apiId: 10037
+  id: 10037
   },
   {
   name: "gengar-mega",
-  apiId: 10038
+  id: 10038
   },
   {
   name: "kangaskhan-mega",
-  apiId: 10039
+  id: 10039
   },
   {
   name: "pinsir-mega",
-  apiId: 10040
+  id: 10040
   },
   {
   name: "gyarados-mega",
-  apiId: 10041
+  id: 10041
   },
   {
   name: "aerodactyl-mega",
-  apiId: 10042
+  id: 10042
   },
   {
   name: "mewtwo-mega-x",
-  apiId: 10043
+  id: 10043
   },
   {
   name: "mewtwo-mega-y",
-  apiId: 10044
+  id: 10044
   },
   {
   name: "ampharos-mega",
-  apiId: 10045
+  id: 10045
   },
   {
   name: "scizor-mega",
-  apiId: 10046
+  id: 10046
   },
   {
   name: "heracross-mega",
-  apiId: 10047
+  id: 10047
   },
   {
   name: "houndoom-mega",
-  apiId: 10048
+  id: 10048
   },
   {
   name: "tyranitar-mega",
-  apiId: 10049
+  id: 10049
   },
   {
   name: "blaziken-mega",
-  apiId: 10050
+  id: 10050
   },
   {
   name: "gardevoir-mega",
-  apiId: 10051
+  id: 10051
   },
   {
   name: "mawile-mega",
-  apiId: 10052
+  id: 10052
   },
   {
   name: "aggron-mega",
-  apiId: 10053
+  id: 10053
   },
   {
   name: "medicham-mega",
-  apiId: 10054
+  id: 10054
   },
   {
   name: "manectric-mega",
-  apiId: 10055
+  id: 10055
   },
   {
   name: "banette-mega",
-  apiId: 10056
+  id: 10056
   },
   {
   name: "absol-mega",
-  apiId: 10057
+  id: 10057
   },
   {
   name: "garchomp-mega",
-  apiId: 10058
+  id: 10058
   },
   {
   name: "lucario-mega",
-  apiId: 10059
+  id: 10059
   },
   {
   name: "abomasnow-mega",
-  apiId: 10060
+  id: 10060
   },
   {
   name: "floette-eternal",
-  apiId: 10061
+  id: 10061
   },
   {
   name: "latias-mega",
-  apiId: 10062
+  id: 10062
   },
   {
   name: "latios-mega",
-  apiId: 10063
+  id: 10063
   },
   {
   name: "swampert-mega",
-  apiId: 10064
+  id: 10064
   },
   {
   name: "sceptile-mega",
-  apiId: 10065
+  id: 10065
   },
   {
   name: "sableye-mega",
-  apiId: 10066
+  id: 10066
   },
   {
   name: "altaria-mega",
-  apiId: 10067
+  id: 10067
   },
   {
   name: "gallade-mega",
-  apiId: 10068
+  id: 10068
   },
   {
   name: "audino-mega",
-  apiId: 10069
+  id: 10069
   },
   {
   name: "sharpedo-mega",
-  apiId: 10070
+  id: 10070
   },
   {
   name: "slowbro-mega",
-  apiId: 10071
+  id: 10071
   },
   {
   name: "steelix-mega",
-  apiId: 10072
+  id: 10072
   },
   {
   name: "pidgeot-mega",
-  apiId: 10073
+  id: 10073
   },
   {
   name: "glalie-mega",
-  apiId: 10074
+  id: 10074
   },
   {
   name: "diancie-mega",
-  apiId: 10075
+  id: 10075
   },
   {
   name: "metagross-mega",
-  apiId: 10076
+  id: 10076
   },
   {
   name: "kyogre-primal",
-  apiId: 10077
+  id: 10077
   },
   {
   name: "groudon-primal",
-  apiId: 10078
+  id: 10078
   },
   {
   name: "rayquaza-mega",
-  apiId: 10079
+  id: 10079
   },
   {
   name: "pikachu-rock-star",
-  apiId: 10080
+  id: 10080
   },
   {
   name: "pikachu-belle",
-  apiId: 10081
+  id: 10081
   },
   {
   name: "pikachu-pop-star",
-  apiId: 10082
+  id: 10082
   },
   {
   name: "pikachu-phd",
-  apiId: 10083
+  id: 10083
   },
   {
   name: "pikachu-libre",
-  apiId: 10084
+  id: 10084
   },
   {
   name: "pikachu-cosplay",
-  apiId: 10085
+  id: 10085
   },
   {
   name: "hoopa-unbound",
-  apiId: 10086
+  id: 10086
   },
   {
   name: "camerupt-mega",
-  apiId: 10087
+  id: 10087
   },
   {
   name: "lopunny-mega",
-  apiId: 10088
+  id: 10088
   },
   {
   name: "salamence-mega",
-  apiId: 10089
+  id: 10089
   },
   {
   name: "beedrill-mega",
-  apiId: 10090
+  id: 10090
   },
   {
   name: "rattata-alola",
-  apiId: 10091
+  id: 10091
   },
   {
   name: "raticate-alola",
-  apiId: 10092
+  id: 10092
   },
   {
   name: "raticate-totem-alola",
-  apiId: 10093
+  id: 10093
   },
   {
   name: "pikachu-original-cap",
-  apiId: 10094
+  id: 10094
   },
   {
   name: "pikachu-hoenn-cap",
-  apiId: 10095
+  id: 10095
   },
   {
   name: "pikachu-sinnoh-cap",
-  apiId: 10096
+  id: 10096
   },
   {
   name: "pikachu-unova-cap",
-  apiId: 10097
+  id: 10097
   },
   {
   name: "pikachu-kalos-cap",
-  apiId: 10098
+  id: 10098
   },
   {
   name: "pikachu-alola-cap",
-  apiId: 10099
+  id: 10099
   },
   {
   name: "raichu-alola",
-  apiId: 10100
+  id: 10100
   },
   {
   name: "sandshrew-alola",
-  apiId: 10101
+  id: 10101
   },
   {
   name: "sandslash-alola",
-  apiId: 10102
+  id: 10102
   },
   {
   name: "vulpix-alola",
-  apiId: 10103
+  id: 10103
   },
   {
   name: "ninetales-alola",
-  apiId: 10104
+  id: 10104
   },
   {
   name: "diglett-alola",
-  apiId: 10105
+  id: 10105
   },
   {
   name: "dugtrio-alola",
-  apiId: 10106
+  id: 10106
   },
   {
   name: "meowth-alola",
-  apiId: 10107
+  id: 10107
   },
   {
   name: "persian-alola",
-  apiId: 10108
+  id: 10108
   },
   {
   name: "geodude-alola",
-  apiId: 10109
+  id: 10109
   },
   {
   name: "graveler-alola",
-  apiId: 10110
+  id: 10110
   },
   {
   name: "golem-alola",
-  apiId: 10111
+  id: 10111
   },
   {
   name: "grimer-alola",
-  apiId: 10112
+  id: 10112
   },
   {
   name: "muk-alola",
-  apiId: 10113
+  id: 10113
   },
   {
   name: "exeggutor-alola",
-  apiId: 10114
+  id: 10114
   },
   {
   name: "marowak-alola",
-  apiId: 10115
+  id: 10115
   },
   {
   name: "greninja-battle-bond",
-  apiId: 10116
+  id: 10116
   },
   {
   name: "greninja-ash",
-  apiId: 10117
+  id: 10117
   },
   {
   name: "zygarde-10-power-construct",
-  apiId: 10118
+  id: 10118
   },
   {
   name: "zygarde-50-power-construct",
-  apiId: 10119
+  id: 10119
   },
   {
   name: "zygarde-complete",
-  apiId: 10120
+  id: 10120
   },
   {
   name: "gumshoos-totem",
-  apiId: 10121
+  id: 10121
   },
   {
   name: "vikavolt-totem",
-  apiId: 10122
+  id: 10122
   },
   {
   name: "oricorio-pom-pom",
-  apiId: 10123
+  id: 10123
   },
   {
   name: "oricorio-pau",
-  apiId: 10124
+  id: 10124
   },
   {
   name: "oricorio-sensu",
-  apiId: 10125
+  id: 10125
   },
   {
   name: "lycanroc-midnight",
-  apiId: 10126
+  id: 10126
   },
   {
   name: "wishiwashi-school",
-  apiId: 10127
+  id: 10127
   },
   {
   name: "lurantis-totem",
-  apiId: 10128
+  id: 10128
   },
   {
   name: "salazzle-totem",
-  apiId: 10129
+  id: 10129
   },
   {
   name: "minior-orange-meteor",
-  apiId: 10130
+  id: 10130
   },
   {
   name: "minior-yellow-meteor",
-  apiId: 10131
+  id: 10131
   },
   {
   name: "minior-green-meteor",
-  apiId: 10132
+  id: 10132
   },
   {
   name: "minior-blue-meteor",
-  apiId: 10133
+  id: 10133
   },
   {
   name: "minior-indigo-meteor",
-  apiId: 10134
+  id: 10134
   },
   {
   name: "minior-violet-meteor",
-  apiId: 10135
+  id: 10135
   },
   {
   name: "minior-red",
-  apiId: 10136
+  id: 10136
   },
   {
   name: "minior-orange",
-  apiId: 10137
+  id: 10137
   },
   {
   name: "minior-yellow",
-  apiId: 10138
+  id: 10138
   },
   {
   name: "minior-green",
-  apiId: 10139
+  id: 10139
   },
   {
   name: "minior-blue",
-  apiId: 10140
+  id: 10140
   },
   {
   name: "minior-indigo",
-  apiId: 10141
+  id: 10141
   },
   {
   name: "minior-violet",
-  apiId: 10142
+  id: 10142
   },
   {
   name: "mimikyu-busted",
-  apiId: 10143
+  id: 10143
   },
   {
   name: "mimikyu-totem-disguised",
-  apiId: 10144
+  id: 10144
   },
   {
   name: "mimikyu-totem-busted",
-  apiId: 10145
+  id: 10145
   },
   {
   name: "kommo-o-totem",
-  apiId: 10146
+  id: 10146
   },
   {
   name: "magearna-original",
-  apiId: 10147
+  id: 10147
   },
   {
   name: "pikachu-partner-cap",
-  apiId: 10148
+  id: 10148
   },
   {
   name: "marowak-totem",
-  apiId: 10149
+  id: 10149
   },
   {
   name: "ribombee-totem",
-  apiId: 10150
+  id: 10150
   },
   {
   name: "rockruff-own-tempo",
-  apiId: 10151
+  id: 10151
   },
   {
   name: "lycanroc-dusk",
-  apiId: 10152
+  id: 10152
   },
   {
   name: "araquanid-totem",
-  apiId: 10153
+  id: 10153
   },
   {
   name: "togedemaru-totem",
-  apiId: 10154
+  id: 10154
   },
   {
   name: "necrozma-dusk",
-  apiId: 10155
+  id: 10155
   },
   {
   name: "necrozma-dawn",
-  apiId: 10156
+  id: 10156
   },
   {
   name: "necrozma-ultra",
-  apiId: 10157
+  id: 10157
   },
   {
   name: "pikachu-starter",
-  apiId: 10158
+  id: 10158
   },
   {
   name: "eevee-starter",
-  apiId: 10159
+  id: 10159
   },
   {
   name: "pikachu-world-cap",
-  apiId: 10160
+  id: 10160
   },
   {
   name: "meowth-galar",
-  apiId: 10161
+  id: 10161
   },
   {
   name: "ponyta-galar",
-  apiId: 10162
+  id: 10162
   },
   {
   name: "rapidash-galar",
-  apiId: 10163
+  id: 10163
   },
   {
   name: "slowpoke-galar",
-  apiId: 10164
+  id: 10164
   },
   {
   name: "slowbro-galar",
-  apiId: 10165
+  id: 10165
   },
   {
   name: "farfetchd-galar",
-  apiId: 10166
+  id: 10166
   },
   {
   name: "weezing-galar",
-  apiId: 10167
+  id: 10167
   },
   {
   name: "mr-mime-galar",
-  apiId: 10168
+  id: 10168
   },
   {
   name: "articuno-galar",
-  apiId: 10169
+  id: 10169
   },
   {
   name: "zapdos-galar",
-  apiId: 10170
+  id: 10170
   },
   {
   name: "moltres-galar",
-  apiId: 10171
+  id: 10171
   },
   {
   name: "slowking-galar",
-  apiId: 10172
+  id: 10172
   },
   {
   name: "corsola-galar",
-  apiId: 10173
+  id: 10173
   },
   {
   name: "zigzagoon-galar",
-  apiId: 10174
+  id: 10174
   },
   {
   name: "linoone-galar",
-  apiId: 10175
+  id: 10175
   },
   {
   name: "darumaka-galar",
-  apiId: 10176
+  id: 10176
   },
   {
   name: "darmanitan-galar-standard",
-  apiId: 10177
+  id: 10177
   },
   {
   name: "darmanitan-galar-zen",
-  apiId: 10178
+  id: 10178
   },
   {
   name: "yamask-galar",
-  apiId: 10179
+  id: 10179
   },
   {
   name: "stunfisk-galar",
-  apiId: 10180
+  id: 10180
   },
   {
   name: "zygarde-10",
-  apiId: 10181
+  id: 10181
   },
   {
   name: "cramorant-gulping",
-  apiId: 10182
+  id: 10182
   },
   {
   name: "cramorant-gorging",
-  apiId: 10183
+  id: 10183
   },
   {
   name: "toxtricity-low-key",
-  apiId: 10184
+  id: 10184
   },
   {
   name: "eiscue-noice",
-  apiId: 10185
+  id: 10185
   },
   {
   name: "indeedee-female",
-  apiId: 10186
+  id: 10186
   },
   {
   name: "morpeko-hangry",
-  apiId: 10187
+  id: 10187
   },
   {
   name: "zacian-crowned",
-  apiId: 10188
+  id: 10188
   },
   {
   name: "zamazenta-crowned",
-  apiId: 10189
+  id: 10189
   },
   {
   name: "eternatus-eternamax",
-  apiId: 10190
+  id: 10190
   },
   {
   name: "urshifu-rapid-strike",
-  apiId: 10191
+  id: 10191
   },
   {
   name: "zarude-dada",
-  apiId: 10192
+  id: 10192
   },
   {
   name: "calyrex-ice",
-  apiId: 10193
+  id: 10193
   },
   {
   name: "calyrex-shadow",
-  apiId: 10194
+  id: 10194
   },
   {
   name: "venusaur-gmax",
-  apiId: 10195
+  id: 10195
   },
   {
   name: "charizard-gmax",
-  apiId: 10196
+  id: 10196
   },
   {
   name: "blastoise-gmax",
-  apiId: 10197
+  id: 10197
   },
   {
   name: "butterfree-gmax",
-  apiId: 10198
+  id: 10198
   },
   {
   name: "pikachu-gmax",
-  apiId: 10199
+  id: 10199
   },
   {
   name: "meowth-gmax",
-  apiId: 10200
+  id: 10200
   },
   {
   name: "machamp-gmax",
-  apiId: 10201
+  id: 10201
   },
   {
   name: "gengar-gmax",
-  apiId: 10202
+  id: 10202
   },
   {
   name: "kingler-gmax",
-  apiId: 10203
+  id: 10203
   },
   {
   name: "lapras-gmax",
-  apiId: 10204
+  id: 10204
   },
   {
   name: "eevee-gmax",
-  apiId: 10205
+  id: 10205
   },
   {
   name: "snorlax-gmax",
-  apiId: 10206
+  id: 10206
   },
   {
   name: "garbodor-gmax",
-  apiId: 10207
+  id: 10207
   },
   {
   name: "melmetal-gmax",
-  apiId: 10208
+  id: 10208
   },
   {
   name: "rillaboom-gmax",
-  apiId: 10209
+  id: 10209
   },
   {
   name: "cinderace-gmax",
-  apiId: 10210
+  id: 10210
   },
   {
   name: "inteleon-gmax",
-  apiId: 10211
+  id: 10211
   },
   {
   name: "corviknight-gmax",
-  apiId: 10212
+  id: 10212
   },
   {
   name: "orbeetle-gmax",
-  apiId: 10213
+  id: 10213
   },
   {
   name: "drednaw-gmax",
-  apiId: 10214
+  id: 10214
   },
   {
   name: "coalossal-gmax",
-  apiId: 10215
+  id: 10215
   },
   {
   name: "flapple-gmax",
-  apiId: 10216
+  id: 10216
   },
   {
   name: "appletun-gmax",
-  apiId: 10217
+  id: 10217
   },
   {
   name: "sandaconda-gmax",
-  apiId: 10218
+  id: 10218
   },
   {
   name: "toxtricity-amped-gmax",
-  apiId: 10219
+  id: 10219
   },
   {
   name: "centiskorch-gmax",
-  apiId: 10220
+  id: 10220
   },
   {
   name: "hatterene-gmax",
-  apiId: 10221
+  id: 10221
   },
   {
   name: "grimmsnarl-gmax",
-  apiId: 10222
+  id: 10222
   },
   {
   name: "alcremie-gmax",
-  apiId: 10223
+  id: 10223
   },
   {
   name: "copperajah-gmax",
-  apiId: 10224
+  id: 10224
   },
   {
   name: "duraludon-gmax",
-  apiId: 10225
+  id: 10225
   },
   {
   name: "urshifu-single-strike-gmax",
-  apiId: 10226
+  id: 10226
   },
   {
   name: "urshifu-rapid-strike-gmax",
-  apiId: 10227
+  id: 10227
   },
   {
   name: "toxtricity-low-key-gmax",
-  apiId: 10228
+  id: 10228
   },
   {
   name: "growlithe-hisui",
-  apiId: 10229
+  id: 10229
   },
   {
   name: "arcanine-hisui",
-  apiId: 10230
+  id: 10230
   },
   {
   name: "voltorb-hisui",
-  apiId: 10231
+  id: 10231
   },
   {
   name: "electrode-hisui",
-  apiId: 10232
+  id: 10232
   },
   {
   name: "typhlosion-hisui",
-  apiId: 10233
+  id: 10233
   },
   {
   name: "qwilfish-hisui",
-  apiId: 10234
+  id: 10234
   },
   {
   name: "sneasel-hisui",
-  apiId: 10235
+  id: 10235
   },
   {
   name: "samurott-hisui",
-  apiId: 10236
+  id: 10236
   },
   {
   name: "lilligant-hisui",
-  apiId: 10237
+  id: 10237
   },
   {
   name: "zorua-hisui",
-  apiId: 10238
+  id: 10238
   },
   {
   name: "zoroark-hisui",
-  apiId: 10239
+  id: 10239
   },
   {
   name: "braviary-hisui",
-  apiId: 10240
+  id: 10240
   },
   {
   name: "sliggoo-hisui",
-  apiId: 10241
+  id: 10241
   },
   {
   name: "goodra-hisui",
-  apiId: 10242
+  id: 10242
   },
   {
   name: "avalugg-hisui",
-  apiId: 10243
+  id: 10243
   },
   {
   name: "decidueye-hisui",
-  apiId: 10244
+  id: 10244
   },
   {
   name: "dialga-origin",
-  apiId: 10245
+  id: 10245
   },
   {
   name: "palkia-origin",
-  apiId: 10246
+  id: 10246
   },
   {
   name: "basculin-white-striped",
-  apiId: 10247
+  id: 10247
   },
   {
   name: "basculegion-female",
-  apiId: 10248
+  id: 10248
   },
   {
   name: "enamorus-therian",
-  apiId: 10249
+  id: 10249
   }
   ]
 

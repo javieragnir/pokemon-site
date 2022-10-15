@@ -1,4 +1,3 @@
-import useApi from '../hooks/useApi'
 import { Autocomplete, TextField } from '@mui/material'
 import pokemonList from '../data/pokemonList'
 
