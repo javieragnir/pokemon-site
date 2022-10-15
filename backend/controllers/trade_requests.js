@@ -2,7 +2,9 @@ const router = require('express').Router()
 const { TradeRequest } = require('../models')
 
 router.get('/', async (req, res) => {
-  const trades = await TradeRequest.findAll()
+  const trades = await TradeRequest.findAll({
+    include: ['offered', 'requested']
+  })
   res.json(trades)
 })
 
