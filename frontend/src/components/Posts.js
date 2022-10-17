@@ -6,18 +6,14 @@ import {
   Grid,
   Box,
   Stack,
-  Paper,
   Button,
   Typography,
   Modal,
   TextField,
   Fade,
-  Link,
   Backdrop,
   CircularProgress
 } from '@mui/material'
-import { Link as RouterLink } from 'react-router-dom'
-import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import tradeService from '../services/trade'
 import Trade from './Trade';
 
@@ -64,6 +60,7 @@ const Posts = () => {
       requestedId: requestedPokemon.id,
       content,
     })
+    console.log('trades', trades)
     handleLoadingClose()
     handlePostClose()
     setPosts(trades)

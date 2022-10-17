@@ -18,7 +18,7 @@ const UserPage = () => {
 
   const username = useParams().username
 
-  const handleOpenProgress = () => setOpenProgress(true)
+  // const handleOpenProgress = () => setOpenProgress(true)
   const handleCloseProgress = () => setOpenProgress(false)
 
   useEffect(() => {
