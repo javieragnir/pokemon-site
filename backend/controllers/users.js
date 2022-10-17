@@ -18,7 +18,7 @@ router.get('/:username', async (req, res) => {
   })
 
   if (!user) {
-    res.status(404).end()
+    return res.status(404).end()
   }
 
   res.json(user)
