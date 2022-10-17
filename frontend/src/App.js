@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
-  Routes, Route, Link
+  Routes, Route,
+  Link as RouterLink
 } from "react-router-dom"
 
 import {
@@ -11,7 +12,8 @@ import {
   Button,
   Typography,
   Paper,
-  Box
+  Box,
+  Link
 } from '@mui/material'
 
 import { ThemeProvider } from '@mui/material/styles'
@@ -23,6 +25,7 @@ import About from './components/About'
 import Posts from './components/Posts'
 import Login from './components/Login'
 import Signup from './components/Signup'
+import UserPage from './components/UserPage'
 import UserProvider from './contexts/UserContext'
 
 import tradeService from './services/trade'
@@ -35,8 +38,8 @@ const App = () => {
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
-      tradeService.setToken(user.token)
       // set token functions (e.g. noteService.setToken(user.token))
+      tradeService.setToken(user.token)
     }
   }, [])
 
@@ -53,25 +56,33 @@ const App = () => {
         <Container sx={{ bgcolor: 'background' }}>
             <AppBar position="static">
               <Toolbar>
-                <Button color="inherit" component={Link} to="/">
+                <Button color="inherit" component={RouterLink} to="/">
                   Home
                 </Button>
-                <Button color="inherit" component={Link} to="/posts">
+                <Button color="inherit" component={RouterLink} to="/posts">
                   Posts
                 </Button>
-                <Button color="inherit" component={Link} to="/about">
+                <Button color="inherit" component={RouterLink} to="/about">
                   About
                 </Button>
                 {!user &&
-                  <Button color="inherit" component={Link} to="/login" sx={{ marginLeft: 'auto' }}>
+                  <Button color="inherit" component={RouterLink} to="/login" sx={{ marginLeft: 'auto' }}>
                     Log In
                   </Button>
                 }
                 {user &&
                 <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: 1 }}>
                   <Typography>
-                    Signed in as <strong>{user.username}</strong>
+                    Signed in as 
                   </Typography>
+                  <Link
+                      component={RouterLink}
+                      to={`/user/${user.username}`}
+                      underline="hover"
+                      color="inherit"
+                    >
+                      <strong>{user.username}</strong>
+                    </Link>
                   <Button color="inherit" size="small" onClick={logout}>
                     Log out
                   </Button>
@@ -85,6 +96,7 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login setUser={setUser}/>} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/user/:username" element={<UserPage />} />
               <Route path="/" element={<Home />} />
             </Routes>
 

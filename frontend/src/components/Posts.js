@@ -16,6 +16,7 @@ import {
   Backdrop,
   CircularProgress
 } from '@mui/material'
+import { Link as RouterLink } from 'react-router-dom'
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import tradeService from '../services/trade'
 
@@ -154,7 +155,8 @@ const Posts = () => {
                     <Box sx={{ width: '100%', alignSelf: 'flex-start' }}>
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                         <Link
-                          href="#"
+                          component={RouterLink}
+                          to={`/user/${post.user.username}`}
                           color="inherit"
                           underline="hover"
                           variant="h6"
