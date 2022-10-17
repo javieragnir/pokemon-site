@@ -13,6 +13,8 @@ import {
   TextField,
   Fade,
   Link,
+  Backdrop,
+  CircularProgress
 } from '@mui/material'
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import tradeService from '../services/trade'
@@ -30,30 +32,38 @@ const style = {
 };
 
 const Posts = () => {
-  const [open, setOpen] = useState(false)
+  const [newPostOpen, setNewPostOpen] = useState(false)
   const [offeredPokemon, setOfferedPokemon] = useState(null)
   const [requestedPokemon, setRequestedPokemon] = useState(null)
   const [content, setContent] = useState('')
   const [posts, setPosts] = useState(null)
+  const [loadingOpen, setLoadingOpen] = useState(true)
 
   const user = useContext(UserContext)
 
+  const handlePostOpen = () => setNewPostOpen(true)
+  const handlePostClose = () => setNewPostOpen(false)
+
+  const handleLoadingOpen = () => setLoadingOpen(true)
+  const handleLoadingClose = () => setLoadingOpen(false)
+
   useEffect(() => {
     tradeService.getAll()
-      .then(posts => setPosts(posts))
+      .then(posts => {
+        setPosts(posts)
+        handleLoadingClose()
+      })
   }, [])
 
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
-
   const handleSubmit = async () => {
+    handleLoadingOpen()
     const trades = await tradeService.create({
       offeredId: offeredPokemon.id,
       requestedId: requestedPokemon.id,
       content,
     })
-    console.log('trades', trades)
-    handleClose()
+    handleLoadingClose()
+    handlePostClose()
     setPosts(trades)
     setOfferedPokemon(null)
     setRequestedPokemon(null)
@@ -62,22 +72,29 @@ const Posts = () => {
 
   return (
     <Container>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loadingOpen}
+        onClick={handleLoadingClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
         <Typography variant="h2">Posts</Typography>
             <Box marginBottom={1}>
               {user &&
-              <Button onClick={handleOpen} variant="contained" sx={{ height: 'max-content' }}>
+              <Button onClick={handlePostOpen} variant="contained" sx={{ height: 'max-content' }}>
                 Add post
               </Button>
               }
             </Box>
       </Stack>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={newPostOpen}
+        onClose={handlePostClose}
         closeAfterTransition
       >
-        <Fade in={open}>
+        <Fade in={newPostOpen}>
           <Box sx={style}>
             <Typography variant="h5" sx={{ marginBottom: 1 }}>
                 Add post
