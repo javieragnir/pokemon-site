@@ -83,7 +83,7 @@ const App = () => {
                         <strong>{user.username}</strong>
                       </Link>
                   </Typography>
-                  <Button color="inherit" size="small" onClick={logout}>
+                  <Button color="inherit" onClick={logout}>
                     Log out
                   </Button>
                 </Box>
