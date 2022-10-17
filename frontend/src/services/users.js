@@ -6,4 +6,9 @@ const signup = async credentials => {
   return response.data
 }
 
-export default { signup }
+const findOne = async username => {
+  const response = await axios.get(`${baseUrl}/${username}`)
+  return response.data
+}
+
+export default { signup, findOne }
