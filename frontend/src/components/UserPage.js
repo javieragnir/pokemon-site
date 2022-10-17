@@ -76,9 +76,11 @@ const UserPage = () => {
         </Grid>
         <Grid item xs={9}>
           <Box>
-            <Typography>
-              lololololololololol
-            </Typography>
+            <Paper>
+              <Typography>
+                lololololololololol
+              </Typography>
+            </Paper>
           </Box>
         </Grid>
       </Grid>

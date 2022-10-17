@@ -1,5 +1,4 @@
 import {
-  Grid,
   Box,
   Paper,
   Typography,
@@ -11,7 +10,7 @@ import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 const Trade = ({ trade }) => {
   const date = new Date(trade.createdAt)
   return (
-      <Grid item xs={12} key={trade.id}>
+      <Box>
         <Paper sx={{
           padding: 2,
           textAlign: 'justify',
@@ -53,7 +52,7 @@ const Trade = ({ trade }) => {
             {trade.content}
             </Box>
         </Paper>
-      </Grid>
+      </Box>
   )
 }
 

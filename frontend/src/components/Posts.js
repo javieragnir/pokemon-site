@@ -60,7 +60,6 @@ const Posts = () => {
       requestedId: requestedPokemon.id,
       content,
     })
-    console.log('trades', trades)
     handleLoadingClose()
     handlePostClose()
     setPosts(trades)
@@ -119,11 +118,11 @@ const Posts = () => {
           </Box>
         </Fade>
       </Modal>
-      <Grid container spacing={2}>
+      <Stack spacing={2}>
         {posts &&
           posts.map(post => <Trade key={post.id} trade={post} />)
         }
-      </Grid>
+      </Stack>
     </Container>
   )
 }

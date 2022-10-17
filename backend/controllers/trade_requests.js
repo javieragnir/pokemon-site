@@ -24,6 +24,25 @@ router.get('/', async (req, res) => {
   res.json(trades)
 })
 
+router.get('/:id', async (req, res) => {
+  const trades = await TradeRequest.findAll({
+    where: {
+      userId: req.params.id
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'username']
+      },
+      'offered',
+      'requested',
+    ],
+    order: [['createdAt', 'DESC']]
+  })
+
+  res.json(trades)
+})
+
 router.post('/', tokenExtractor, async (req, res) => {
   await TradeRequest.create({...req.body, userId: req.decodedToken.id })
   const trades = await getTrades()
