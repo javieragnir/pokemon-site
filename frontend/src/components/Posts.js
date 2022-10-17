@@ -19,6 +19,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom'
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import tradeService from '../services/trade'
+import Trade from './Trade';
 
 const style = {
   position: 'absolute',
@@ -123,55 +124,7 @@ const Posts = () => {
       </Modal>
       <Grid container spacing={2}>
         {posts &&
-          posts.map(post => {
-            const date = new Date(post.createdAt)
-            return (
-                <Grid item xs={12} key={post.id}>
-                  <Paper sx={{
-                    padding: 2,
-                    textAlign: 'justify',
-                    paddingRight: 4,
-                    display: 'flex',
-                    gap: 2,
-                    alignItems: 'center'
-                  }}
-                  >     
-                    <Box sx={{ boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0 }}>
-                      <Paper elevation={3} sx={{ textAlign: 'center' }}>
-                        <Typography variant="overline">Offering</Typography>
-                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.offeredId}.png`} alt={post.pokemonOffered} />
-                        <Typography variant="overline">{post.offered.name}</Typography>
-                      </Paper>
-                    </Box>
-                    <SwapHorizIcon/>
-                    <Box sx={{ boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0 }}>
-                      <Paper elevation={3} sx={{ textAlign: 'center' }}>
-                        <Typography variant="overline">Requesting</Typography>
-                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${post.requestedId}.png`} alt={post.pokemonRequested} />
-                        <Typography variant="overline">{post.requested.name}</Typography>
-                      </Paper>
-                    </Box>
-                    <Box sx={{ width: '100%', alignSelf: 'flex-start' }}>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                        <Link
-                          component={RouterLink}
-                          to={`/user/${post.user.username}`}
-                          color="inherit"
-                          underline="hover"
-                          variant="h6"
-                          sx={{ display: 'inline' }}
-                        >
-                          {post.user.username}
-                        </Link>
-                        <Typography variant="body2">{`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`} </Typography>
-                      </Box>
-                      {post.content}
-                      </Box>
-                  </Paper>
-                </Grid>
-              )
-            }
-          )
+          posts.map(post => <Trade key={post.id} trade={post} />)
         }
       </Grid>
     </Container>
