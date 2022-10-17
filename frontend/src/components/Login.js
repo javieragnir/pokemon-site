@@ -12,6 +12,7 @@ import {
   Link
 } from '@mui/material'
 import loginService from '../services/login'
+import tradeService from '../services/trade'
 
 const Login = ({ setUser }) => {
   const [username, setUsername] = useState('')
@@ -52,7 +53,8 @@ const Login = ({ setUser }) => {
         window.localStorage.setItem(
           'loggedUser', JSON.stringify(user)
         )
-
+        
+        tradeService.setToken(user.token)
         setUser(user)
         setUsername('')
         setPassword('')

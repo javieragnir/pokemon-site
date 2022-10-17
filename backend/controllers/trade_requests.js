@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const { TradeRequest, User } = require('../models')
 const { sequelize } = require('../util/db')
+const { tokenExtractor } = require('../util/middleware')
 
 router.get('/', async (req, res) => {
   const trades = await TradeRequest.findAll({
@@ -16,9 +17,19 @@ router.get('/', async (req, res) => {
   res.json(trades)
 })
 
-router.post('/', async (req, res) => {
-  const trade = await TradeRequest.create(req.body)
-  res.json(trade)
+router.post('/', tokenExtractor, async (req, res) => {
+  const trade = await TradeRequest.create({...req.body, userId: req.decodedToken.id })
+  const trades = await TradeRequest.findAll({
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'username']
+      },
+      'offered',
+      'requested',
+    ],
+  })
+  res.json(trades)
 })
 
 module.exports = router

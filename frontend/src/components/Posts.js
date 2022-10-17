@@ -31,25 +31,33 @@ const style = {
 
 const Posts = () => {
   const [open, setOpen] = useState(false)
-  const [offeredPokemon, setOfferedPokemon] = useState('')
-  const [requestedPokemon, setRequestedPokemon] = useState('')
+  const [offeredPokemon, setOfferedPokemon] = useState(null)
+  const [requestedPokemon, setRequestedPokemon] = useState(null)
   const [content, setContent] = useState('')
   const [posts, setPosts] = useState(null)
+
+  const user = useContext(UserContext)
 
   useEffect(() => {
     tradeService.getAll()
       .then(posts => setPosts(posts))
   }, [])
 
-  console.log('posts', posts)
-
-  const user = useContext(UserContext)
-
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  const handleSubmit = () => {
-    console.log(offeredPokemon, requestedPokemon, content)
+  const handleSubmit = async () => {
+    const trades = await tradeService.create({
+      offeredId: offeredPokemon.id,
+      requestedId: requestedPokemon.id,
+      content,
+    })
+    console.log('trades', trades)
+    handleClose()
+    setPosts(trades)
+    setOfferedPokemon(null)
+    setRequestedPokemon(null)
+    setContent('')
   }
 
   return (
@@ -75,8 +83,14 @@ const Posts = () => {
                 Add post
             </Typography>
             <Stack spacing={2}>
-              <PokemonPicker setFunction={setOfferedPokemon} />
-              <PokemonPicker setFunction={setRequestedPokemon} />
+              <PokemonPicker
+                setFunction={setOfferedPokemon}
+                label="Pokemon to offer"
+              />
+              <PokemonPicker
+                setFunction={setRequestedPokemon}
+                label="Pokemon to request"
+              />
               <TextField
                 multiline
                 rows={5}

@@ -3,7 +3,7 @@ import pokemonList from '../data/pokemonList'
 
 // provide a setFunction to onChange to make controlled component
 
-const PokemonPicker = ({setFunction, sx}) => {
+const PokemonPicker = ({label="Choose a pokemon", setFunction, sx}) => {
   // hard coded to match number of pokemon entries from API plus some
   // const { data: allPokemon, isLoading } = useApi(`https://pokeapi.co/api/v2/pokemon/?limit=${1160}`)
   
@@ -27,7 +27,7 @@ const PokemonPicker = ({setFunction, sx}) => {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Choose a pokemon"
+          label={label}
         />
       )}
     />

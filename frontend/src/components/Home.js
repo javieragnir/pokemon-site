@@ -36,7 +36,10 @@ const Home = () => {
           </Typography>
         </Grid>
         <Grid item xs={12}>        
-          <PokemonPicker setFunction={setPokemonFilter} sx={{ width: 300 }}/>
+          <PokemonPicker
+            setFunction={setPokemonFilter}
+            sx={{ width: 300 }}
+          />
           <Button variant="contained" onClick={setPokemon}>
             Search
           </Button>

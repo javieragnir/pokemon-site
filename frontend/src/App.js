@@ -25,6 +25,8 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import UserProvider from './contexts/UserContext'
 
+import tradeService from './services/trade'
+
 const App = () => {
   const [user, setUser] = useState(null)
 
@@ -33,6 +35,7 @@ const App = () => {
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
+      tradeService.setToken(user.token)
       // set token functions (e.g. noteService.setToken(user.token))
     }
   }, [])
