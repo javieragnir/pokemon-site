@@ -25,7 +25,6 @@ const UserPage = () => {
         <Backdrop
           sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.modal + 1 }}
           open={openProgress}
-          onClick={handleCloseProgress}
         >
           <CircularProgress color="inherit" />
         </Backdrop>

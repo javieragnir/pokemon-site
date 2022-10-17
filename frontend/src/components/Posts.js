@@ -76,7 +76,6 @@ const Posts = () => {
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.modal + 1 }}
         open={loadingOpen}
-        onClick={handleLoadingClose}
       >
         <CircularProgress color="inherit" />
       </Backdrop>

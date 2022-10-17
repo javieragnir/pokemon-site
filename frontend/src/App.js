@@ -73,16 +73,16 @@ const App = () => {
                 {user &&
                 <Box sx={{ marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: 1 }}>
                   <Typography>
-                    Signed in as 
+                    Signed in as&nbsp;
+                    <Link
+                        component={RouterLink}
+                        to={`/user/${user.username}`}
+                        underline="hover"
+                        color="inherit"
+                      >
+                        <strong>{user.username}</strong>
+                      </Link>
                   </Typography>
-                  <Link
-                      component={RouterLink}
-                      to={`/user/${user.username}`}
-                      underline="hover"
-                      color="inherit"
-                    >
-                      <strong>{user.username}</strong>
-                    </Link>
                   <Button color="inherit" size="small" onClick={logout}>
                     Log out
                   </Button>
