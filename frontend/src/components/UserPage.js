@@ -10,11 +10,14 @@ import {
   CircularProgress,
   Stack
  } from '@mui/material'
+import Trade from './Trade'
 import userService from '../services/users'
+import tradeService from '../services/trade'
 
 const UserPage = () => {
   const [openProgress, setOpenProgress] = useState(true)
   const [user, setUser] = useState(null)
+  const [trades, setTrades] = useState(null)
 
   const username = useParams().username
 
@@ -23,8 +26,13 @@ const UserPage = () => {
 
   useEffect(() => {
     userService.findOne(username)
-      .then(response => setUser(response))
-      .catch(error => setUser(null))
+      .then(user => {
+        setUser(user)
+        return user
+      })
+      .then(user => tradeService.getByUserId(user.id))
+      .then(response => setTrades(response))
+      .catch(error => console.log(error))
       .finally(() => handleCloseProgress())
   }, [])
 
@@ -76,11 +84,14 @@ const UserPage = () => {
         </Grid>
         <Grid item xs={9}>
           <Box>
-            <Paper>
-              <Typography>
-                lololololololololol
-              </Typography>
-            </Paper>
+            <Typography>
+              User Trade Requests
+            </Typography>
+            <Stack spacing={2}>
+              {trades &&
+                trades.map(trade => <Trade key={trade.id} trade={trade} />)
+              }
+            </Stack>
           </Box>
         </Grid>
       </Grid>
