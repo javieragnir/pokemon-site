@@ -22,12 +22,17 @@ const getByUserId = async (userId) => {
   return response.data
 }
 
-const create = async info => {
+const create = async (info, query = '') => {
   const config = {
     headers: { Authorization: token },
   }
 
-  const response = await axios.post(baseUrl, info, config)
+  let url = baseUrl
+  if (query) {
+    url += `?search=${query}`
+  }
+
+  const response = await axios.post(url, info, config)
   return response.data
 }
 

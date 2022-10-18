@@ -61,7 +61,7 @@ const Posts = () => {
       offeredId: offeredPokemon.id,
       requestedId: requestedPokemon.id,
       content,
-    })
+    }, debouncedQuery)
     handleLoadingClose()
     handlePostClose()
     setPosts(trades)
