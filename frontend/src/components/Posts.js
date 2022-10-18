@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
+import { useDebounce } from 'use-debounce'
 import { UserContext } from '../contexts/UserContext';
 import PokemonPicker from './PokemonPicker';
 import {
@@ -35,6 +36,8 @@ const Posts = () => {
   const [content, setContent] = useState('')
   const [posts, setPosts] = useState(null)
   const [loadingOpen, setLoadingOpen] = useState(true)
+  const [query, setQuery] = useState('')
+  const [debouncedQuery] = useDebounce(query, 500)
 
   const user = useContext(UserContext)
 
@@ -45,12 +48,12 @@ const Posts = () => {
   const handleLoadingClose = () => setLoadingOpen(false)
 
   useEffect(() => {
-    tradeService.getAll()
+    tradeService.getAll(debouncedQuery)
       .then(posts => {
         setPosts(posts)
         handleLoadingClose()
       })
-  }, [])
+  }, [debouncedQuery])
 
   const handleSubmit = async () => {
     handleLoadingOpen()
@@ -71,7 +74,7 @@ const Posts = () => {
     return async () => {
       handleLoadingOpen()
       await tradeService.deleteTrade(id)
-      const response = await tradeService.getAll()
+      const response = await tradeService.getAll(debouncedQuery)
       setPosts(response)
       handleLoadingClose()
     }
@@ -88,16 +91,15 @@ const Posts = () => {
       <Typography variant="h2">Posts</Typography>
       <Box marginBottom={1}>
         <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
-          <Box sx={{ display: 'flex', alignItems: 'flex-bottom', gap: 1 }}>
-            <TextField
-              label="Keyword"
-              variant="outlined"
-              type="search"
-              size="small"
-              sx={{ width: 250 }}
-            />
-            <Button variant="contained" >Search</Button>
-          </Box>
+          <TextField
+            label="Search"
+            variant="outlined"
+            type="search"
+            size="small"
+            sx={{ width: 250 }}
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
           {user &&
           <Button onClick={handlePostOpen} variant="contained" >
             Add post

@@ -7,8 +7,13 @@ const setToken = newToken => {
   token = `bearer ${newToken}`
 }
 
-const getAll = async () => {
-  const response = await axios.get(baseUrl)
+const getAll = async (query = '') => {
+  let url = baseUrl
+  if (query) {
+    url += `?search=${query}`
+  }
+
+  const response = await axios.get(url)
   return response.data
 }
 

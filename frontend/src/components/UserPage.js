@@ -119,7 +119,7 @@ const UserPage = () => {
             height: '100%',
             }}>
             <Box>
-              <Typography variant><strong>Reputation:</strong> 6</Typography>
+              <Typography><strong>Reputation:</strong> 6</Typography>
             </Box>
           </Paper>
         </Grid>
