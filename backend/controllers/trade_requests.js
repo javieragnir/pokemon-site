@@ -82,8 +82,13 @@ router.get('/:userId', async (req, res) => {
 })
 
 router.post('/', tokenExtractor, async (req, res) => {
+  let query = ''
+  if (req.query.search) {
+    query = req.query.search
+  }
+
   await TradeRequest.create({...req.body, userId: req.decodedToken.id })
-  const trades = await getTrades()
+  const trades = await getTrades(query)
   res.json(trades)
 })
 

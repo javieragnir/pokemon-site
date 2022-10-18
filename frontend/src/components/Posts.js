@@ -11,7 +11,7 @@ import {
   TextField,
   Fade,
   Backdrop,
-  CircularProgress
+  CircularProgress,
 } from '@mui/material'
 import tradeService from '../services/trade'
 import Trade from './Trade';
@@ -85,16 +85,26 @@ const Posts = () => {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
-        <Typography variant="h2">Posts</Typography>
-            <Box marginBottom={1}>
-              {user &&
-              <Button onClick={handlePostOpen} variant="contained" sx={{ height: 'max-content' }}>
-                Add post
-              </Button>
-              }
-            </Box>
-      </Stack>
+      <Typography variant="h2">Posts</Typography>
+      <Box marginBottom={1}>
+        <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
+          <Box sx={{ display: 'flex', alignItems: 'flex-bottom', gap: 1 }}>
+            <TextField
+              label="Keyword"
+              variant="outlined"
+              type="search"
+              size="small"
+              sx={{ width: 250 }}
+            />
+            <Button variant="contained" >Search</Button>
+          </Box>
+          {user &&
+          <Button onClick={handlePostOpen} variant="contained" >
+            Add post
+          </Button>
+          }
+        </Stack>
+      </Box>
       <Modal
         open={newPostOpen}
         onClose={handlePostClose}
