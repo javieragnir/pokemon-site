@@ -67,6 +67,16 @@ const Posts = () => {
     setContent('')
   }
 
+  const handleDelete = (id) => {
+    return async () => {
+      handleLoadingOpen()
+      await tradeService.deleteTrade(id)
+      const response = await tradeService.getAll()
+      setPosts(response)
+      handleLoadingClose()
+    }
+  }
+
   return (
     <Container>
       <Backdrop
@@ -119,7 +129,7 @@ const Posts = () => {
       </Modal>
       <Stack spacing={2}>
         {posts &&
-          posts.map(post => <Trade key={post.id} trade={post} />)
+          posts.map(post => <Trade key={post.id} trade={post} handleDelete={handleDelete(post.id)} />)
         }
       </Stack>
     </Container>

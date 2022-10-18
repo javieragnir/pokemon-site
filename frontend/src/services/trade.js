@@ -26,4 +26,13 @@ const create = async info => {
   return response.data
 }
 
-export default { getAll, getByUserId, create, setToken }
+const deleteTrade = async tradeId => {
+  const config = {
+    headers: { Authorization: token },
+  }
+
+  const response = await axios.delete(`${baseUrl}/${tradeId}`, config)
+  return response.data
+}
+
+export default { getAll, getByUserId, create, setToken, deleteTrade }

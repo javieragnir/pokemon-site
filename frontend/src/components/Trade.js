@@ -9,7 +9,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import { UserContext } from '../contexts/UserContext';
 
-const Trade = ({ trade }) => {
+const Trade = ({ trade, handleDelete }) => {
   const user = useContext(UserContext)
   const date = new Date(trade.createdAt)
 
@@ -77,6 +77,7 @@ const Trade = ({ trade }) => {
                       underline="hover"
                       component="button"
                       variant="body2"
+                      onClick={handleDelete}
                     >
                       Delete
                     </Link>
