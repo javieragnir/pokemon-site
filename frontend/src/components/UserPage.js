@@ -21,7 +21,7 @@ const UserPage = () => {
 
   const username = useParams().username
 
-  // const handleOpenProgress = () => setOpenProgress(true)
+  const handleOpenProgress = () => setOpenProgress(true)
   const handleCloseProgress = () => setOpenProgress(false)
 
   useEffect(() => {
@@ -36,20 +36,20 @@ const UserPage = () => {
       .finally(() => handleCloseProgress())
   }, [])
 
-  if (openProgress) {
-    return (
-      <Container>
-        <Backdrop
-          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.modal + 1 }}
-          open={openProgress}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      </Container>
-    )
-  }
-
   if (!user) {
+    if (openProgress) {
+      return (
+        <Container>
+          <Backdrop
+            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.modal + 1 }}
+            open={openProgress}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+        </Container>
+      )
+    }
+
     return (
       <Container>
         <Typography>User not found.</Typography>
@@ -57,8 +57,24 @@ const UserPage = () => {
     )
   }
 
+  const handleDelete = (id) => {
+    return async () => {
+      handleOpenProgress()
+      await tradeService.deleteTrade(id)
+      const response = await tradeService.getByUserId(user.id)
+      setTrades(response)
+      handleCloseProgress()
+    }
+  }
+
   return (
     <Container sx={{ marginTop: 1 }}>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.modal + 1 }}
+        open={openProgress}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <Paper sx={{ padding: 1 }}>
@@ -102,7 +118,13 @@ const UserPage = () => {
             </Typography>
             <Stack spacing={2}>
               {trades &&
-                trades.map(trade => <Trade key={trade.id} trade={trade} />)
+                trades.map(trade => 
+                  <Trade
+                    key={trade.id}
+                    trade={trade}
+                    handleDelete={handleDelete(trade.id)}
+                  />
+                )
               }
             </Stack>
           </Box>
