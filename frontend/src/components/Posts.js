@@ -3,7 +3,6 @@ import { UserContext } from '../contexts/UserContext';
 import PokemonPicker from './PokemonPicker';
 import {
   Container,
-  Grid,
   Box,
   Stack,
   Button,
