@@ -4,6 +4,7 @@ import {
   Paper,
   Typography,
   Link,
+  Button
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
@@ -72,15 +73,14 @@ const Trade = ({ trade, handleDelete }) => {
                       marginTop: 'auto',
                       marginLeft: 'auto'
                     }}>
-                    <Link
-                      color="inherit"
-                      underline="hover"
-                      component="button"
-                      variant="body2"
+                    <Button
+                      variant="text"
+                      color="error"
+                      size="small"
                       onClick={handleDelete}
                     >
                       Delete
-                    </Link>
+                    </Button>
                   </Box>
                 }
               </Box>
