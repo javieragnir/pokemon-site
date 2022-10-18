@@ -1,26 +1,64 @@
 const router = require('express').Router()
-const { TradeRequest, User } = require('../models')
+const { TradeRequest, User, Pokemon } = require('../models')
 const { sequelize } = require('../util/db')
 const { tokenExtractor } = require('../util/middleware')
+const { Op } = require('sequelize')
 
-const getTrades = async () => {
+const getTrades = async (query = '') => {
+  let where = {}
+
+  if (query) {
+    where = {
+      [Op.or]: [
+        {
+          content: {
+            [Op.iLike]: `%${query}%`
+          }
+        },
+        {
+          '$offered.name$': {
+            [Op.iLike]: `%${query}%`
+          }
+        },
+        {
+          '$requested.name$': {
+            [Op.iLike]: `%${query}%`
+          }
+        }
+      ]
+    }
+  }
+
   const trades = await TradeRequest.findAll({
+    attributes: { exclude: ['userId', 'offeredId', 'requestedId'] },
     include: [
       {
         model: User,
         attributes: ['id', 'username']
       },
-      'offered',
-      'requested',
+      {
+        model: Pokemon,
+        as: 'offered',
+      },
+      {
+        model: Pokemon,
+        as: 'requested',
+      }
     ],
-    order: [['createdAt', 'DESC']]
+    where,
+    order: [['createdAt', 'DESC']],
   })
 
   return trades
 }
 
 router.get('/', async (req, res) => {
-  const trades = await getTrades()
+  let query = ''
+  if (req.query.search) {
+    query = req.query.search
+  }
+
+  const trades = await getTrades(query)
   res.json(trades)
 })
 
