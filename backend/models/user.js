@@ -21,6 +21,18 @@ User.init({
   passwordHash: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  friendCode: {
+    type: DataTypes.STRING,
+    validate: {
+      is: /^(SW-)?[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/
+    }
+  },
+  profilePictureUrl: {
+    type: DataTypes.STRING,
+    validate: {
+      isUrl: true
+    }
   }
 }, {
   sequelize,
