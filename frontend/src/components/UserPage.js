@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom' 
 import {
   Container,
@@ -8,11 +8,14 @@ import {
   Paper,
   Backdrop,
   CircularProgress,
-  Stack
+  Stack,
+  IconButton
  } from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit';
 import Trade from './Trade'
 import userService from '../services/users'
 import tradeService from '../services/trade'
+import { UserContext } from '../contexts/UserContext';
 
 const UserPage = () => {
   const [openProgress, setOpenProgress] = useState(true)
@@ -20,6 +23,11 @@ const UserPage = () => {
   const [trades, setTrades] = useState(null)
 
   const username = useParams().username
+  const loggedUser = useContext(UserContext)
+
+  const isLoggedUser = (user && loggedUser && user.username === loggedUser.username)
+  console.log(user)
+  console.log(loggedUser)
 
   const handleOpenProgress = () => setOpenProgress(true)
   const handleCloseProgress = () => setOpenProgress(false)
@@ -95,7 +103,14 @@ const UserPage = () => {
               </Box>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="overline">Friend Code:</Typography>
-                <Typography>0011-0111-1111-1111</Typography>
+                <Typography>
+                  0011-0111-1111-1111
+                  { isLoggedUser &&
+                    <IconButton size="small">
+                      <EditIcon fontsize="inherit" />
+                    </IconButton>
+                  }
+                </Typography>
               </Box>
             </Stack>
           </Paper>

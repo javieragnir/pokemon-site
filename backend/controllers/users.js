@@ -52,6 +52,16 @@ router.post('/', async (req, res) => {
   res.json(user)
 })
 
+router.put('/:username/friendcode', findUserByUsername, async (req, res) => {
+  if (req.user) {
+    req.user.friendCode = req.body.friendCode
+    await req.user.save()
+    res.json(req.user)
+  } else {
+    return res.status(400).send({ error: 'User does not exist' })
+  }
+})
+
 router.put('/:username/profilepicture', findUserByUsername, async (req, res) => {
   if (req.user) {
     req.user.profilePictureUrl = req.body.profilePictureUrl
