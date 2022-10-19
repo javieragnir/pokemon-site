@@ -82,14 +82,16 @@ const UserPage = () => {
               <Typography variant="h4">{username}</Typography>
               <Box
                 sx={{
-                  height: 160,
                   width: 160,
+                  height: 160,
                   border: '2px solid white',
                   borderRadius: 2,
                   backgroundColor: (theme) => theme.palette.background.default
                 }}
               >
-                <img style={{ height: '100%', width: '100%' }} src="https://i.kym-cdn.com/photos/images/newsfeed/000/925/494/218.png_large?w=164&h=164&fit=crop&auto=format" alt="Kappa" />
+                {user.profilePictureUrl &&
+                <img style={{ height: '100%', width: '100%' }} src={`${user.profilePictureUrl}?w=160&h=160&fit=crop&auto=format`} alt="Kappa" />
+                }
               </Box>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="overline">Friend Code:</Typography>

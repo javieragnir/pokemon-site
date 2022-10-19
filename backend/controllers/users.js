@@ -2,6 +2,17 @@ const router = require('express').Router()
 const bcrypt = require('bcrypt')
 const { User } = require('../models')
 
+const findUserByUsername = async (req, res, next) => {
+    req.user = await User.findOne({
+    where: {
+      username: req.params.username
+    },
+    attributes: { exclude: ['passwordHash'] }
+  })
+
+  next()
+}
+
 router.get('/', async (req, res) => {
   const users = await User.findAll({
     attributes: { exclude: ['passwordHash'] }
@@ -9,19 +20,12 @@ router.get('/', async (req, res) => {
   res.json(users)
 })
 
-router.get('/:username', async (req, res) => {
-  const user = await User.findOne({
-    where: {
-      username: req.params.username
-    },
-    attributes: { exclude: ['passwordHash'] }
-  })
-
-  if (!user) {
+router.get('/:username', findUserByUsername, async (req, res) => {
+  if (!req.user) {
     return res.status(404).end()
   }
 
-  res.json(user)
+  res.json(req.user)
 })
 
 router.post('/', async (req, res) => {
@@ -46,6 +50,16 @@ router.post('/', async (req, res) => {
 
   const user = await User.create({ username, passwordHash })
   res.json(user)
+})
+
+router.put('/:username/profilepicture', findUserByUsername, async (req, res) => {
+  if (req.user) {
+    req.user.profilePictureUrl = req.body.profilePictureUrl
+    await req.user.save()
+    res.json(req.user)
+  } else {
+    return res.status(400).send({ error: 'User does not exist' })
+  }
 })
 
 module.exports = router
