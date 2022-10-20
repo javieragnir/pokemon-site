@@ -35,6 +35,8 @@ export default function FriendCodeField({ value, onChange, ...props }) {
           name="textmask"
           id="formatted-friend-code-input"
           inputComponent={TextMaskCustom}
+          variant="outlined"
+          size="small"
         />
       </FormControl>
     </Box>

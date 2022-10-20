@@ -12,9 +12,10 @@ import {
   Button,
   IconButton,
   Modal,
-  TextField,
   Switch,
-  FormControlLabel
+  FormControlLabel,
+  FormHelperText,
+  FormControl
  } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit';
 import Trade from './Trade'
@@ -26,6 +27,7 @@ import FriendCodeField from './FriendCodeField';
 
 const style = {
   ...defaultModalStyle,
+  height: 'max-content'
 }
 
 const UserPage = () => {
@@ -94,17 +96,36 @@ const UserPage = () => {
   const handleDelete = (id) => {
     return async () => {
       handleOpenProgress()
-      await tradeService.deleteTrade(id)
-      const response = await tradeService.getByUserId(user.id)
-      setTrades(response)
+      try {
+        await tradeService.deleteTrade(id)
+        const response = await tradeService.getByUserId(user.id)
+        setTrades(response)
+      } catch (error) {
+        console.log(error)
+      }
+
       handleCloseProgress()
     }
   }
 
   const handleFriendCodeSubmit = async () => {
     handleOpenProgress()
-    const response = await userService.updateFriendCode(loggedUser.username, { friendCode })
-    setTrades(response)
+
+    try {
+      let fc = ''
+      if (checked) {
+        fc += 'SW-'
+      }
+      fc += friendCode
+      console.log(fc)
+      const response = await userService.updateFriendCode(loggedUser.username, { friendCode: fc })
+      setUser(response)
+      handleModalClose()
+      setFriendCode('')
+    } catch (error) {
+      console.log(error)
+    }
+
     handleCloseProgress()
   }
 
@@ -115,25 +136,34 @@ const UserPage = () => {
         onClose={handleModalClose}
       >
         <Box sx={style}>
-          <Typography variant="h6" sx={{ marginBottom: 1 }}>
-            Update friend code
-          </Typography>
-          <FormControlLabel control={
-              <Switch
-                checked={checked}
-                onChange={handleCheckedChange}
+          <Stack alignItems="flex-start">
+            <Typography variant="h6" sx={{ marginBottom: 1 }}>
+              Update friend code
+            </Typography>
+            <FormControl variant="standard">
+              <FormControlLabel sx={{ margin: 0 }} control={
+                  <Switch
+                    checked={checked}
+                    onChange={handleCheckedChange}
+                  />
+              }
+                label="Is code for Nintendo Switch"
+                labelPlacement="start"
               />
-          }
-            label="Nintendo Switch code"
-            labelPlacement="start"
-          />
-          <FriendCodeField
-            value={friendCode}
-            onChange={handleFriendCodeChange}
-          />
-          <Button variant="contained" onClick={handleFriendCodeSubmit} sx={{ marginLeft: 'auto' }}>
-            Update
-          </Button>
+            </FormControl>
+            <FormControl variant="standard">
+              <FriendCodeField
+                value={friendCode}
+                onChange={handleFriendCodeChange}
+              />
+              <FormHelperText>
+                Twelve digits in the form 0000-0000-0000
+              </FormHelperText>
+            </FormControl>
+            <Button variant="contained" onClick={handleFriendCodeSubmit} sx={{ marginTop: 2 }}>
+              Update
+            </Button>
+          </Stack>
         </Box>
       </Modal>
 
@@ -164,7 +194,7 @@ const UserPage = () => {
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="overline">Friend Code:</Typography>
                 <Typography>
-                  { user && user.friendCode ? user.friendCode : 'No friend code added.'}
+                  { user && user.friendCode ? user.friendCode : 'No friend code available.'}
                   { isLoggedUser &&
                     <IconButton size="small" onClick={handleModalOpen}>
                       <EditIcon fontSize="inherit" />
