@@ -1,17 +1,17 @@
-import { useState, forwardRef } from 'react'
-import { IMaskInput } from 'react-imask'
+/* eslint-disable react/prop-types */
+import { forwardRef } from 'react';
+import { IMaskInput } from 'react-imask';
 import {
   Box,
   Input,
   InputLabel,
-  FormControl
-} from '@mui/material'
+  FormControl,
+} from '@mui/material';
 
-const TextMaskCustom = forwardRef(function TextMaskCustom(props, ref) {
-  const { onChange, ...other } = props;
+const TextMaskCustom = forwardRef((props, ref) => {
+  const { onChange } = props;
   return (
     <IMaskInput
-      {...other}
       mask="0000-0000-0000"
       definitions={{
         '#': /[0-9]/,
@@ -23,8 +23,7 @@ const TextMaskCustom = forwardRef(function TextMaskCustom(props, ref) {
   );
 });
 
-export default function FriendCodeField({ value, onChange, ...props }) {
-
+export default function FriendCodeField({ value, onChange }) {
   return (
     <Box>
       <FormControl variant="standard">

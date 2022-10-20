@@ -1,4 +1,4 @@
-export const defaultModalStyle = {
+const defaultModalStyle = {
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -8,5 +8,6 @@ export const defaultModalStyle = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-}
+};
 
+export default { defaultModalStyle };

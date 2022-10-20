@@ -1,26 +1,25 @@
-import { useState } from 'react'
-import useApi from '../hooks/useApi'
-import PokemonPicker from './PokemonPicker'
-
+import { useState } from 'react';
 import {
   Container,
   Button,
   Typography,
   Paper,
-  Grid
-} from '@mui/material'
+  Grid,
+} from '@mui/material';
+import useApi from '../hooks/useApi';
+import PokemonPicker from './PokemonPicker';
 
-const Home = () => {
-  const [pokemonFilter, setPokemonFilter] = useState('')
-  const [pokemonToSearch, setPokemonToSearch] = useState('')
+function Home() {
+  const [pokemonFilter, setPokemonFilter] = useState('');
+  const [pokemonToSearch, setPokemonToSearch] = useState('');
 
-  const { data: pokemon, error, isLoading } = useApi(`https://pokeapi.co/api/v2/pokemon-form/${pokemonToSearch}`)
+  const { data: pokemon, error, isLoading } = useApi(`https://pokeapi.co/api/v2/pokemon-form/${pokemonToSearch}`);
 
   const setPokemon = () => {
     if (pokemonFilter) {
-      setPokemonToSearch(pokemonFilter.name)
+      setPokemonToSearch(pokemonFilter.name);
     }
-  }
+  };
 
   return (
     <Container>
@@ -35,7 +34,7 @@ const Home = () => {
             Work in progress!
           </Typography>
         </Grid>
-        <Grid item xs={12}>        
+        <Grid item xs={12}>
           <PokemonPicker
             setFunction={setPokemonFilter}
             sx={{ width: 300 }}
@@ -44,21 +43,23 @@ const Home = () => {
             Search
           </Button>
         </Grid>
-        {error && 
+        {error
+          && (
           <Grid item xs={12}>
             <Typography>Error!</Typography>
           </Grid>
-        }
-        {!isLoading && pokemon && pokemon.sprites &&
+          )}
+        {!isLoading && pokemon && pokemon.sprites
+          && (
           <Grid item xs={12}>
             <Paper sx={{ padding: 2, width: 'max-content' }}>
               <img src={pokemon.sprites.front_default} alt={pokemon.pokemon.name} />
             </Paper>
           </Grid>
-        }
+          )}
       </Grid>
     </Container>
-  )
+  );
 }
 
-export default Home
+export default Home;

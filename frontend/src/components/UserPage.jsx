@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from 'react'
-import { useParams } from 'react-router-dom' 
+import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -15,59 +15,59 @@ import {
   Switch,
   FormControlLabel,
   FormHelperText,
-  FormControl
- } from '@mui/material'
+  FormControl,
+} from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
-import Trade from './Trade'
-import userService from '../services/users'
-import tradeService from '../services/trade'
+import Trade from './Trade';
+import userService from '../services/users';
+import tradeService from '../services/trade';
 import { UserContext } from '../contexts/UserContext';
-import { defaultModalStyle } from '../styles'
+import { defaultModalStyle } from '../styles';
 import FriendCodeField from './FriendCodeField';
 
 const style = {
   ...defaultModalStyle,
-  height: 'max-content'
-}
+  height: 'max-content',
+};
 
-const UserPage = () => {
-  const [openProgress, setOpenProgress] = useState(true)
-  const [user, setUser] = useState(null)
-  const [trades, setTrades] = useState(null)
-  const [modalOpen, setModalOpen] = useState(false)
-  const [friendCode, setFriendCode] = useState('')
+function UserPage() {
+  const [openProgress, setOpenProgress] = useState(true);
+  const [user, setUser] = useState(null);
+  const [trades, setTrades] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [friendCode, setFriendCode] = useState('');
   const [checked, setChecked] = useState(true);
 
-  const handleModalOpen = () => setModalOpen(true)
-  const handleModalClose = () => setModalOpen(false)
+  const handleModalOpen = () => setModalOpen(true);
+  const handleModalClose = () => setModalOpen(false);
 
   const handleCheckedChange = (event) => {
     setChecked(event.target.checked);
-  }
+  };
 
-  const username = useParams().username
-  const loggedUser = useContext(UserContext)
+  const { username } = useParams();
+  const loggedUser = useContext(UserContext);
 
-  const isLoggedUser = (user && loggedUser && user.username === loggedUser.username)
+  const isLoggedUser = (user && loggedUser && user.username === loggedUser.username);
 
-  const handleOpenProgress = () => setOpenProgress(true)
-  const handleCloseProgress = () => setOpenProgress(false)
+  const handleOpenProgress = () => setOpenProgress(true);
+  const handleCloseProgress = () => setOpenProgress(false);
 
   const handleFriendCodeChange = (event) => {
-    setFriendCode(event.target.value)
-  }
+    setFriendCode(event.target.value);
+  };
 
   useEffect(() => {
     userService.findOne(username)
-      .then(user => {
-        setUser(user)
-        return user
+      .then((foundUser) => {
+        setUser(foundUser);
+        return foundUser;
       })
-      .then(user => tradeService.getByUserId(user.id))
-      .then(response => setTrades(response))
-      .catch(error => console.log(error))
-      .finally(() => handleCloseProgress())
-  }, [])
+      .then((foundUser) => tradeService.getByUserId(foundUser.id))
+      .then((response) => setTrades(response))
+      .catch((error) => console.log(error))
+      .finally(() => handleCloseProgress());
+  }, []);
 
   // View while loading
   if (!user) {
@@ -81,7 +81,7 @@ const UserPage = () => {
             <CircularProgress color="inherit" />
           </Backdrop>
         </Container>
-      )
+      );
     }
 
     // View if no user is found.
@@ -89,45 +89,43 @@ const UserPage = () => {
       <Container>
         <Typography>User not found.</Typography>
       </Container>
-    )
+    );
   }
 
   // handles deletion of user's posts
-  const handleDelete = (id) => {
-    return async () => {
-      handleOpenProgress()
-      try {
-        await tradeService.deleteTrade(id)
-        const response = await tradeService.getByUserId(user.id)
-        setTrades(response)
-      } catch (error) {
-        console.log(error)
-      }
-
-      handleCloseProgress()
+  const handleDelete = (id) => async () => {
+    handleOpenProgress();
+    try {
+      await tradeService.deleteTrade(id);
+      const response = await tradeService.getByUserId(user.id);
+      setTrades(response);
+    } catch (error) {
+      console.log(error);
     }
-  }
+
+    handleCloseProgress();
+  };
 
   const handleFriendCodeSubmit = async () => {
-    handleOpenProgress()
+    handleOpenProgress();
 
     try {
-      let fc = ''
+      let fc = '';
       if (checked) {
-        fc += 'SW-'
+        fc += 'SW-';
       }
-      fc += friendCode
-      console.log(fc)
-      const response = await userService.updateFriendCode(loggedUser.username, { friendCode: fc })
-      setUser(response)
-      handleModalClose()
-      setFriendCode('')
+      fc += friendCode;
+      console.log(fc);
+      const response = await userService.updateFriendCode(loggedUser.username, { friendCode: fc });
+      setUser(response);
+      handleModalClose();
+      setFriendCode('');
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
 
-    handleCloseProgress()
-  }
+    handleCloseProgress();
+  };
 
   return (
     <Container sx={{ marginTop: 1 }}>
@@ -141,12 +139,14 @@ const UserPage = () => {
               Update friend code
             </Typography>
             <FormControl variant="standard">
-              <FormControlLabel sx={{ margin: 0 }} control={
+              <FormControlLabel
+                sx={{ margin: 0 }}
+                control={(
                   <Switch
                     checked={checked}
                     onChange={handleCheckedChange}
                   />
-              }
+                )}
                 label="Is code for Nintendo Switch"
                 labelPlacement="start"
               />
@@ -184,22 +184,22 @@ const UserPage = () => {
                   height: 160,
                   border: '2px solid white',
                   borderRadius: 2,
-                  backgroundColor: (theme) => theme.palette.background.default
+                  backgroundColor: (theme) => theme.palette.background.default,
                 }}
               >
-                {user.profilePictureUrl &&
-                <img style={{ height: '100%', width: '100%' }} src={`${user.profilePictureUrl}?w=160&h=160&fit=crop&auto=format`} alt="Kappa" />
-                }
+                {user.profilePictureUrl
+                && <img style={{ height: '100%', width: '100%' }} src={`${user.profilePictureUrl}?w=160&h=160&fit=crop&auto=format`} alt="Kappa" />}
               </Box>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="overline">Friend Code:</Typography>
                 <Typography>
                   { user && user.friendCode ? user.friendCode : 'No friend code available.'}
-                  { isLoggedUser &&
+                  { isLoggedUser
+                    && (
                     <IconButton size="small" onClick={handleModalOpen}>
                       <EditIcon fontSize="inherit" />
                     </IconButton>
-                  }
+                    )}
                 </Typography>
               </Box>
             </Stack>
@@ -211,22 +211,28 @@ const UserPage = () => {
             paddingLeft: 3,
             paddingRight: 3,
             height: '100%',
-            }}>
+          }}
+          >
             <Box>
               <Typography sx={{ padding: 0, margin: 0 }} variant="h6">Bio</Typography>
-              <Typography sx={{textAlign: 'justify' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</Typography>
+              <Typography sx={{ textAlign: 'justify' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</Typography>
             </Box>
           </Paper>
         </Grid>
         <Grid item xs={3}>
-        <Paper sx={{
+          <Paper sx={{
             padding: 2,
             paddingLeft: 3,
             paddingRight: 3,
             height: '100%',
-            }}>
+          }}
+          >
             <Box>
-              <Typography><strong>Reputation:</strong> 6</Typography>
+              <Typography>
+                <strong>Reputation:</strong>
+                {' '}
+                6
+              </Typography>
             </Box>
           </Paper>
         </Grid>
@@ -236,21 +242,20 @@ const UserPage = () => {
               User Trade Requests
             </Typography>
             <Stack spacing={2}>
-              {trades &&
-                trades.map(trade => 
+              {trades
+                && trades.map((trade) => (
                   <Trade
                     key={trade.id}
                     trade={trade}
                     handleDelete={handleDelete(trade.id)}
                   />
-                )
-              }
+                ))}
             </Stack>
           </Box>
         </Grid>
       </Grid>
     </Container>
-  )
+  );
 }
 
-export default UserPage
+export default UserPage;

@@ -1,6 +1,6 @@
-import { Container, Typography } from '@mui/material'
+import { Container, Typography } from '@mui/material';
 
-const About = () => {
+function About() {
   return (
     <Container>
       <Typography variant="h2">
@@ -10,7 +10,7 @@ const About = () => {
         This is the about page.
       </Typography>
     </Container>
-  )
+  );
 }
 
-export default About
+export default About;

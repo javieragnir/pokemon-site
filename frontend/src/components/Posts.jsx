@@ -1,7 +1,5 @@
-import { useState, useEffect, useContext } from 'react'
-import { useDebounce } from 'use-debounce'
-import { UserContext } from '../contexts/UserContext';
-import PokemonPicker from './PokemonPicker';
+import { useState, useEffect, useContext } from 'react';
+import { useDebounce } from 'use-debounce';
 import {
   Container,
   Box,
@@ -13,66 +11,66 @@ import {
   Fade,
   Backdrop,
   CircularProgress,
-} from '@mui/material'
-import tradeService from '../services/trade'
+} from '@mui/material';
+import { UserContext } from '../contexts/UserContext';
+import PokemonPicker from './PokemonPicker';
+import tradeService from '../services/trade';
 import Trade from './Trade';
-import { defaultModalStyle } from '../styles'
+import { defaultModalStyle } from '../styles';
 
 const style = {
   ...defaultModalStyle,
   width: '80%',
 };
 
-const Posts = () => {
-  const [newPostOpen, setNewPostOpen] = useState(false)
-  const [offeredPokemon, setOfferedPokemon] = useState(null)
-  const [requestedPokemon, setRequestedPokemon] = useState(null)
-  const [content, setContent] = useState('')
-  const [posts, setPosts] = useState(null)
-  const [loadingOpen, setLoadingOpen] = useState(true)
-  const [query, setQuery] = useState('')
-  const [debouncedQuery] = useDebounce(query, 500)
+function Posts() {
+  const [newPostOpen, setNewPostOpen] = useState(false);
+  const [offeredPokemon, setOfferedPokemon] = useState(null);
+  const [requestedPokemon, setRequestedPokemon] = useState(null);
+  const [content, setContent] = useState('');
+  const [posts, setPosts] = useState(null);
+  const [loadingOpen, setLoadingOpen] = useState(true);
+  const [query, setQuery] = useState('');
+  const [debouncedQuery] = useDebounce(query, 500);
 
-  const user = useContext(UserContext)
+  const user = useContext(UserContext);
 
-  const handlePostOpen = () => setNewPostOpen(true)
-  const handlePostClose = () => setNewPostOpen(false)
+  const handlePostOpen = () => setNewPostOpen(true);
+  const handlePostClose = () => setNewPostOpen(false);
 
-  const handleLoadingOpen = () => setLoadingOpen(true)
-  const handleLoadingClose = () => setLoadingOpen(false)
+  const handleLoadingOpen = () => setLoadingOpen(true);
+  const handleLoadingClose = () => setLoadingOpen(false);
 
   useEffect(() => {
     tradeService.getAll(debouncedQuery)
-      .then(posts => {
-        setPosts(posts)
-        handleLoadingClose()
-      })
-  }, [debouncedQuery])
+      .then((trades) => {
+        setPosts(trades);
+        handleLoadingClose();
+      });
+  }, [debouncedQuery]);
 
   const handleSubmit = async () => {
-    handleLoadingOpen()
+    handleLoadingOpen();
     const trades = await tradeService.create({
       offeredId: offeredPokemon.id,
       requestedId: requestedPokemon.id,
       content,
-    }, debouncedQuery)
-    handleLoadingClose()
-    handlePostClose()
-    setPosts(trades)
-    setOfferedPokemon(null)
-    setRequestedPokemon(null)
-    setContent('')
-  }
+    }, debouncedQuery);
+    handleLoadingClose();
+    handlePostClose();
+    setPosts(trades);
+    setOfferedPokemon(null);
+    setRequestedPokemon(null);
+    setContent('');
+  };
 
-  const handleDelete = (id) => {
-    return async () => {
-      handleLoadingOpen()
-      await tradeService.deleteTrade(id)
-      const response = await tradeService.getAll(debouncedQuery)
-      setPosts(response)
-      handleLoadingClose()
-    }
-  }
+  const handleDelete = (id) => async () => {
+    handleLoadingOpen();
+    await tradeService.deleteTrade(id);
+    const response = await tradeService.getAll(debouncedQuery);
+    setPosts(response);
+    handleLoadingClose();
+  };
 
   return (
     <Container>
@@ -94,11 +92,12 @@ const Posts = () => {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
-          {user &&
-          <Button onClick={handlePostOpen} variant="contained" >
+          {user
+          && (
+          <Button onClick={handlePostOpen} variant="contained">
             Add post
           </Button>
-          }
+          )}
         </Stack>
       </Box>
       <Modal
@@ -109,7 +108,7 @@ const Posts = () => {
         <Fade in={newPostOpen}>
           <Box sx={style}>
             <Typography variant="h5" sx={{ marginBottom: 1 }}>
-                Add post
+              Add post
             </Typography>
             <Stack spacing={2}>
               <PokemonPicker
@@ -135,12 +134,17 @@ const Posts = () => {
         </Fade>
       </Modal>
       <Stack spacing={2}>
-        {posts &&
-          posts.map(post => <Trade key={post.id} trade={post} handleDelete={handleDelete(post.id)} />)
-        }
+        {posts
+        && posts.map((post) => (
+          <Trade
+            key={post.id}
+            trade={post}
+            handleDelete={handleDelete(post.id)}
+          />
+        ))}
       </Stack>
     </Container>
-  )
+  );
 }
 
-export default Posts
+export default Posts;
