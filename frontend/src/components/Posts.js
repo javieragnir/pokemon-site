@@ -16,17 +16,11 @@ import {
 } from '@mui/material'
 import tradeService from '../services/trade'
 import Trade from './Trade';
+import { defaultModalStyle } from '../styles'
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  ...defaultModalStyle,
   width: '80%',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
 };
 
 const Posts = () => {
@@ -131,6 +125,7 @@ const Posts = () => {
                 rows={5}
                 value={content}
                 onChange={(event) => setContent(event.target.value)}
+                label="Description"
               />
               <Button variant="contained" onClick={handleSubmit}>
                 Submit

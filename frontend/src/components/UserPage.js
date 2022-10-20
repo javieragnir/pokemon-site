@@ -9,28 +9,51 @@ import {
   Backdrop,
   CircularProgress,
   Stack,
-  IconButton
+  Button,
+  IconButton,
+  Modal,
+  TextField,
+  Switch,
+  FormControlLabel
  } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit';
 import Trade from './Trade'
 import userService from '../services/users'
 import tradeService from '../services/trade'
 import { UserContext } from '../contexts/UserContext';
+import { defaultModalStyle } from '../styles'
+import FriendCodeField from './FriendCodeField';
+
+const style = {
+  ...defaultModalStyle,
+}
 
 const UserPage = () => {
   const [openProgress, setOpenProgress] = useState(true)
   const [user, setUser] = useState(null)
   const [trades, setTrades] = useState(null)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [friendCode, setFriendCode] = useState('')
+  const [checked, setChecked] = useState(true);
+
+  const handleModalOpen = () => setModalOpen(true)
+  const handleModalClose = () => setModalOpen(false)
+
+  const handleCheckedChange = (event) => {
+    setChecked(event.target.checked);
+  }
 
   const username = useParams().username
   const loggedUser = useContext(UserContext)
 
   const isLoggedUser = (user && loggedUser && user.username === loggedUser.username)
-  console.log(user)
-  console.log(loggedUser)
 
   const handleOpenProgress = () => setOpenProgress(true)
   const handleCloseProgress = () => setOpenProgress(false)
+
+  const handleFriendCodeChange = (event) => {
+    setFriendCode(event.target.value)
+  }
 
   useEffect(() => {
     userService.findOne(username)
@@ -44,6 +67,7 @@ const UserPage = () => {
       .finally(() => handleCloseProgress())
   }, [])
 
+  // View while loading
   if (!user) {
     if (openProgress) {
       return (
@@ -58,6 +82,7 @@ const UserPage = () => {
       )
     }
 
+    // View if no user is found.
     return (
       <Container>
         <Typography>User not found.</Typography>
@@ -65,6 +90,7 @@ const UserPage = () => {
     )
   }
 
+  // handles deletion of user's posts
   const handleDelete = (id) => {
     return async () => {
       handleOpenProgress()
@@ -75,8 +101,42 @@ const UserPage = () => {
     }
   }
 
+  const handleFriendCodeSubmit = async () => {
+    handleOpenProgress()
+    const response = await userService.updateFriendCode(loggedUser.username, { friendCode })
+    setTrades(response)
+    handleCloseProgress()
+  }
+
   return (
     <Container sx={{ marginTop: 1 }}>
+      <Modal
+        open={modalOpen}
+        onClose={handleModalClose}
+      >
+        <Box sx={style}>
+          <Typography variant="h6" sx={{ marginBottom: 1 }}>
+            Update friend code
+          </Typography>
+          <FormControlLabel control={
+              <Switch
+                checked={checked}
+                onChange={handleCheckedChange}
+              />
+          }
+            label="Nintendo Switch code"
+            labelPlacement="start"
+          />
+          <FriendCodeField
+            value={friendCode}
+            onChange={handleFriendCodeChange}
+          />
+          <Button variant="contained" onClick={handleFriendCodeSubmit} sx={{ marginLeft: 'auto' }}>
+            Update
+          </Button>
+        </Box>
+      </Modal>
+
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.modal + 1 }}
         open={openProgress}
@@ -104,10 +164,10 @@ const UserPage = () => {
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="overline">Friend Code:</Typography>
                 <Typography>
-                  0011-0111-1111-1111
+                  { user && user.friendCode ? user.friendCode : 'No friend code added.'}
                   { isLoggedUser &&
-                    <IconButton size="small">
-                      <EditIcon fontsize="inherit" />
+                    <IconButton size="small" onClick={handleModalOpen}>
+                      <EditIcon fontSize="inherit" />
                     </IconButton>
                   }
                 </Typography>

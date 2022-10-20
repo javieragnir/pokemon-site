@@ -1,3 +1,4 @@
+import { FormatIndentDecreaseRounded } from '@mui/icons-material'
 import axios from 'axios'
 const baseUrl = 'http://localhost:3001/api/users'
 
@@ -11,4 +12,9 @@ const findOne = async username => {
   return response.data
 }
 
-export default { signup, findOne }
+const updateFriendCode = async (username, friendCode) => {
+  const response = await axios.put(`${baseUrl}/${username}/friendcode`, friendCode)
+  return response.data
+}
+
+export default { signup, findOne, updateFriendCode }
