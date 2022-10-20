@@ -1,6 +1,6 @@
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes } = require('sequelize');
 
-const { sequelize } = require('../util/db')
+const { sequelize } = require('../util/db');
 
 class Pokemon extends Model {}
 
@@ -8,18 +8,18 @@ Pokemon.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: false
-  }
+    allowNull: false,
+  },
 }, {
   sequelize,
   underscored: true,
   timestamps: false,
   freezeTableName: true,
-  modelName: 'pokemon'
-})
+  modelName: 'pokemon',
+});
 
-module.exports = Pokemon
+module.exports = Pokemon;

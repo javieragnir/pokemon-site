@@ -2,23 +2,29 @@ const { DataTypes } = require('sequelize');
 
 module.exports = {
   up: async ({ context: queryInterface }) => {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('trade_comments', {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      username: {
-        type: DataTypes.STRING,
-        unique: true,
+      user_id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-          isAlphanumeric: true,
-        },
+        references: { model: 'users', key: 'id' },
       },
-      password_hash: {
+      trade_request_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: { model: 'trade_requests', key: 'id' },
+      },
+      content: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      likes: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
       },
       created_at: {
         type: DataTypes.DATE,
@@ -29,6 +35,6 @@ module.exports = {
     });
   },
   down: async ({ context: queryInterface }) => {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('trade_comments');
   },
 };

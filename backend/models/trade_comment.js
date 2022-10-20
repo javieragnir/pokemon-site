@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 
 const { sequelize } = require('../util/db');
 
-class TradeRequest extends Model {}
+class TradeComment extends Model {}
 
-TradeRequest.init({
+TradeComment.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -18,16 +18,10 @@ TradeRequest.init({
     type: DataTypes.INTEGER,
     defaultValue: 0,
   },
-  closed: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
 }, {
   sequelize,
   underscored: true,
-  timestamps: true,
-  updatedAt: false,
-  modelName: 'trade_request',
+  modelName: 'trade_comments',
 });
 
-module.exports = TradeRequest;
+module.exports = TradeComment;

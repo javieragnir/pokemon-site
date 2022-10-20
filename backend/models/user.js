@@ -1,6 +1,6 @@
-const { Model, DataTypes } = require('sequelize')
+const { Model, DataTypes } = require('sequelize');
 
-const { sequelize } = require('../util/db')
+const { sequelize } = require('../util/db');
 
 class User extends Model {}
 
@@ -8,15 +8,15 @@ User.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
   },
   username: {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false,
     validate: {
-      isAlphanumeric: true
-    }
+      isAlphanumeric: true,
+    },
   },
   passwordHash: {
     type: DataTypes.STRING,
@@ -25,19 +25,19 @@ User.init({
   friendCode: {
     type: DataTypes.STRING,
     validate: {
-      is: /^(SW-)?[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/
-    }
+      is: /^(SW-)?[0-9]{4}-[0-9]{4}-[0-9]{4}$/,
+    },
   },
   profilePictureUrl: {
     type: DataTypes.STRING,
     validate: {
-      isUrl: true
-    }
-  }
+      isUrl: true,
+    },
+  },
 }, {
   sequelize,
   underscored: true,
-  modelName: 'user'
-})
+  modelName: 'user',
+});
 
-module.exports = User
+module.exports = User;
