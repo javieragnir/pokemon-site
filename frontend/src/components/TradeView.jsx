@@ -1,3 +1,4 @@
+import Trade from './Trade'
 import {
   Container,
 } from '@mui/material';
@@ -5,7 +6,8 @@ import {
 function TradeView({ trade }) {
   return (
     <Container>
-      Stuff
+      <Trade trade={trade} />
+      <Typography>Placeholder stuff!</Typography>
     </Container>
   );
 }

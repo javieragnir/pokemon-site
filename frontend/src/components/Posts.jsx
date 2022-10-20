@@ -16,7 +16,7 @@ import { UserContext } from '../contexts/UserContext';
 import PokemonPicker from './PokemonPicker';
 import tradeService from '../services/trade';
 import Trade from './Trade';
-import { defaultModalStyle } from '../styles/index';
+import defaultModalStyle from '../styles/defaultModalStyle'
 
 const style = {
   ...defaultModalStyle,

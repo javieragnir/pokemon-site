@@ -22,7 +22,7 @@ import Trade from './Trade';
 import userService from '../services/users';
 import tradeService from '../services/trade';
 import { UserContext } from '../contexts/UserContext';
-import { defaultModalStyle } from '../styles';
+import defaultModalStyle from '../styles/defaultModalStyle';
 import FriendCodeField from './FriendCodeField';
 
 const style = {

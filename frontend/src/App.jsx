@@ -2,18 +2,12 @@ import { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes, Route,
-  Link as RouterLink,
 } from 'react-router-dom';
 
 import {
   Container,
-  AppBar,
-  Toolbar,
-  Button,
   Typography,
   Paper,
-  Box,
-  Link,
 } from '@mui/material';
 
 import { ThemeProvider } from '@mui/material/styles';
@@ -29,6 +23,7 @@ import UserPage from './components/UserPage';
 import UserProvider from './contexts/UserContext';
 
 import tradeService from './services/trade';
+import NavigationHeader from './components/NavigationHeader';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -54,47 +49,7 @@ function App() {
         <CssBaseline />
         <Router>
           <Container sx={{ bgcolor: 'background' }}>
-            <AppBar position="static">
-              <Toolbar>
-                <Button color="inherit" component={RouterLink} to="/">
-                  Home
-                </Button>
-                <Button color="inherit" component={RouterLink} to="/posts">
-                  Posts
-                </Button>
-                <Button color="inherit" component={RouterLink} to="/about">
-                  About
-                </Button>
-                {!user
-                  && (
-                  <Button color="inherit" component={RouterLink} to="/login" sx={{ marginLeft: 'auto' }}>
-                    Log In
-                  </Button>
-                  )}
-                {user
-                && (
-                <Box sx={{
-                  marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: 1,
-                }}
-                >
-                  <Typography>
-                    Signed in as&nbsp;
-                    <Link
-                      component={RouterLink}
-                      to={`/user/${user.username}`}
-                      underline="hover"
-                      color="inherit"
-                    >
-                      <strong>{user.username}</strong>
-                    </Link>
-                  </Typography>
-                  <Button color="inherit" onClick={logout}>
-                    Log out
-                  </Button>
-                </Box>
-                )}
-              </Toolbar>
-            </AppBar>
+            <NavigationHeader logout={logout}/>
 
             <Routes>
               <Route path="/posts" element={<Posts />} />
