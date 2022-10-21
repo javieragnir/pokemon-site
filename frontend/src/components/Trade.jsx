@@ -3,16 +3,14 @@ import {
   Box,
   Paper,
   Typography,
-  Link,
   Button,
 } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import { UserContext } from '../contexts/UserContext';
+import PostHeader from './PostHeader';
 
 function Trade({ trade, handleDelete }) {
   const user = useContext(UserContext);
-  const date = new Date(trade.createdAt);
 
   const showDelete = user && user.username === trade.user.username;
 
@@ -57,22 +55,7 @@ function Trade({ trade, handleDelete }) {
               flexDirection: 'column',
             }}
           >
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-              <Link
-                component={RouterLink}
-                to={`/user/${trade.user.username}`}
-                color="inherit"
-                underline="hover"
-                variant="h6"
-                sx={{ display: 'inline' }}
-              >
-                {trade.user.username}
-              </Link>
-              <Typography variant="body2">
-                {`${date.toLocaleDateString()} ${date.toLocaleTimeString()}`}
-                {' '}
-              </Typography>
-            </Box>
+            <PostHeader post={trade} />
             <Typography sx={{ flexGrow: 1 }}>{trade.content}</Typography>
             <Box sx={{ width: '100%' }}>
               {showDelete
