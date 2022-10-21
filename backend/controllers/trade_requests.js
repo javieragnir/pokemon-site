@@ -96,6 +96,10 @@ router.get('/by-user/:userId', async (req, res) => {
 });
 
 router.post('/', tokenExtractor, async (req, res) => {
+  // doing it this way so that only one query is made to the server when
+  // adding a new post. Maybe it just doing two queries would be simpler
+  // and still good enough.
+
   let query = '';
   if (req.query.search) {
     query = req.query.search;

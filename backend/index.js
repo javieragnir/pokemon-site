@@ -11,6 +11,7 @@ const usersRouter = require('./controllers/users');
 const loginRouter = require('./controllers/login');
 const tradeRouter = require('./controllers/trade_requests');
 const pokemonRouter = require('./controllers/pokemon');
+const commentRouter = require('./controllers/trade_comments');
 
 const { errorHandler } = require('./util/middleware');
 
@@ -21,6 +22,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/trade', tradeRouter);
 app.use('/api/pokemon', pokemonRouter);
+app.use('/api/comments', commentRouter);
 
 app.use(errorHandler);
 

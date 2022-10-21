@@ -54,7 +54,7 @@ function TradePage() {
   return (
     <Container>
       <Trade trade={trade} />
-      <Typography>Placeholder stuff!</Typography>
+      <Typography variant="h4">Comments</Typography>
     </Container>
   );
 }
