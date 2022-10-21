@@ -2,6 +2,7 @@ const User = require('./user');
 const Pokemon = require('./pokemon');
 const TradeRequest = require('./trade_request');
 const TradeComment = require('./trade_comment');
+const TradeLike = require('./trade_like');
 
 User.hasMany(TradeRequest);
 TradeRequest.belongsTo(User);
@@ -13,6 +14,9 @@ User.hasMany(TradeComment);
 TradeComment.belongsTo(User);
 TradeRequest.hasMany(TradeComment);
 TradeComment.belongsTo(TradeRequest);
+
+User.belongsToMany(TradeRequest, { through: TradeLike });
+TradeRequest.belongsToMany(User, { through: TradeLike });
 
 module.exports = {
   User,

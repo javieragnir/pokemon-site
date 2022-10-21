@@ -57,17 +57,18 @@ function Trade({ trade, handleDelete }) {
           >
             <PostHeader post={trade} />
             <Typography sx={{ flexGrow: 1 }}>{trade.content}</Typography>
-            <Box sx={{ width: '100%' }}>
+            <Box
+              sx={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Button size="small">
+                Like
+              </Button>
               {showDelete
                   && (
-                  <Box
-                    sx={{
-                      width: 'max-content',
-                      height: 'max-content',
-                      marginTop: 'auto',
-                      marginLeft: 'auto',
-                    }}
-                  >
                     <Button
                       variant="text"
                       color="error"
@@ -76,7 +77,6 @@ function Trade({ trade, handleDelete }) {
                     >
                       Delete
                     </Button>
-                  </Box>
                   )}
             </Box>
           </Box>

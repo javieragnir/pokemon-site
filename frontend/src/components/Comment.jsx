@@ -18,8 +18,17 @@ function Comment({ comment }) {
           alignItems: 'center',
         }}
         >
-          <PostHeader post={comment} />
-          <Typography>{comment.content}</Typography>
+          <Box
+            sx={{
+              width: '100%',
+              alignSelf: 'stretch',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <PostHeader post={comment} />
+            <Typography>{comment.content}</Typography>
+          </Box>
         </Box>
       </Paper>
     </Box>
