@@ -18,6 +18,11 @@ const getAll = async (query = '') => {
   return response.data;
 };
 
+const getByTradeId = async (tradeId) => {
+  const response = await axios.get(`${baseUrl}/${tradeId}`);
+  return response.data;
+};
+
 const getByUserId = async (userId) => {
   const response = await axios.get(`${baseUrl}/by-user/${userId}`);
   return response.data;
@@ -47,5 +52,5 @@ const deleteTrade = async (tradeId) => {
 };
 
 export default {
-  getAll, getByUserId, create, setToken, deleteTrade,
+  getAll, getByUserId, create, setToken, deleteTrade, getByTradeId,
 };

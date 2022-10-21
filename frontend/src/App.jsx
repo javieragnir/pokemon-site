@@ -20,10 +20,10 @@ import Posts from './components/Posts';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import UserPage from './components/UserPage';
-import UserProvider from './contexts/UserContext';
-
-import tradeService from './services/trade';
 import NavigationHeader from './components/NavigationHeader';
+import TradePage from './components/TradePage';
+import UserProvider from './contexts/UserContext';
+import tradeService from './services/trade';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -52,7 +52,8 @@ function App() {
             <NavigationHeader logout={logout}/>
 
             <Routes>
-              <Route path="/posts" element={<Posts />} />
+              <Route path="/trade" element={<Posts />} />
+              <Route path="/trade/:tradeId" element={<TradePage />} />
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login setUser={setUser} />} />
               <Route path="/signup" element={<Signup />} />

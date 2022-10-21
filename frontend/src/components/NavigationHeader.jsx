@@ -22,8 +22,8 @@ function NavigationHeader({ logout }) {
         <Button color="inherit" component={RouterLink} to="/">
           Home
         </Button>
-        <Button color="inherit" component={RouterLink} to="/posts">
-          Posts
+        <Button color="inherit" component={RouterLink} to="/trade">
+          Trades
         </Button>
         <Button color="inherit" component={RouterLink} to="/about">
           About

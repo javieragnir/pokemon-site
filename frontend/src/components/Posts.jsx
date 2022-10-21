@@ -80,7 +80,7 @@ function Posts() {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      <Typography variant="h2">Posts</Typography>
+      <Typography variant="h2">Trades</Typography>
       <Box marginBottom={1}>
         <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
           <TextField
