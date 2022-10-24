@@ -3,6 +3,7 @@ const { Op } = require('sequelize');
 const {
   TradeRequest, User, Pokemon, TradeComment,
 } = require('../models');
+const TradeLike = require('../models/trade_like');
 const { tokenExtractor } = require('../util/middleware');
 
 const getTrades = async (query = '') => {
@@ -140,6 +141,15 @@ router.delete('/:id', tokenExtractor, async (req, res) => {
   }
 
   return res.status(400).send({ error: 'user id does not match id of user who posted trade' });
+});
+
+router.post('/:id/like', tokenExtractor, async (req, res) => {
+  const like = await TradeLike.create({
+    tradeRequestId: req.params.id,
+    userId: 1,
+  });
+
+  res.json(like);
 });
 
 module.exports = router;
