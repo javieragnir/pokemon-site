@@ -15,12 +15,13 @@ TradeComment.belongsTo(User);
 TradeRequest.hasMany(TradeComment);
 TradeComment.belongsTo(TradeRequest);
 
-User.belongsToMany(TradeRequest, { through: TradeLike });
-TradeRequest.belongsToMany(User, { through: TradeLike });
+User.belongsToMany(TradeRequest, { through: TradeLike, as: 'liked_posts' });
+TradeRequest.belongsToMany(User, { through: TradeLike, as: 'users_liked' });
 
 module.exports = {
   User,
   Pokemon,
   TradeRequest,
   TradeComment,
+  TradeLike,
 };

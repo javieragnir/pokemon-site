@@ -64,9 +64,12 @@ function Trade({ trade, handleDelete }) {
                 justifyContent: 'space-between',
               }}
             >
-              <Button size="small">
-                Like
-              </Button>
+              <Box>
+                <Typography>Likes: 1</Typography>
+                <Button size="small">
+                  Like
+                </Button>
+              </Box>
               {showDelete
                   && (
                     <Button

@@ -22,10 +22,6 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      likes: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0,
-      },
       created_at: {
         type: DataTypes.DATE,
       },
