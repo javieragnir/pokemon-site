@@ -121,6 +121,14 @@ router.get('/by-user/:userId', async (req, res) => {
       },
       'offered',
       'requested',
+      {
+        model: User,
+        as: 'users_liked',
+        attributes: ['id'],
+        through: {
+          attributes: [],
+        },
+      },
     ],
     order: [['createdAt', 'DESC']],
   });
