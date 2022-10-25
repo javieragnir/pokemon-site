@@ -15,6 +15,19 @@ function Trade({ trade, handleDelete }) {
 
   const showDelete = user && user.username === trade.user.username;
 
+  // check if user liked post
+  const userLikedPost = (user && trade && trade.users_liked.some(
+    (like) => like.username === user.username,
+  ));
+
+  console.log('user', user);
+
+  console.log(userLikedPost);
+
+  console.log(trade && trade.users_liked);
+
+  const likeVariant = userLikedPost ? 'contained' : 'outlined';
+
   return (
     <Box>
       <Paper>
@@ -73,7 +86,9 @@ function Trade({ trade, handleDelete }) {
                   alignItems: 'baseline',
                 }}
               >
-                <LikeButton />
+                <LikeButton
+                  variant={likeVariant}
+                />
                 <Typography variant="body2"><strong>{`${trade.users_liked.length}`}</strong></Typography>
               </Box>
               {showDelete

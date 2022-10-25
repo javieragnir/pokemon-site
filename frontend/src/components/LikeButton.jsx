@@ -1,12 +1,13 @@
 import { Button } from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
-function LikeButton() {
+function LikeButton({ onClick, variant = 'outlined' }) {
   return (
     <Button
       size="small"
       endIcon={<ThumbUpIcon fontSize="small" />}
-      variant="outlined"
+      variant={variant}
+      onClick={onClick}
     >
       Like
     </Button>

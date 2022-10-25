@@ -51,7 +51,7 @@ const getTrades = async (query = '') => {
       {
         model: User,
         as: 'users_liked',
-        attributes: ['id'],
+        attributes: ['id', 'username'],
         through: {
           attributes: [],
         },
@@ -95,7 +95,7 @@ router.get('/:id', async (req, res) => {
       {
         model: User,
         as: 'users_liked',
-        attributes: ['id'],
+        attributes: ['id', 'username'],
         through: {
           attributes: [],
         },
@@ -124,7 +124,7 @@ router.get('/by-user/:userId', async (req, res) => {
       {
         model: User,
         as: 'users_liked',
-        attributes: ['id'],
+        attributes: ['id', 'username'],
         through: {
           attributes: [],
         },
