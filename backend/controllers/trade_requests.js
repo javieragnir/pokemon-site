@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Op, fn, col } = require('sequelize');
+const { Op } = require('sequelize');
 const {
   TradeRequest, User, Pokemon, TradeComment, TradeLike,
 } = require('../models');

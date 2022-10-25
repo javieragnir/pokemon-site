@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
   Box,
@@ -11,18 +11,52 @@ import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import { UserContext } from '../contexts/UserContext';
 import PostHeader from './PostHeader';
 import LikeButton from './LikeButton';
+import tradeService from '../services/trade';
 
 function Trade({ trade, handleDelete }) {
+  const [likes, setLikes] = useState(trade.users_liked.length);
+  const [likeVariant, setLikeVariant] = useState('outlined');
+  const [userLiked, setUserLiked] = useState(false);
+
   const user = useContext(UserContext);
 
   const showDelete = user && user.username === trade.user.username;
 
   // check if user liked post
-  const userLikedPost = (user && trade && trade.users_liked.some(
-    (like) => like.username === user.username,
-  ));
+  useEffect(() => {
+    const userLikedPost = (user && trade && trade.users_liked.some(
+      (like) => like.username === user.username,
+    ));
 
-  const likeVariant = userLikedPost ? 'contained' : 'outlined';
+    setUserLiked(userLikedPost);
+  }, []);
+
+  useEffect(() => {
+    setLikeVariant(userLiked ? 'contained' : 'outlined');
+  }, [userLiked]);
+
+  const handleLike = async () => {
+    if (user && !userLiked) {
+      try {
+        const response = await tradeService.likeTrade(trade.id);
+        setUserLiked(!userLiked);
+        setLikes(likes + 1);
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    } else if (user && userLiked) {
+      try {
+        const response = await tradeService.unlikeTrade(trade.id);
+        setUserLiked(!userLiked);
+        setLikes(likes - 1);
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    return null;
+  };
 
   return (
     <Box>
@@ -85,8 +119,9 @@ function Trade({ trade, handleDelete }) {
               >
                 <LikeButton
                   variant={likeVariant}
+                  onClick={handleLike}
                 />
-                <Typography variant="body2"><strong>{`${trade.users_liked.length}`}</strong></Typography>
+                <Typography variant="body2"><strong>{`${likes}`}</strong></Typography>
               </Box>
               <Link
                 component={RouterLink}

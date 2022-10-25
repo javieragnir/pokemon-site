@@ -3,9 +3,13 @@ import axios from 'axios';
 const baseUrl = 'http://localhost:3001/api/trade';
 
 let token = null;
+let config = null;
 
 const setToken = (newToken) => {
   token = `bearer ${newToken}`;
+  config = {
+    headers: { Authorization: token },
+  };
 };
 
 const getAll = async (query = '') => {
@@ -29,10 +33,6 @@ const getByUserId = async (userId) => {
 };
 
 const create = async (info, query = '') => {
-  const config = {
-    headers: { Authorization: token },
-  };
-
   let url = baseUrl;
   if (query) {
     url += `?search=${query}`;
@@ -43,14 +43,30 @@ const create = async (info, query = '') => {
 };
 
 const deleteTrade = async (tradeId) => {
-  const config = {
-    headers: { Authorization: token },
-  };
-
   const response = await axios.delete(`${baseUrl}/${tradeId}`, config);
   return response.data;
 };
 
+const likeTrade = async (tradeId) => {
+  console.log(config);
+  console.log(token);
+
+  const response = await axios.post(`${baseUrl}/${tradeId}/like`, null, config);
+  return response.data;
+};
+
+const unlikeTrade = async (tradeId) => {
+  const response = await axios.delete(`${baseUrl}/${tradeId}/like`, config);
+  return response.data;
+};
+
 export default {
-  getAll, getByUserId, create, setToken, deleteTrade, getByTradeId,
+  getAll,
+  getByUserId,
+  create,
+  setToken,
+  deleteTrade,
+  getByTradeId,
+  likeTrade,
+  unlikeTrade,
 };
