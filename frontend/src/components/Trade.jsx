@@ -8,6 +8,7 @@ import {
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import { UserContext } from '../contexts/UserContext';
 import PostHeader from './PostHeader';
+import LikeButton from './LikeButton';
 
 function Trade({ trade, handleDelete }) {
   const user = useContext(UserContext);
@@ -64,11 +65,16 @@ function Trade({ trade, handleDelete }) {
                 justifyContent: 'space-between',
               }}
             >
-              <Box>
-                <Typography>Likes: 1</Typography>
-                <Button size="small">
-                  Like
-                </Button>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: 2,
+                  alignItems: 'baseline',
+                }}
+              >
+                <LikeButton />
+                <Typography variant="body2"><strong>{`${trade.users_liked.length}`}</strong></Typography>
               </Box>
               {showDelete
                   && (

@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/jsx-filename-extension */
 import ReactDOM from 'react-dom/client';
 import App from './App';
 

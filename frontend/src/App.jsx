@@ -12,7 +12,7 @@ import {
 
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { darkTheme } from './theme';
+import darkTheme from './theme';
 
 import Home from './components/Home';
 import About from './components/About';
@@ -31,10 +31,10 @@ function App() {
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedUser');
     if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON);
-      setUser(user);
+      const loggedUser = JSON.parse(loggedUserJSON);
+      setUser(loggedUser);
       // set token functions (e.g. noteService.setToken(user.token))
-      tradeService.setToken(user.token);
+      tradeService.setToken(loggedUser.token);
     }
   }, []);
 
@@ -49,7 +49,7 @@ function App() {
         <CssBaseline />
         <Router>
           <Container sx={{ bgcolor: 'background' }}>
-            <NavigationHeader logout={logout}/>
+            <NavigationHeader logout={logout} />
 
             <Routes>
               <Route path="/trade" element={<Posts />} />
