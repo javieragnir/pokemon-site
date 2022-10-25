@@ -1,9 +1,11 @@
 import { useContext } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   Box,
   Paper,
   Typography,
   Button,
+  Link,
 } from '@mui/material';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import { UserContext } from '../contexts/UserContext';
@@ -70,6 +72,7 @@ function Trade({ trade, handleDelete }) {
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'space-between',
+                alignItems: 'center',
               }}
             >
               <Box
@@ -85,6 +88,15 @@ function Trade({ trade, handleDelete }) {
                 />
                 <Typography variant="body2"><strong>{`${trade.users_liked.length}`}</strong></Typography>
               </Box>
+              <Link
+                component={RouterLink}
+                to={`/trade/${trade.id}`}
+                color="inherit"
+                size="small"
+              >
+                {`Comments (${trade.trade_comments.length})`}
+              </Link>
+
               {showDelete
                   && (
                     <Button

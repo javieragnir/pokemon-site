@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Op } = require('sequelize');
+const { Op, fn, col } = require('sequelize');
 const {
   TradeRequest, User, Pokemon, TradeComment, TradeLike,
 } = require('../models');
@@ -31,7 +31,9 @@ const getTrades = async (query = '') => {
   }
 
   const trades = await TradeRequest.findAll({
-    attributes: { exclude: ['userId', 'offeredId', 'requestedId'] },
+    attributes: {
+      exclude: ['userId', 'offeredId', 'requestedId'],
+    },
     include: [
       {
         model: User,
@@ -39,6 +41,7 @@ const getTrades = async (query = '') => {
       },
       {
         model: TradeComment,
+        attributes: ['id'],
       },
       {
         model: Pokemon,
