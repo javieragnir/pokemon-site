@@ -20,12 +20,6 @@ function Trade({ trade, handleDelete }) {
     (like) => like.username === user.username,
   ));
 
-  console.log('user', user);
-
-  console.log(userLikedPost);
-
-  console.log(trade && trade.users_liked);
-
   const likeVariant = userLikedPost ? 'contained' : 'outlined';
 
   return (

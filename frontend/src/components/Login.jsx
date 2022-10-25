@@ -5,13 +5,13 @@ import {
   Container,
   Typography,
   TextField,
-  Button,
   Stack,
   Alert,
   Paper,
   Box,
   Link,
 } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import loginService from '../services/login';
 import tradeService from '../services/trade';
 
@@ -23,12 +23,14 @@ function Login({ setUser }) {
   const [usernameMessage, setUsernameMessage] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
   const [wrongCredentials, setWrongCredentials] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
     event.preventDefault();
 
+    setLoading(true);
     setUsernameErrorState(false);
     setPasswordErrorState(false);
     setUsernameMessage('');
@@ -66,6 +68,8 @@ function Login({ setUser }) {
         setWrongCredentials(true);
       }
     }
+
+    setLoading(false);
   };
 
   return (
@@ -101,9 +105,14 @@ function Login({ setUser }) {
                   Username or password is incorrect.
                 </Alert>
                 )}
-            <Button variant="contained" onClick={handleLogin} sx={{ width: '100%' }}>
+            <LoadingButton
+              variant="contained"
+              onClick={handleLogin}
+              loading={loading}
+              sx={{ width: '100%' }}
+            >
               Sign in
-            </Button>
+            </LoadingButton>
             <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 0.5 }}>
               <Typography variant="body2">Don&apos;t have an account?</Typography>
               <Link
