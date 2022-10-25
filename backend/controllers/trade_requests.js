@@ -169,10 +169,25 @@ router.delete('/:id', tokenExtractor, async (req, res) => {
 router.post('/:id/like', tokenExtractor, async (req, res) => {
   const like = await TradeLike.create({
     tradeRequestId: req.params.id,
-    userId: 1,
+    userId: req.decodedToken.id,
   });
 
-  res.json(like);
+  return res.json(like);
+});
+
+router.delete('/:id/like', tokenExtractor, async (req, res) => {
+  const like = await TradeLike.findOne({
+    where: {
+      tradeRequestId: req.params.id,
+      userId: req.decodedToken.id,
+    },
+  });
+
+  if (like) {
+    await like.destroy();
+  }
+
+  return res.status(204).end();
 });
 
 module.exports = router;
