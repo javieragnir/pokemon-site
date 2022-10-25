@@ -4,12 +4,12 @@ import {
   Container,
   Typography,
   TextField,
-  Button,
   Stack,
   Alert,
   Paper,
   Box,
 } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import usersService from '../services/users';
 
 function Signup() {
@@ -21,12 +21,14 @@ function Signup() {
   const [passwordMessage, setPasswordMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSignup = async (event) => {
     event.preventDefault();
 
+    setLoading(true);
     setUsernameErrorState(false);
     setPasswordErrorState(false);
     setUsernameMessage('');
@@ -68,6 +70,8 @@ function Signup() {
         setErrorMessage(exception.response.data.error);
       }
     }
+
+    setLoading(false);
   };
 
   return (
@@ -109,9 +113,14 @@ function Signup() {
                   Account creation successful!
                 </Alert>
                 )}
-            <Button variant="contained" onClick={handleSignup} sx={{ width: '100%' }}>
+            <LoadingButton
+              variant="contained"
+              onClick={handleSignup}
+              loading={loading}
+              sx={{ width: '100%' }}
+            >
               Sign up
-            </Button>
+            </LoadingButton>
           </Stack>
         </Paper>
       </Box>
