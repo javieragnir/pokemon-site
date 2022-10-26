@@ -18,7 +18,7 @@ const updateFriendCode = async (username, friendCode) => {
 };
 
 const updateProfilePicture = async (username, profilePictureUrl) => {
-  const response = await axios.put(`${baseUrl}/${username}/profilepicture`, profilePictureUrl);
+  const response = await axios.put(`${baseUrl}/${username}/profilepicture`, { profilePictureUrl });
   return response.data;
 };
 

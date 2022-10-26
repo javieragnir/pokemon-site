@@ -18,6 +18,7 @@ import { UserContext } from '../../contexts/UserContext';
 import defaultModalStyle from '../../styles/defaultModalStyle';
 import EditButton from './EditButton';
 import FriendCodeForm from './FriendCodeForm';
+import ProfilePictureForm from './ProfilePictureForm';
 
 const style = {
   ...defaultModalStyle,
@@ -31,14 +32,20 @@ function UserPage() {
   const [friendModalOpen, setFriendModalOpen] = useState(false);
   const [friendCode, setFriendCode] = useState('');
   const [checked, setChecked] = useState(true);
+  const [pictureModalOpen, setPictureModalOpen] = useState(false);
+  const [profilePictureUrl, setProfilePictureUrl] = useState('');
+
+  const { username } = useParams();
 
   const handleFriendOpen = () => setFriendModalOpen(true);
   const handleFriendClose = () => setFriendModalOpen(false);
 
-  const { username } = useParams();
+  const handlePictureOpen = () => setPictureModalOpen(true);
+  const handlePictureClose = () => setPictureModalOpen(false);
 
   // user refers to the page's user, logged user is the logged-in user
   const loggedUser = useContext(UserContext);
+
   const isLoggedUser = (user && loggedUser && user.username === loggedUser.username);
 
   const handleOpenProgress = () => setOpenProgress(true);
@@ -121,6 +128,22 @@ function UserPage() {
     handleCloseProgress();
   };
 
+  const handlePictureSubmit = async () => {
+    handleOpenProgress();
+
+    try {
+      const response = await userService
+        .updateProfilePicture(loggedUser.username, profilePictureUrl);
+      setUser(response);
+      handlePictureClose();
+      setProfilePictureUrl('');
+    } catch (error) {
+      console.log(error);
+    }
+
+    handleCloseProgress();
+  };
+
   return (
     <Container sx={{ marginTop: 1 }}>
       {/* Modal: Friend Code Form */}
@@ -135,6 +158,19 @@ function UserPage() {
             friendCode={friendCode}
             handleFriendCodeChange={handleFriendCodeChange}
             handleFriendCodeSubmit={handleFriendCodeSubmit}
+          />
+        </Box>
+      </Modal>
+      {/* Modal: Profile Picture Form */}
+      <Modal
+        open={pictureModalOpen}
+        onClose={handlePictureClose}
+      >
+        <Box sx={style}>
+          <ProfilePictureForm
+            profilePictureUrl={profilePictureUrl}
+            setProfilePictureUrl={setProfilePictureUrl}
+            handlePictureSubmit={handlePictureSubmit}
           />
         </Box>
       </Modal>
@@ -171,8 +207,9 @@ function UserPage() {
                       position: 'absolute',
                       right: 0,
                       bottom: 0,
-                      zIndex: (theme) => theme.zIndex.modal + 1,
+                      zIndex: (theme) => theme.zIndex.modal - 1,
                     }}
+                    onClick={handlePictureOpen}
                   />
                   )}
               </Box>

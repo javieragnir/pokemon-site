@@ -65,6 +65,8 @@ router.put('/:username/profilepicture', findUserByUsername, async (req, res) => 
     return res.status(400).send({ error: 'User does not exist' });
   }
 
+  console.log(req.body);
+
   req.user.profilePictureUrl = req.body.profilePictureUrl;
   await req.user.save();
   return res.json(req.user);
