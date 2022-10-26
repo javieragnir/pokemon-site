@@ -6,8 +6,6 @@ import {
   Grid,
   Box,
   Paper,
-  Backdrop,
-  CircularProgress,
   Stack,
   Modal,
 } from '@mui/material';
@@ -19,6 +17,7 @@ import defaultModalStyle from '../../styles/defaultModalStyle';
 import EditButton from './EditButton';
 import FriendCodeForm from './FriendCodeForm';
 import ProfilePictureForm from './ProfilePictureForm';
+import SpinnerOverlay from '../SpinnerOverlay';
 
 const style = {
   ...defaultModalStyle,
@@ -76,12 +75,7 @@ function UserPage() {
     if (openProgress) {
       return (
         <Container>
-          <Backdrop
-            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.modal + 1 }}
-            open={openProgress}
-          >
-            <CircularProgress color="inherit" />
-          </Backdrop>
+          <SpinnerOverlay open={openProgress} />
         </Container>
       );
     }
@@ -174,12 +168,7 @@ function UserPage() {
           />
         </Box>
       </Modal>
-      <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.modal + 1 }}
-        open={openProgress}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
+      <SpinnerOverlay open={openProgress} />
 
       {/* Content */}
       <Grid container spacing={2}>

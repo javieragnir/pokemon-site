@@ -9,14 +9,13 @@ import {
   Modal,
   TextField,
   Fade,
-  Backdrop,
-  CircularProgress,
 } from '@mui/material';
 import { UserContext } from '../contexts/UserContext';
 import PokemonPicker from './PokemonPicker';
 import tradeService from '../services/trade';
 import Trade from './Trade';
 import defaultModalStyle from '../styles/defaultModalStyle';
+import SpinnerOverlay from './SpinnerOverlay';
 
 const style = {
   ...defaultModalStyle,
@@ -74,12 +73,7 @@ function Posts() {
 
   return (
     <Container>
-      <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.modal + 1 }}
-        open={loadingOpen}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
+      <SpinnerOverlay open={loadingOpen} />
       <Typography variant="h2">Trades</Typography>
       <Box marginBottom={1}>
         <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
