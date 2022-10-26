@@ -10,20 +10,19 @@ import {
   CircularProgress,
   Stack,
   Button,
-  IconButton,
   Modal,
   Switch,
   FormControlLabel,
   FormHelperText,
   FormControl,
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import Trade from './Trade';
-import userService from '../services/users';
-import tradeService from '../services/trade';
-import { UserContext } from '../contexts/UserContext';
-import defaultModalStyle from '../styles/defaultModalStyle';
+import Trade from '../Trade';
+import userService from '../../services/users';
+import tradeService from '../../services/trade';
+import { UserContext } from '../../contexts/UserContext';
+import defaultModalStyle from '../../styles/defaultModalStyle';
 import FriendCodeField from './FriendCodeField';
+import EditButton from './EditButton';
 
 const style = {
   ...defaultModalStyle,
@@ -115,7 +114,6 @@ function UserPage() {
         fc += 'SW-';
       }
       fc += friendCode;
-      console.log(fc);
       const response = await userService.updateFriendCode(loggedUser.username, { friendCode: fc });
       setUser(response);
       handleModalClose();
@@ -129,6 +127,7 @@ function UserPage() {
 
   return (
     <Container sx={{ marginTop: 1 }}>
+      {/* Modal: Friend Code Form */}
       <Modal
         open={modalOpen}
         onClose={handleModalClose}
@@ -166,13 +165,14 @@ function UserPage() {
           </Stack>
         </Box>
       </Modal>
-
       <Backdrop
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.modal + 1 }}
         open={openProgress}
       >
         <CircularProgress color="inherit" />
       </Backdrop>
+
+      {/* Content */}
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <Paper sx={{ padding: 1 }}>
@@ -180,6 +180,7 @@ function UserPage() {
               <Typography variant="h4">{username}</Typography>
               <Box
                 sx={{
+                  position: 'relative',
                   width: 160,
                   height: 160,
                   border: '2px solid white',
@@ -189,6 +190,15 @@ function UserPage() {
               >
                 {user.profilePictureUrl
                 && <img style={{ height: '100%', width: '100%' }} src={`${user.profilePictureUrl}?w=160&h=160&fit=crop&auto=format`} alt="Kappa" />}
+                <EditButton
+                  size="small"
+                  sx={{
+                    position: 'absolute',
+                    right: 0,
+                    bottom: 0,
+                    zIndex: (theme) => theme.zIndex.modal + 1,
+                  }}
+                />
               </Box>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="overline">Friend Code:</Typography>
@@ -196,9 +206,7 @@ function UserPage() {
                   { user && user.friendCode ? user.friendCode : 'No friend code available.'}
                   { isLoggedUser
                     && (
-                    <IconButton size="small" onClick={handleModalOpen}>
-                      <EditIcon fontSize="inherit" />
-                    </IconButton>
+                    <EditButton size="small" onClick={handleModalOpen} />
                     )}
                 </Typography>
               </Box>

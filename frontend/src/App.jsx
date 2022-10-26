@@ -19,7 +19,7 @@ import About from './components/About';
 import Posts from './components/Posts';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import UserPage from './components/UserPage';
+import UserPage from './components/Userpage/UserPage';
 import NavigationHeader from './components/NavigationHeader';
 import TradePage from './components/TradePage';
 import UserProvider from './contexts/UserContext';
