@@ -9,20 +9,15 @@ import {
   Backdrop,
   CircularProgress,
   Stack,
-  Button,
   Modal,
-  Switch,
-  FormControlLabel,
-  FormHelperText,
-  FormControl,
 } from '@mui/material';
 import Trade from '../Trade';
 import userService from '../../services/users';
 import tradeService from '../../services/trade';
 import { UserContext } from '../../contexts/UserContext';
 import defaultModalStyle from '../../styles/defaultModalStyle';
-import FriendCodeField from './FriendCodeField';
 import EditButton from './EditButton';
+import FriendCodeForm from './FriendCodeForm';
 
 const style = {
   ...defaultModalStyle,
@@ -45,6 +40,8 @@ function UserPage() {
   };
 
   const { username } = useParams();
+
+  // user refers to the page's user, logged user is the logged-in user
   const loggedUser = useContext(UserContext);
 
   const isLoggedUser = (user && loggedUser && user.username === loggedUser.username);
@@ -133,36 +130,13 @@ function UserPage() {
         onClose={handleModalClose}
       >
         <Box sx={style}>
-          <Stack alignItems="flex-start">
-            <Typography variant="h6" sx={{ marginBottom: 1 }}>
-              Update friend code
-            </Typography>
-            <FormControl variant="standard">
-              <FormControlLabel
-                sx={{ margin: 0 }}
-                control={(
-                  <Switch
-                    checked={checked}
-                    onChange={handleCheckedChange}
-                  />
-                )}
-                label="Is code for Nintendo Switch"
-                labelPlacement="start"
-              />
-            </FormControl>
-            <FormControl variant="standard">
-              <FriendCodeField
-                value={friendCode}
-                onChange={handleFriendCodeChange}
-              />
-              <FormHelperText>
-                Twelve digits in the form 0000-0000-0000
-              </FormHelperText>
-            </FormControl>
-            <Button variant="contained" onClick={handleFriendCodeSubmit} sx={{ marginTop: 2 }}>
-              Update
-            </Button>
-          </Stack>
+          <FriendCodeForm
+            checked={checked}
+            handleCheckedChange={handleCheckedChange}
+            friendCode={friendCode}
+            handleFriendCodeChange={handleFriendCodeChange}
+            handleFriendCodeSubmit={handleFriendCodeSubmit}
+          />
         </Box>
       </Modal>
       <Backdrop
@@ -190,15 +164,18 @@ function UserPage() {
               >
                 {user.profilePictureUrl
                 && <img style={{ height: '100%', width: '100%' }} src={`${user.profilePictureUrl}?w=160&h=160&fit=crop&auto=format`} alt="Kappa" />}
-                <EditButton
-                  size="small"
-                  sx={{
-                    position: 'absolute',
-                    right: 0,
-                    bottom: 0,
-                    zIndex: (theme) => theme.zIndex.modal + 1,
-                  }}
-                />
+                { isLoggedUser
+                  && (
+                  <EditButton
+                    size="small"
+                    sx={{
+                      position: 'absolute',
+                      right: 0,
+                      bottom: 0,
+                      zIndex: (theme) => theme.zIndex.modal + 1,
+                    }}
+                  />
+                  )}
               </Box>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography variant="overline">Friend Code:</Typography>

@@ -17,4 +17,11 @@ const updateFriendCode = async (username, friendCode) => {
   return response.data;
 };
 
-export default { signup, findOne, updateFriendCode };
+const updateProfilePicture = async (username, profilePictureUrl) => {
+  const response = await axios.put(`${baseUrl}/${username}/profilepicture`, profilePictureUrl);
+  return response.data;
+};
+
+export default {
+  signup, findOne, updateFriendCode, updateProfilePicture,
+};

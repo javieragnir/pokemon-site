@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-import { useState } from 'react';
 import {
   Stack,
   Typography,
@@ -11,38 +9,9 @@ import {
 } from '@mui/material';
 import FriendCodeField from './FriendCodeField';
 
-function FriendCodeForm() {
-  const [friendCode, setFriendCode] = useState('');
-  const [checked, setChecked] = useState(true);
-
-  const handleFriendCodeChange = (event) => {
-    setFriendCode(event.target.value);
-  };
-
-  const handleCheckedChange = (event) => {
-    setChecked(event.target.checked);
-  };
-
-  const handleFriendCodeSubmit = async () => {
-    handleOpenProgress();
-
-    try {
-      let fc = '';
-      if (checked) {
-        fc += 'SW-';
-      }
-      fc += friendCode;
-      const response = await userService.updateFriendCode(loggedUser.username, { friendCode: fc });
-      setUser(response);
-      handleModalClose();
-      setFriendCode('');
-    } catch (error) {
-      console.log(error);
-    }
-
-    handleCloseProgress();
-  };
-
+function FriendCodeForm({
+  checked, handleCheckedChange, friendCode, handleFriendCodeChange, handleFriendCodeSubmit,
+}) {
   return (
     <Stack alignItems="flex-start">
       <Typography variant="h6" sx={{ marginBottom: 1 }}>
