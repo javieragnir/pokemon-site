@@ -192,13 +192,12 @@ function UserPage() {
                   position: 'relative',
                   width: 160,
                   height: 160,
-                  border: '2px solid white',
-                  borderRadius: 2,
+                  borderRadius: 4,
                   backgroundColor: (theme) => theme.palette.background.default,
                 }}
               >
                 {user.profilePictureUrl
-                && <img style={{ height: '100%', width: '100%' }} src={`${user.profilePictureUrl}?w=160&h=160&fit=crop&auto=format`} alt="Kappa" />}
+                && <img style={{ height: '100%', width: '100%', borderRadius: 4 }} src={`${user.profilePictureUrl}?w=160&h=160&fit=crop&auto=format`} alt="Kappa" />}
                 { isLoggedUser
                   && (
                   <EditButton
