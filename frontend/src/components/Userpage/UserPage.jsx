@@ -28,26 +28,25 @@ function UserPage() {
   const [openProgress, setOpenProgress] = useState(true);
   const [user, setUser] = useState(null);
   const [trades, setTrades] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [friendModalOpen, setFriendModalOpen] = useState(false);
   const [friendCode, setFriendCode] = useState('');
   const [checked, setChecked] = useState(true);
 
-  const handleModalOpen = () => setModalOpen(true);
-  const handleModalClose = () => setModalOpen(false);
-
-  const handleCheckedChange = (event) => {
-    setChecked(event.target.checked);
-  };
+  const handleFriendOpen = () => setFriendModalOpen(true);
+  const handleFriendClose = () => setFriendModalOpen(false);
 
   const { username } = useParams();
 
   // user refers to the page's user, logged user is the logged-in user
   const loggedUser = useContext(UserContext);
-
   const isLoggedUser = (user && loggedUser && user.username === loggedUser.username);
 
   const handleOpenProgress = () => setOpenProgress(true);
   const handleCloseProgress = () => setOpenProgress(false);
+
+  const handleCheckedChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
   const handleFriendCodeChange = (event) => {
     setFriendCode(event.target.value);
@@ -113,7 +112,7 @@ function UserPage() {
       fc += friendCode;
       const response = await userService.updateFriendCode(loggedUser.username, { friendCode: fc });
       setUser(response);
-      handleModalClose();
+      handleFriendClose();
       setFriendCode('');
     } catch (error) {
       console.log(error);
@@ -126,8 +125,8 @@ function UserPage() {
     <Container sx={{ marginTop: 1 }}>
       {/* Modal: Friend Code Form */}
       <Modal
-        open={modalOpen}
-        onClose={handleModalClose}
+        open={friendModalOpen}
+        onClose={handleFriendClose}
       >
         <Box sx={style}>
           <FriendCodeForm
@@ -183,7 +182,7 @@ function UserPage() {
                   { user && user.friendCode ? user.friendCode : 'No friend code available.'}
                   { isLoggedUser
                     && (
-                    <EditButton size="small" onClick={handleModalOpen} />
+                    <EditButton size="small" onClick={handleFriendOpen} />
                     )}
                 </Typography>
               </Box>
