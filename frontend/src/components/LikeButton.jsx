@@ -1,16 +1,17 @@
-import { Button } from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import LoadingButton from '@mui/lab/LoadingButton';
 
-function LikeButton({ onClick, variant = 'outlined' }) {
+function LikeButton({ onClick, variant = 'outlined', loading = false }) {
   return (
-    <Button
+    <LoadingButton
       size="small"
       endIcon={<ThumbUpIcon fontSize="small" />}
       variant={variant}
       onClick={onClick}
+      loading={loading}
     >
       Like
-    </Button>
+    </LoadingButton>
   );
 }
 

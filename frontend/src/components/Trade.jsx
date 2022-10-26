@@ -17,6 +17,7 @@ function Trade({ trade, handleDelete }) {
   const [likes, setLikes] = useState(trade.users_liked.length);
   const [likeVariant, setLikeVariant] = useState('outlined');
   const [userLiked, setUserLiked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const user = useContext(UserContext);
 
@@ -36,11 +37,13 @@ function Trade({ trade, handleDelete }) {
   }, [userLiked]);
 
   const handleLike = async () => {
+    setLoading(true);
     if (user && !userLiked) {
       try {
         const response = await tradeService.likeTrade(trade.id);
         setUserLiked(!userLiked);
         setLikes(likes + 1);
+        setLoading(false);
         return response;
       } catch (error) {
         console.log(error);
@@ -50,11 +53,13 @@ function Trade({ trade, handleDelete }) {
         const response = await tradeService.unlikeTrade(trade.id);
         setUserLiked(!userLiked);
         setLikes(likes - 1);
+        setLoading(false);
         return response;
       } catch (error) {
         console.log(error);
       }
     }
+    setLoading(false);
     return null;
   };
 
@@ -120,6 +125,7 @@ function Trade({ trade, handleDelete }) {
                 <LikeButton
                   variant={likeVariant}
                   onClick={handleLike}
+                  loading={loading}
                 />
                 <Typography variant="body2"><strong>{`${likes}`}</strong></Typography>
               </Box>

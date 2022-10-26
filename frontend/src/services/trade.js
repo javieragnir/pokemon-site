@@ -48,9 +48,6 @@ const deleteTrade = async (tradeId) => {
 };
 
 const likeTrade = async (tradeId) => {
-  console.log(config);
-  console.log(token);
-
   const response = await axios.post(`${baseUrl}/${tradeId}/like`, null, config);
   return response.data;
 };
