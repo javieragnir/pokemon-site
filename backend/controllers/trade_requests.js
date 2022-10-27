@@ -100,7 +100,6 @@ router.get('/:id', async (req, res) => {
             },
           },
         ],
-        order: [['createdAt', 'DESC']],
       },
       'offered',
       'requested',
@@ -112,6 +111,13 @@ router.get('/:id', async (req, res) => {
           attributes: [],
         },
       },
+    ],
+    order: [
+      [
+        TradeComment,
+        'createdAt',
+        'DESC',
+      ],
     ],
   });
 
