@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Op } = require('sequelize');
 const {
-  TradeRequest, User, Pokemon, TradeComment, TradeLike, TradeCommentLike,
+  TradeRequest, User, Pokemon, TradeComment, TradeLike,
 } = require('../models');
 const { tokenExtractor } = require('../util/middleware');
 
@@ -100,6 +100,7 @@ router.get('/:id', async (req, res) => {
             },
           },
         ],
+        order: [['createdAt', 'DESC']],
       },
       'offered',
       'requested',
@@ -174,7 +175,7 @@ router.delete('/:id', tokenExtractor, async (req, res) => {
     return res.status(204).end();
   }
 
-  return res.status(400).send({ error: 'user id does not match id of user who posted trade' });
+  return res.status(401).send({ error: 'user id does not match id of user who posted trade' });
 });
 
 router.post('/:id/like', tokenExtractor, async (req, res) => {

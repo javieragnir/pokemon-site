@@ -4,7 +4,7 @@ const { SECRET } = require('./config');
 const errorHandler = (error, request, response, next) => {
   console.error(error);
 
-  response.status(400).send({ error });
+  response.status(400).send({ error: `Something went wrong: ${error}` });
 
   next();
 };

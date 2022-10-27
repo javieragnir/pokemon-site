@@ -18,6 +18,11 @@ const create = async (tradeRequestId, content) => {
   return response.data;
 };
 
+const deleteComment = async (commentId) => {
+  const response = await axios.delete(`${baseUrl}/${commentId}`, config);
+  return response.data;
+};
+
 const likeComment = async (commentId) => {
   const response = await axios.post(`${baseUrl}/${commentId}/like`, null, config);
   return response.data;
@@ -29,5 +34,5 @@ const unlikeComment = async (commentId) => {
 };
 
 export default {
-  setToken, create, likeComment, unlikeComment,
+  setToken, create, deleteComment, likeComment, unlikeComment,
 };

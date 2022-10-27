@@ -4,19 +4,21 @@ import {
   Box,
   Paper,
   Stack,
+  Button,
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import PostHeader from './PostHeader';
 import { UserContext } from '../contexts/UserContext';
 import commentService from '../services/comments';
 
-function Comment({ comment }) {
+function Comment({ comment, handleDelete }) {
   const [likes, setLikes] = useState(comment.users_liked.length);
   const [likeVariant, setLikeVariant] = useState('outlined');
   const [userLiked, setUserLiked] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const user = useContext(UserContext);
+  const isLoggedUser = user && user.username === comment.user.username;
 
   useEffect(() => {
     const userLikedPost = (user && comment.users_liked.some(
@@ -81,23 +83,38 @@ function Comment({ comment }) {
               <PostHeader post={comment} />
               <Typography>{comment.content}</Typography>
             </Box>
-            <Box
-              sx={{
-                display: 'inline-flex',
-                flexDirection: 'row',
-                gap: 2,
-                alignItems: 'baseline',
-                width: 'max-content',
-              }}
-            >
-              <LoadingButton
-                variant={likeVariant}
-                loading={loading}
-                onClick={handleLike}
+            <Box sx={{ display: 'flex' }}>
+              <Box
+                sx={{
+                  display: 'inline-flex',
+                  flexDirection: 'row',
+                  gap: 2,
+                  alignItems: 'baseline',
+                  width: 'max-content',
+                }}
               >
-                Like
-              </LoadingButton>
-              <Typography variant="body2"><strong>{`${likes}`}</strong></Typography>
+                <LoadingButton
+                  variant={likeVariant}
+                  loading={loading}
+                  onClick={handleLike}
+                >
+                  Like
+                </LoadingButton>
+                <Typography variant="body2"><strong>{`${likes}`}</strong></Typography>
+              </Box>
+              <Box sx={{ marginLeft: 'auto' }}>
+                {isLoggedUser
+                    && (
+                      <Button
+                        variant="text"
+                        color="error"
+                        size="small"
+                        onClick={handleDelete}
+                      >
+                        Delete
+                      </Button>
+                    )}
+              </Box>
             </Box>
           </Stack>
         </Box>

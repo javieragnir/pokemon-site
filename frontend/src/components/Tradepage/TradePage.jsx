@@ -26,12 +26,15 @@ const style = {
 function TradePage() {
   const [trade, setTrade] = useState(null);
   const [loadingOpen, setLoadingOpen] = useState(true);
+  const [buttonLoadingOpen, setButtonLoadingOpen] = useState(false);
   const [content, setContent] = useState('');
   const [newCommentOpen, setNewCommentOpen] = useState(false);
   const { tradeId } = useParams();
 
   const handleLoadingOpen = () => setLoadingOpen(true);
   const handleLoadingClose = () => setLoadingOpen(false);
+  const handleButtonLoadingOpen = () => setButtonLoadingOpen(true);
+  const handleButtonLoadingClose = () => setButtonLoadingOpen(false);
   const handleNewCommentOpen = () => setNewCommentOpen(true);
   const handleNewCommentClose = () => setNewCommentOpen(false);
 
@@ -47,7 +50,7 @@ function TradePage() {
   }, []);
 
   const handleSubmit = async () => {
-    handleLoadingOpen();
+    handleButtonLoadingOpen();
     try {
       await commentService.create(tradeId, content);
       const foundTrade = await tradeService.getByTradeId(tradeId);
@@ -57,6 +60,14 @@ function TradePage() {
       console.log(error);
     }
     handleNewCommentClose();
+    handleButtonLoadingClose();
+  };
+
+  const handleCommentDelete = (id) => async () => {
+    handleLoadingOpen();
+    await commentService.deleteComment(id);
+    const response = await tradeService.getByTradeId(tradeId);
+    setTrade(response);
     handleLoadingClose();
   };
 
@@ -80,6 +91,7 @@ function TradePage() {
 
   return (
     <Container>
+      <SpinnerOverlay open={loadingOpen} />
       <Trade trade={trade} />
       <Box
         sx={{
@@ -120,7 +132,7 @@ function TradePage() {
               <LoadingButton
                 variant="contained"
                 onClick={handleSubmit}
-                loading={loadingOpen}
+                loading={buttonLoadingOpen}
               >
                 Submit
               </LoadingButton>
@@ -130,7 +142,11 @@ function TradePage() {
       </Modal>
       <Stack spacing={2}>
         {trade.trade_comments.map((comment) => (
-          <Comment key={comment.id} comment={comment} />
+          <Comment
+            key={comment.id}
+            comment={comment}
+            handleDelete={handleCommentDelete(comment.id)}
+          />
         ))}
       </Stack>
     </Container>
