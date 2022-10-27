@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Op } = require('sequelize');
 const {
-  TradeRequest, User, Pokemon, TradeComment, TradeLike,
+  TradeRequest, User, Pokemon, TradeComment, TradeLike, TradeCommentLike,
 } = require('../models');
 const { tokenExtractor } = require('../util/middleware');
 
@@ -90,6 +90,14 @@ router.get('/:id', async (req, res) => {
           {
             model: User,
             attributes: ['id', 'username'],
+          },
+          {
+            model: User,
+            as: 'users_liked',
+            attributes: ['id', 'username'],
+            through: {
+              attributes: [],
+            },
           },
         ],
       },
