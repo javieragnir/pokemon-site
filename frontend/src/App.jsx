@@ -21,9 +21,10 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import UserPage from './components/Userpage/UserPage';
 import NavigationHeader from './components/NavigationHeader';
-import TradePage from './components/TradePage';
+import TradePage from './components/Tradepage/TradePage';
 import UserProvider from './contexts/UserContext';
 import tradeService from './services/trade';
+import commentService from './services/comments';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -35,6 +36,7 @@ function App() {
       setUser(loggedUser);
       // set token functions (e.g. noteService.setToken(user.token))
       tradeService.setToken(loggedUser.token);
+      commentService.setToken(loggedUser.token);
     }
   }, []);
 
