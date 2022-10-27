@@ -43,6 +43,7 @@ function App() {
   const logout = () => {
     setUser(null);
     window.localStorage.removeItem('loggedUser');
+    window.location.reload();
   };
 
   return (

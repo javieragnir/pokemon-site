@@ -6,6 +6,7 @@ import {
   Typography,
   Button,
   Link,
+  Grid,
 } from '@mui/material';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import { UserContext } from '../contexts/UserContext';
@@ -106,50 +107,55 @@ function Trade({ trade, handleDelete }) {
           >
             <PostHeader post={trade} />
             <Typography sx={{ flexGrow: 1 }}>{trade.content}</Typography>
-            <Box
+            <Grid
+              container
+              spacing={2}
               sx={{
                 width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
                 alignItems: 'center',
               }}
             >
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  gap: 2,
-                  alignItems: 'baseline',
-                }}
-              >
-                <LikeButton
-                  variant={likeVariant}
-                  onClick={handleLike}
-                  loading={loading}
-                />
-                <Typography variant="body2"><strong>{`${likes}`}</strong></Typography>
-              </Box>
-              <Link
-                component={RouterLink}
-                to={`/trade/${trade.id}`}
-                color="inherit"
-                size="small"
-              >
-                {`Comments (${trade.trade_comments.length})`}
-              </Link>
-
-              {showDelete
-                  && (
-                    <Button
-                      variant="text"
-                      color="error"
-                      size="small"
-                      onClick={handleDelete}
-                    >
-                      Delete
-                    </Button>
-                  )}
-            </Box>
+              <Grid item xs={4}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: 2,
+                    alignItems: 'baseline',
+                  }}
+                >
+                  <LikeButton
+                    variant={likeVariant}
+                    onClick={handleLike}
+                    loading={loading}
+                  />
+                  <Typography variant="body2"><strong>{`${likes}`}</strong></Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={4} sx={{ textAlign: 'center' }}>
+                <Link
+                  component={RouterLink}
+                  to={`/trade/${trade.id}`}
+                  color="inherit"
+                  variant="body2"
+                >
+                  {`Comments (${trade.trade_comments.length})`}
+                </Link>
+              </Grid>
+              <Grid item xs={4} sx={{ textAlign: 'right' }}>
+                {showDelete
+                    && (
+                      <Button
+                        variant="text"
+                        color="error"
+                        size="small"
+                        onClick={handleDelete}
+                      >
+                        Delete
+                      </Button>
+                    )}
+              </Grid>
+            </Grid>
           </Box>
         </Box>
       </Paper>
