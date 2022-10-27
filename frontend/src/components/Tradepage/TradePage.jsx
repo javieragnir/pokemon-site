@@ -10,6 +10,7 @@ import {
   TextField,
   Fade,
 } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import Trade from '../Trade';
 import Comment from '../Comment';
 import tradeService from '../../services/trade';
@@ -55,6 +56,7 @@ function TradePage() {
     } catch (error) {
       console.log(error);
     }
+    handleNewCommentClose();
     handleLoadingClose();
   };
 
@@ -115,9 +117,13 @@ function TradePage() {
                 onChange={(event) => setContent(event.target.value)}
                 label="Description"
               />
-              <Button variant="contained" onClick={handleSubmit}>
+              <LoadingButton
+                variant="contained"
+                onClick={handleSubmit}
+                loading={loadingOpen}
+              >
                 Submit
-              </Button>
+              </LoadingButton>
             </Stack>
           </Box>
         </Fade>
