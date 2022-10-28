@@ -35,9 +35,9 @@ User.init({
     },
   },
   bio: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     validate: {
-      len: [1, 2000],
+      len: [0, 1000],
     },
   },
 }, {

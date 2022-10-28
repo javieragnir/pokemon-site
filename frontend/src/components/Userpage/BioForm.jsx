@@ -7,37 +7,33 @@ import {
   Alert,
 } from '@mui/material';
 
-const isValidHttpUrl = (string) => {
-  try {
-    return new URL(string);
-  } catch {
-    return false;
-  }
-};
-
-function ProfilePictureForm({ profilePictureUrl, setProfilePictureUrl, handlePictureSubmit }) {
+function BioForm({ bio, setBio, handleBioSubmit }) {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async () => {
-    if (isValidHttpUrl(profilePictureUrl)) {
-      await handlePictureSubmit();
-    } else {
-      setErrorMessage('URL is not in valid format.');
+    try {
+      await handleBioSubmit();
+    } catch (error) {
+      console.log(error);
+      setErrorMessage('Error setting new bio.');
     }
   };
 
   return (
     <Stack alignItems="flex-start">
       <Typography variant="h6" sx={{ marginBottom: 1 }}>
-        Update profile picture
+        Update bio
       </Typography>
       <TextField
         variant="filled"
-        label="Profile picture URL"
-        helperText="Must be a valid URL including https://, etc."
-        value={profilePictureUrl}
-        onChange={(event) => setProfilePictureUrl(event.target.value)}
+        label="Bio"
+        value={bio}
+        onChange={(event) => setBio(event.target.value)}
         sx={{ width: '100%' }}
+        multiline
+        rows={5}
+        inputProps={{ maxLength: 1000 }}
+        helperText="Maximum 1,000 characters"
       />
       { errorMessage
         && <Alert size="small" severity="error" sx={{ width: '100%' }}>{errorMessage}</Alert>}
@@ -48,4 +44,4 @@ function ProfilePictureForm({ profilePictureUrl, setProfilePictureUrl, handlePic
   );
 }
 
-export default ProfilePictureForm;
+export default BioForm;

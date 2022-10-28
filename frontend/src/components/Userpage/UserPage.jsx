@@ -18,6 +18,7 @@ import EditButton from './EditButton';
 import FriendCodeForm from './FriendCodeForm';
 import ProfilePictureForm from './ProfilePictureForm';
 import SpinnerOverlay from '../SpinnerOverlay';
+import BioForm from './BioForm';
 
 const style = {
   ...defaultModalStyle,
@@ -25,15 +26,17 @@ const style = {
 };
 
 function UserPage() {
-  const [openProgress, setOpenProgress] = useState(true);
   const [user, setUser] = useState(null);
+  const [notFound, setNotFound] = useState(false);
+  const [openProgress, setOpenProgress] = useState(true);
   const [trades, setTrades] = useState(null);
   const [friendModalOpen, setFriendModalOpen] = useState(false);
   const [friendCode, setFriendCode] = useState('');
   const [checked, setChecked] = useState(true);
   const [pictureModalOpen, setPictureModalOpen] = useState(false);
   const [profilePictureUrl, setProfilePictureUrl] = useState('');
-  const [notFound, setNotFound] = useState(false);
+  const [bio, setBio] = useState('');
+  const [bioModalOpen, setBioModalOpen] = useState(false);
 
   const { username } = useParams();
 
@@ -42,6 +45,9 @@ function UserPage() {
 
   const handlePictureOpen = () => setPictureModalOpen(true);
   const handlePictureClose = () => setPictureModalOpen(false);
+
+  const handleBioOpen = () => setBioModalOpen(true);
+  const handleBioClose = () => setBioModalOpen(false);
 
   // user refers to the page's user, logged user is the logged-in user
   const loggedUser = useContext(UserContext);
@@ -146,6 +152,22 @@ function UserPage() {
     handleCloseProgress();
   };
 
+  const handleBioSubmit = async () => {
+    handleOpenProgress();
+
+    try {
+      const response = await userService
+        .updateBio(loggedUser.username, bio);
+      setUser(response);
+      handleBioClose();
+      setBio('');
+    } catch (error) {
+      console.log(error);
+    }
+
+    handleCloseProgress();
+  };
+
   const joinDate = new Date(user.createdAt);
 
   return (
@@ -155,7 +177,7 @@ function UserPage() {
         open={friendModalOpen}
         onClose={handleFriendClose}
       >
-        <Box sx={style}>
+        <Box>
           <FriendCodeForm
             checked={checked}
             handleCheckedChange={handleCheckedChange}
@@ -179,6 +201,19 @@ function UserPage() {
         </Box>
       </Modal>
       <SpinnerOverlay open={openProgress} />
+      {/* Modal: Bio Form */}
+      <Modal
+        open={bioModalOpen}
+        onClose={handleBioClose}
+      >
+        <Box sx={{ ...style, width: 600 }}>
+          <BioForm
+            bio={bio}
+            setBio={setBio}
+            handleBioSubmit={handleBioSubmit}
+          />
+        </Box>
+      </Modal>
 
       {/* Content */}
       <Grid container spacing={2}>
@@ -243,11 +278,11 @@ function UserPage() {
                         marginLeft: 'auto',
                         zIndex: (theme) => theme.zIndex.modal - 1,
                       }}
-                      onClick={handlePictureOpen}
+                      onClick={handleBioOpen}
                     />
                     )}
               </Box>
-              <Typography sx={{ textAlign: 'justify' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</Typography>
+              <Typography sx={{ textAlign: 'justify' }}>{user.bio ? user.bio : ''}</Typography>
             </Box>
           </Paper>
         </Grid>

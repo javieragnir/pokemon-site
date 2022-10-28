@@ -2,6 +2,16 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:3001/api/users';
 
+let token = null;
+let config = null;
+
+const setToken = (newToken) => {
+  token = `bearer ${newToken}`;
+  config = {
+    headers: { Authorization: token },
+  };
+};
+
 const signup = async (credentials) => {
   const response = await axios.post(baseUrl, credentials);
   return response.data;
@@ -22,6 +32,11 @@ const updateProfilePicture = async (username, profilePictureUrl) => {
   return response.data;
 };
 
+const updateBio = async (username, bio) => {
+  const response = await axios.put(`${baseUrl}/${username}/bio`, { bio }, config);
+  return response.data;
+};
+
 export default {
-  signup, findOne, updateFriendCode, updateProfilePicture,
+  setToken, signup, findOne, updateFriendCode, updateProfilePicture, updateBio,
 };

@@ -25,6 +25,7 @@ import Footer from './components/Footer';
 import UserProvider from './contexts/UserContext';
 import tradeService from './services/trade';
 import commentService from './services/comments';
+import userService from './services/users';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -37,6 +38,7 @@ function App() {
       // set token functions (e.g. noteService.setToken(user.token))
       tradeService.setToken(loggedUser.token);
       commentService.setToken(loggedUser.token);
+      userService.setToken(loggedUser.token);
     }
   }, []);
 

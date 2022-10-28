@@ -71,7 +71,7 @@ router.put('/:username/profilepicture', findUserByUsername, async (req, res) => 
   return res.json(req.user);
 });
 
-router.put('/:username/profilepicture', findUserByUsername, tokenExtractor, async (req, res) => {
+router.put('/:username/bio', findUserByUsername, tokenExtractor, async (req, res) => {
   if (!req.user) {
     return res.status(400).send({ error: 'User does not exist' });
   }
