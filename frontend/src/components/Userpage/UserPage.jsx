@@ -138,6 +138,8 @@ function UserPage() {
     handleCloseProgress();
   };
 
+  const joinDate = new Date(user.createdAt);
+
   return (
     <Container sx={{ marginTop: 1 }}>
       {/* Modal: Friend Code Form */}
@@ -238,9 +240,9 @@ function UserPage() {
           >
             <Box>
               <Typography>
-                <strong>Reputation:</strong>
-                {' '}
-                6
+                <strong>Joined:</strong>
+                &nbsp;
+                {`${joinDate.toLocaleDateString()}`}
               </Typography>
             </Box>
           </Paper>

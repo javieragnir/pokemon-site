@@ -23,7 +23,7 @@ function Footer() {
       >
         <Typography variant="body2"><strong>Created by Javier Agnir</strong></Typography>
         <Box sx={{
-          marginTop: 1,
+          marginTop: 2,
           display: 'flex',
           justifyContent: 'center',
           gap: 3,
