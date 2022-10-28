@@ -33,6 +33,7 @@ function UserPage() {
   const [checked, setChecked] = useState(true);
   const [pictureModalOpen, setPictureModalOpen] = useState(false);
   const [profilePictureUrl, setProfilePictureUrl] = useState('');
+  const [notFound, setNotFound] = useState(false);
 
   const { username } = useParams();
 
@@ -59,6 +60,9 @@ function UserPage() {
   };
 
   useEffect(() => {
+    setUser(null);
+    setNotFound(false);
+    handleOpenProgress();
     userService.findOne(username)
       .then((foundUser) => {
         setUser(foundUser);
@@ -66,24 +70,28 @@ function UserPage() {
       })
       .then((foundUser) => tradeService.getByUserId(foundUser.id))
       .then((response) => setTrades(response))
-      .catch((error) => console.log(error))
+      .catch((error) => {
+        console.log(error);
+        setNotFound(true);
+      })
       .finally(() => handleCloseProgress());
-  }, []);
+    handleCloseProgress();
+  }, [username]);
 
   // View while loading
   if (!user) {
-    if (openProgress) {
+    // View if no user is found.
+    if (notFound) {
       return (
         <Container>
-          <SpinnerOverlay open={openProgress} />
+          <Typography>User not found.</Typography>
         </Container>
       );
     }
 
-    // View if no user is found.
     return (
       <Container>
-        <Typography>User not found.</Typography>
+        <SpinnerOverlay open />
       </Container>
     );
   }
@@ -225,7 +233,20 @@ function UserPage() {
           }}
           >
             <Box>
-              <Typography sx={{ padding: 0, margin: 0 }} variant="h6">Bio</Typography>
+              <Box sx={{ display: 'flex' }}>
+                <Typography sx={{ padding: 0, margin: 0 }} variant="h6">Bio</Typography>
+                { isLoggedUser
+                    && (
+                    <EditButton
+                      size="small"
+                      sx={{
+                        marginLeft: 'auto',
+                        zIndex: (theme) => theme.zIndex.modal - 1,
+                      }}
+                      onClick={handlePictureOpen}
+                    />
+                    )}
+              </Box>
               <Typography sx={{ textAlign: 'justify' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</Typography>
             </Box>
           </Paper>

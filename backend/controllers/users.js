@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../models');
+const { tokenExtractor } = require('../util/middleware');
 
 const findUserByUsername = async (req, res, next) => {
   req.user = await User.findOne({
@@ -65,9 +66,21 @@ router.put('/:username/profilepicture', findUserByUsername, async (req, res) => 
     return res.status(400).send({ error: 'User does not exist' });
   }
 
-  console.log(req.body);
-
   req.user.profilePictureUrl = req.body.profilePictureUrl;
+  await req.user.save();
+  return res.json(req.user);
+});
+
+router.put('/:username/profilepicture', findUserByUsername, tokenExtractor, async (req, res) => {
+  if (!req.user) {
+    return res.status(400).send({ error: 'User does not exist' });
+  }
+
+  if (req.decodedToken.id !== req.user.id) {
+    return res.status(401).send({ error: 'User unauthorized to edit bio.' });
+  }
+
+  req.user.bio = req.body.bio;
   await req.user.save();
   return res.json(req.user);
 });
