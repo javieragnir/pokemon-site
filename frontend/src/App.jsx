@@ -6,8 +6,7 @@ import {
 
 import {
   Container,
-  Typography,
-  Paper,
+  Box,
 } from '@mui/material';
 
 import { ThemeProvider } from '@mui/material/styles';
@@ -22,6 +21,7 @@ import Signup from './components/Signup';
 import UserPage from './components/Userpage/UserPage';
 import NavigationHeader from './components/NavigationHeader';
 import TradePage from './components/Tradepage/TradePage';
+import Footer from './components/Footer';
 import UserProvider from './contexts/UserContext';
 import tradeService from './services/trade';
 import commentService from './services/comments';
@@ -54,32 +54,19 @@ function App() {
           <Container sx={{ bgcolor: 'background' }}>
             <NavigationHeader logout={logout} />
 
-            <Routes>
-              <Route path="/trade" element={<Posts />} />
-              <Route path="/trade/:tradeId" element={<TradePage />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/login" element={<Login setUser={setUser} />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/user/:username" element={<UserPage />} />
-              <Route path="/" element={<Home />} />
-            </Routes>
+            <Box sx={{ minHeight: '80vh' }}>
+              <Routes>
+                <Route path="/trade" element={<Posts />} />
+                <Route path="/trade/:tradeId" element={<TradePage />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/login" element={<Login setUser={setUser} />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/user/:username" element={<UserPage />} />
+                <Route path="/" element={<Home />} />
+              </Routes>
+            </Box>
 
-            <Container sx={{
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-            >
-              <Paper sx={{
-                position: 'fixed',
-                bottom: 0,
-                width: '50%',
-                textAlign: 'center',
-                padding: '0.1em',
-              }}
-              >
-                <Typography variant="body2"><i>Pokemon app, Javier Agnir 2022</i></Typography>
-              </Paper>
-            </Container>
+            <Footer />
           </Container>
         </Router>
       </ThemeProvider>
