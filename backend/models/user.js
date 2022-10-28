@@ -34,6 +34,12 @@ User.init({
       isUrl: true,
     },
   },
+  bio: {
+    type: DataTypes.STRING,
+    validate: {
+      len: [1, 2000],
+    },
+  },
 }, {
   sequelize,
   underscored: true,
