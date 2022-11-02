@@ -16,6 +16,7 @@ import tradeService from '../services/trade';
 import Trade from './Trade';
 import defaultModalStyle from '../styles/defaultModalStyle';
 import SpinnerOverlay from './SpinnerOverlay';
+import ErrorAlert from './ErrorAlert';
 
 const style = {
   ...defaultModalStyle,
@@ -31,6 +32,7 @@ function Posts() {
   const [loadingOpen, setLoadingOpen] = useState(true);
   const [query, setQuery] = useState('');
   const [debouncedQuery] = useDebounce(query, 500);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const user = useContext(UserContext);
 
@@ -50,30 +52,41 @@ function Posts() {
 
   const handleSubmit = async () => {
     handleLoadingOpen();
-    const trades = await tradeService.create({
-      offeredId: offeredPokemon.id,
-      requestedId: requestedPokemon.id,
-      content,
-    }, debouncedQuery);
+    try {
+      const trades = await tradeService.create({
+        offeredId: offeredPokemon.id,
+        requestedId: requestedPokemon.id,
+        content,
+      }, debouncedQuery);
+      handlePostClose();
+      setPosts(trades);
+      setOfferedPokemon(null);
+      setRequestedPokemon(null);
+      setContent('');
+      setErrorMessage('');
+    } catch (error) {
+      setErrorMessage(error.response.data.error);
+    }
     handleLoadingClose();
-    handlePostClose();
-    setPosts(trades);
-    setOfferedPokemon(null);
-    setRequestedPokemon(null);
-    setContent('');
   };
 
   const handleDelete = (id) => async () => {
     handleLoadingOpen();
-    await tradeService.deleteTrade(id);
-    const response = await tradeService.getAll(debouncedQuery);
-    setPosts(response);
+    try {
+      await tradeService.deleteTrade(id);
+      const response = await tradeService.getAll(debouncedQuery);
+      setPosts(response);
+      setErrorMessage('');
+    } catch (error) {
+      setErrorMessage(error.response.data.error);
+    }
     handleLoadingClose();
   };
 
   return (
     <Container>
       <SpinnerOverlay open={loadingOpen} />
+      <ErrorAlert errorMessage={errorMessage} />
       <Typography variant="h2">Trades</Typography>
       <Box marginBottom={1}>
         <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
