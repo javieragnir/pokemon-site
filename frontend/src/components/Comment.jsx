@@ -10,12 +10,14 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import PostHeader from './PostHeader';
 import { UserContext } from '../contexts/UserContext';
 import commentService from '../services/comments';
+import ErrorAlert from './ErrorAlert';
 
 function Comment({ comment, handleDelete }) {
   const [likes, setLikes] = useState(comment.users_liked.length);
   const [likeVariant, setLikeVariant] = useState('outlined');
   const [userLiked, setUserLiked] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const user = useContext(UserContext);
   const isLoggedUser = user && user.username === comment.user.username;
@@ -39,20 +41,22 @@ function Comment({ comment, handleDelete }) {
         const response = await commentService.likeComment(comment.id);
         setUserLiked(!userLiked);
         setLikes(likes + 1);
+        setErrorMessage('');
         setLoading(false);
         return response;
       } catch (error) {
-        console.log(error);
+        setErrorMessage(error.response.data.error);
       }
     } else if (user && userLiked) {
       try {
         const response = await commentService.unlikeComment(comment.id);
         setUserLiked(!userLiked);
         setLikes(likes - 1);
+        setErrorMessage('');
         setLoading(false);
         return response;
       } catch (error) {
-        console.log(error);
+        setErrorMessage(error.response.data.error);
       }
     }
     setLoading(false);
@@ -82,6 +86,7 @@ function Comment({ comment, handleDelete }) {
             >
               <PostHeader post={comment} />
               <Typography>{comment.content}</Typography>
+              <ErrorAlert errorMessage={errorMessage} />
             </Box>
             <Box sx={{ display: 'flex' }}>
               <Box

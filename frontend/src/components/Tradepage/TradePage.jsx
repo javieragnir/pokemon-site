@@ -17,6 +17,7 @@ import tradeService from '../../services/trade';
 import SpinnerOverlay from '../SpinnerOverlay';
 import defaultModalStyle from '../../styles/defaultModalStyle';
 import commentService from '../../services/comments';
+import ErrorAlert from '../ErrorAlert';
 
 const style = {
   ...defaultModalStyle,
@@ -29,6 +30,7 @@ function TradePage() {
   const [buttonLoadingOpen, setButtonLoadingOpen] = useState(false);
   const [content, setContent] = useState('');
   const [newCommentOpen, setNewCommentOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const { tradeId } = useParams();
 
   const handleLoadingOpen = () => setLoadingOpen(true);
@@ -45,7 +47,7 @@ function TradePage() {
         setTrade(foundTrade);
         return foundTrade;
       })
-      .catch((error) => console.log(error))
+      .catch((error) => setErrorMessage(error.response.data.error))
       .finally(() => handleLoadingClose());
   }, []);
 
@@ -56,8 +58,9 @@ function TradePage() {
       const foundTrade = await tradeService.getByTradeId(tradeId);
       setTrade(foundTrade);
       setContent('');
+      setErrorMessage('');
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error.response.data.error);
     }
     handleNewCommentClose();
     handleButtonLoadingClose();
@@ -65,9 +68,14 @@ function TradePage() {
 
   const handleCommentDelete = (id) => async () => {
     handleLoadingOpen();
-    await commentService.deleteComment(id);
-    const response = await tradeService.getByTradeId(tradeId);
-    setTrade(response);
+    try {
+      await commentService.deleteComment(id);
+      const response = await tradeService.getByTradeId(tradeId);
+      setTrade(response);
+      setErrorMessage('');
+    } catch (error) {
+      setErrorMessage(error.response.data.error);
+    }
     handleLoadingClose();
   };
 
@@ -92,6 +100,7 @@ function TradePage() {
   return (
     <Container>
       <SpinnerOverlay open={loadingOpen} />
+      <ErrorAlert errorMessage={errorMessage} />
       <Trade trade={trade} />
       <Box
         sx={{

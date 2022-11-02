@@ -19,6 +19,7 @@ import FriendCodeForm from './FriendCodeForm';
 import ProfilePictureForm from './ProfilePictureForm';
 import SpinnerOverlay from '../SpinnerOverlay';
 import BioForm from './BioForm';
+import ErrorAlert from '../ErrorAlert';
 
 const style = {
   ...defaultModalStyle,
@@ -37,6 +38,7 @@ function UserPage() {
   const [profilePictureUrl, setProfilePictureUrl] = useState('');
   const [bio, setBio] = useState('');
   const [bioModalOpen, setBioModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const { username } = useParams();
 
@@ -76,8 +78,7 @@ function UserPage() {
       })
       .then((foundUser) => tradeService.getByUserId(foundUser.id))
       .then((response) => setTrades(response))
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         setNotFound(true);
       })
       .finally(() => handleCloseProgress());
@@ -109,8 +110,9 @@ function UserPage() {
       await tradeService.deleteTrade(id);
       const response = await tradeService.getByUserId(user.id);
       setTrades(response);
+      setErrorMessage('');
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error.response.data.error);
     }
 
     handleCloseProgress();
@@ -129,8 +131,9 @@ function UserPage() {
       setUser(response);
       handleFriendClose();
       setFriendCode('');
+      setErrorMessage('');
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error.response.data.error);
     }
 
     handleCloseProgress();
@@ -145,8 +148,9 @@ function UserPage() {
       setUser(response);
       handlePictureClose();
       setProfilePictureUrl('');
+      setErrorMessage('');
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error.response.data.error);
     }
 
     handleCloseProgress();
@@ -161,8 +165,9 @@ function UserPage() {
       setUser(response);
       handleBioClose();
       setBio('');
+      setErrorMessage('');
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error.response.data.error);
     }
 
     handleCloseProgress();
@@ -216,6 +221,7 @@ function UserPage() {
       </Modal>
 
       {/* Content */}
+      <ErrorAlert errorMessage={errorMessage} />
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <Paper sx={{ padding: 1 }}>

@@ -14,7 +14,6 @@ function BioForm({ bio, setBio, handleBioSubmit }) {
     try {
       await handleBioSubmit();
     } catch (error) {
-      console.log(error);
       setErrorMessage('Error setting new bio.');
     }
   };

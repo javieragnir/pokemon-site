@@ -12,12 +12,14 @@ import { UserContext } from '../contexts/UserContext';
 import PostHeader from './PostHeader';
 import LikeButton from './LikeButton';
 import tradeService from '../services/trade';
+import ErrorAlert from './ErrorAlert';
 
 function Trade({ trade, handleDelete }) {
   const [likes, setLikes] = useState(trade.users_liked.length);
   const [likeVariant, setLikeVariant] = useState('outlined');
   const [userLiked, setUserLiked] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const user = useContext(UserContext);
 
@@ -43,20 +45,22 @@ function Trade({ trade, handleDelete }) {
         const response = await tradeService.likeTrade(trade.id);
         setUserLiked(!userLiked);
         setLikes(likes + 1);
+        setErrorMessage('');
         setLoading(false);
         return response;
       } catch (error) {
-        console.log(error);
+        setErrorMessage(error.response.data.error);
       }
     } else if (user && userLiked) {
       try {
         const response = await tradeService.unlikeTrade(trade.id);
         setUserLiked(!userLiked);
         setLikes(likes - 1);
+        setErrorMessage('');
         setLoading(false);
         return response;
       } catch (error) {
-        console.log(error);
+        setErrorMessage(error.response.data.error);
       }
     }
     setLoading(false);
@@ -106,6 +110,7 @@ function Trade({ trade, handleDelete }) {
           >
             <PostHeader post={trade} />
             <Typography sx={{ flexGrow: 1 }}>{trade.content}</Typography>
+            <ErrorAlert errorMessage={errorMessage} />
             <Box
               sx={{
                 display: 'flex',
