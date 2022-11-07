@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom';
 
 import {
-  Container,
   Box,
 } from '@mui/material';
 
@@ -53,7 +52,7 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <Router>
-          <Container sx={{ bgcolor: 'background' }}>
+          <Box sx={{ bgcolor: 'background' }}>
             <NavigationHeader logout={logout} />
 
             <Box sx={{ minHeight: '80vh' }}>
@@ -69,7 +68,7 @@ function App() {
             </Box>
 
             <Footer />
-          </Container>
+          </Box>
         </Router>
       </ThemeProvider>
     </UserProvider>

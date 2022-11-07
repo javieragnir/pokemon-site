@@ -30,9 +30,13 @@ function Home() {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="body1">
+          <Typography variant="body1" gutterBottom>
             This is a website for posting and finding Pokemon to trade with other players.
-            Have fun, and be nice!
+            Trades can be found by clicking on the &quot;trades&quot; tab above. Posting new
+            trades, posting new comments, and liking content requires sign-in.
+          </Typography>
+          <Typography variant="body1">
+            Be nice, and have fun!
           </Typography>
         </Grid>
         <Grid item xs={12}>
