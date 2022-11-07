@@ -26,12 +26,13 @@ function Home() {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography variant="h2">
-            Home
+            Pokemon Trades
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="body1">
-            Work in progress!
+            This is a website for posting and finding Pokemon to trade with other players.
+            Have fun, and be nice!
           </Typography>
         </Grid>
         <Grid item xs={12}>

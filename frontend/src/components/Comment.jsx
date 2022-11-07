@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Typography,
   Box,
@@ -20,6 +21,7 @@ function Comment({ comment, handleDelete }) {
   const [errorMessage, setErrorMessage] = useState('');
 
   const user = useContext(UserContext);
+  const navigate = useNavigate();
   const isLoggedUser = user && user.username === comment.user.username;
 
   useEffect(() => {
@@ -36,7 +38,9 @@ function Comment({ comment, handleDelete }) {
 
   const handleLike = async () => {
     setLoading(true);
-    if (user && !userLiked) {
+    if (!user) {
+      navigate('/login');
+    } else if (user && !userLiked) {
       try {
         const response = await commentService.likeComment(comment.id);
         setUserLiked(!userLiked);

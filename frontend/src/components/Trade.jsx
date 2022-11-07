@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   Box,
   Paper,
@@ -22,6 +22,7 @@ function Trade({ trade, handleDelete }) {
   const [errorMessage, setErrorMessage] = useState('');
 
   const user = useContext(UserContext);
+  const navigate = useNavigate();
 
   const showDelete = user && user.username === trade.user.username;
 
@@ -40,7 +41,9 @@ function Trade({ trade, handleDelete }) {
 
   const handleLike = async () => {
     setLoading(true);
-    if (user && !userLiked) {
+    if (!user) {
+      navigate('/login');
+    } else if (user && !userLiked) {
       try {
         const response = await tradeService.likeTrade(trade.id);
         setUserLiked(!userLiked);
