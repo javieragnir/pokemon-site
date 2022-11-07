@@ -165,7 +165,6 @@ function UserPage() {
         .updateBio(loggedUser.username, bio);
       setUser(response);
       handleBioClose();
-      setBio('');
       setErrorMessage('');
     } catch (error) {
       setErrorMessage(error.response.data.error);
