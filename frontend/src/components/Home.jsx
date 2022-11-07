@@ -5,6 +5,7 @@ import {
   Typography,
   Paper,
   Grid,
+  Box,
 } from '@mui/material';
 import useApi from '../hooks/useApi';
 import PokemonPicker from './PokemonPicker';
@@ -25,9 +26,18 @@ function Home() {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="h2">
-            Pokemon Trades
-          </Typography>
+          <Box>
+            <Typography
+              variant="h2"
+              sx={{ width: 'max-content', display: 'inline', marginRight: 2 }}
+            >
+              <strong>Pokemon Trades</strong>
+            </Typography>
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+              alt="pokeball"
+            />
+          </Box>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="body1" gutterBottom>

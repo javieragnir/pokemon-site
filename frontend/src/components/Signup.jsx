@@ -76,7 +76,7 @@ function Signup() {
 
   return (
     <Container>
-      <Typography variant="h2">Sign Up</Typography>
+      <Typography variant="h2"><strong>Sign Up</strong></Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <Paper sx={{ width: 400, padding: 3 }}>
           <Stack alignItems="center" spacing={2} sx={{ width: '100%' }}>

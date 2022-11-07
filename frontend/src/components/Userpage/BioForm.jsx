@@ -7,7 +7,9 @@ import {
   Alert,
 } from '@mui/material';
 
-function BioForm({ bio, setBio, handleBioSubmit }) {
+function BioForm({
+  bio, setBio, handleBioSubmit,
+}) {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async () => {

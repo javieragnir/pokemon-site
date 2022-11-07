@@ -87,7 +87,7 @@ function Posts() {
     <Container>
       <SpinnerOverlay open={loadingOpen} />
       <ErrorAlert errorMessage={errorMessage} />
-      <Typography variant="h2">Trades</Typography>
+      <Typography variant="h2"><strong>Trades</strong></Typography>
       <Box marginBottom={1}>
         <Stack direction="row" justifyContent="space-between" alignItems="flex-end">
           <TextField

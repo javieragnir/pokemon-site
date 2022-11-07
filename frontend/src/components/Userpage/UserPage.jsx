@@ -74,6 +74,7 @@ function UserPage() {
     userService.findOne(username)
       .then((foundUser) => {
         setUser(foundUser);
+        setBio(foundUser.bio);
         return foundUser;
       })
       .then((foundUser) => tradeService.getByUserId(foundUser.id))
@@ -182,7 +183,7 @@ function UserPage() {
         open={friendModalOpen}
         onClose={handleFriendClose}
       >
-        <Box>
+        <Box sx={style}>
           <FriendCodeForm
             checked={checked}
             handleCheckedChange={handleCheckedChange}

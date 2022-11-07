@@ -14,6 +14,8 @@ import {
 import LoadingButton from '@mui/lab/LoadingButton';
 import loginService from '../services/login';
 import tradeService from '../services/trade';
+import commentService from '../services/comments';
+import userService from '../services/users';
 
 function Login({ setUser }) {
   const [username, setUsername] = useState('');
@@ -56,6 +58,9 @@ function Login({ setUser }) {
         window.localStorage.setItem('loggedUser', JSON.stringify(user));
 
         tradeService.setToken(user.token);
+        commentService.setToken(user.token);
+        userService.setToken(user.token);
+
         setUser(user);
         setUsername('');
         setPassword('');
@@ -74,7 +79,7 @@ function Login({ setUser }) {
 
   return (
     <Container>
-      <Typography variant="h2">Log In</Typography>
+      <Typography variant="h2"><strong>Log In</strong></Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <Paper sx={{ width: 400, padding: 3, paddingBottom: 2 }}>
           <Stack alignItems="center" spacing={2} sx={{ width: '100%' }}>
