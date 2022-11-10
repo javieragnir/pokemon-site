@@ -52,7 +52,7 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <Router>
-          <Box sx={{ bgcolor: 'background' }}>
+          <Box>
             <NavigationHeader logout={logout} />
 
             <Box sx={{ minHeight: '80vh' }}>

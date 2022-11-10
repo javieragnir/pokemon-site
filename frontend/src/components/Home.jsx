@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   Button,
@@ -16,6 +17,8 @@ function Home() {
 
   const { data: pokemon, error, isLoading } = useApi(`https://pokeapi.co/api/v2/pokemon-form/${pokemonToSearch}`);
 
+  const navigate = useNavigate();
+
   const setPokemon = () => {
     if (pokemonFilter) {
       setPokemonToSearch(pokemonFilter.name);
@@ -23,20 +26,45 @@ function Home() {
   };
 
   return (
-    <Container>
+    <Container
+      maxWidth={false}
+      disableGutters
+      sx={{
+        paddingTop: 2,
+        paddingBottom: 2,
+        margin: 0,
+        backgroundColor: '#001845',
+        paddingLeft: 12,
+        paddingRight: 12,
+      }}
+    >
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Box>
-            <Typography
-              variant="h2"
-              sx={{ width: 'max-content', display: 'inline', marginRight: 2 }}
-            >
-              <strong>Pokemon Trades</strong>
-            </Typography>
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
-              alt="pokeball"
-            />
+          <Box
+            sx={{
+              borderRadius: 4,
+              display: 'flex',
+            }}
+          >
+            <Box sx={{ flex: 1 }}>
+              <Typography
+                variant="h2"
+                sx={{ width: 'max-content', display: 'inline', marginRight: 2 }}
+              >
+                <strong>Welcome to Pokemon Trades.</strong>
+              </Typography>
+              <Typography
+                variant="h5"
+              >
+                <strong>The place to find Pokemon.</strong>
+              </Typography>
+            </Box>
+            <Box>
+              <img
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+                alt="pokeball"
+              />
+            </Box>
           </Box>
         </Grid>
         <Grid item xs={12}>
@@ -48,6 +76,23 @@ function Home() {
           <Typography variant="body1">
             Be nice, and have fun!
           </Typography>
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <Button
+              variant="contained"
+              color="success"
+              sx={{ boxSizing: 'border-box', width: 90 }}
+              onClick={() => navigate('/login')}
+            >
+              Log In
+            </Button>
+            <Button
+              variant="contained"
+              sx={{ boxSizing: 'border-box', width: 90 }}
+              onClick={() => navigate('/signup')}
+            >
+              Sign Up
+            </Button>
+          </Box>
         </Grid>
         <Grid item xs={12}>
           <PokemonPicker
