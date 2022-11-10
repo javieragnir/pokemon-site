@@ -8,8 +8,9 @@ import {
   Grid,
   Box,
 } from '@mui/material';
-import useApi from '../hooks/useApi';
-import PokemonPicker from './PokemonPicker';
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+import useApi from '../../hooks/useApi';
+import PokemonPicker from '../PokemonPicker';
 
 function Home() {
   const [pokemonFilter, setPokemonFilter] = useState('');
@@ -30,7 +31,7 @@ function Home() {
       maxWidth={false}
       disableGutters
       sx={{
-        paddingTop: 2,
+        paddingTop: 6,
         paddingBottom: 2,
         margin: 0,
         backgroundColor: '#001845',
@@ -56,14 +57,11 @@ function Home() {
               <Typography
                 variant="h5"
               >
-                <strong>The place to find Pokemon.</strong>
+                <strong>The place to find trainers and Pokemon.</strong>
               </Typography>
             </Box>
             <Box>
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
-                alt="pokeball"
-              />
+              <ConnectWithoutContactIcon />
             </Box>
           </Box>
         </Grid>
@@ -76,7 +74,7 @@ function Home() {
           <Typography variant="body1">
             Be nice, and have fun!
           </Typography>
-          <Box sx={{ display: 'flex', gap: 2 }}>
+          <Box sx={{ display: 'flex', gap: 2, marginTop: 2 }}>
             <Button
               variant="contained"
               color="success"
