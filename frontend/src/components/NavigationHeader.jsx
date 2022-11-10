@@ -12,6 +12,7 @@ import {
   Link,
 } from '@mui/material';
 import { UserContext } from '../contexts/UserContext';
+import LogoButton from './LogoButton';
 
 function NavigationHeader({ logout }) {
   const user = useContext(UserContext);
@@ -19,9 +20,7 @@ function NavigationHeader({ logout }) {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Button color="inherit" component={RouterLink} to="/">
-          Home
-        </Button>
+        <LogoButton />
         <Button color="inherit" component={RouterLink} to="/trade">
           Trades
         </Button>
