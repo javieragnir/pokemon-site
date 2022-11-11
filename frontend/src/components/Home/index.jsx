@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -8,7 +9,6 @@ import {
   Grid,
   Box,
 } from '@mui/material';
-import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 import useApi from '../../hooks/useApi';
 import PokemonPicker from '../PokemonPicker';
 
@@ -45,6 +45,7 @@ function Home() {
             sx={{
               borderRadius: 4,
               display: 'flex',
+              justifyContent: 'center',
             }}
           >
             <Box sx={{ flex: 1 }}>
@@ -61,7 +62,11 @@ function Home() {
               </Typography>
             </Box>
             <Box>
-              <ConnectWithoutContactIcon />
+              <img
+                src={require('../../files/pokeimage.png')}
+                alt="trading pokemon"
+                style={{ width: '375px' }}
+              />
             </Box>
           </Box>
         </Grid>
