@@ -7,6 +7,7 @@ function SkillSection({ iconComponent, title, content }) {
   return (
     <Box
       sx={{
+        flex: '1 1 0',
         display: 'flex',
         justifyContent: 'flex-start',
         flexDirection: 'column',

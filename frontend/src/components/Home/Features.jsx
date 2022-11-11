@@ -6,7 +6,7 @@ import {
   Typography,
   Box,
 } from '@mui/material';
-import SkillSection from './Feature';
+import Feature from './Feature';
 
 function Features() {
   return (
@@ -25,20 +25,20 @@ function Features() {
         gap: 4,
       }}
       >
-        <SkillSection
+        <Feature
           iconComponent={<ConnectWithoutContactIcon fontSize="large" />}
-          title="Title"
-          content="Some words in a sentence. Some words in a sentence. Some words in a sentence."
+          title="Connect"
+          content="Search through trades posted by other users in our database."
         />
-        <SkillSection
+        <Feature
           iconComponent={<ChatBubbleIcon fontSize="large" />}
-          title="Title"
-          content="Some words in a sentence. Some words in a sentence. Some words in a sentence."
+          title="Interact"
+          content="Comment and like other users' posts to show what you think."
         />
-        <SkillSection
+        <Feature
           iconComponent={<PersonIcon fontSize="large" />}
-          title="Title"
-          content="Some words in a sentence. Some words in a sentence. Some words in a sentence."
+          title="Personalize"
+          content="Customize your personal page to show off the things you like!"
         />
       </Box>
     </Container>
