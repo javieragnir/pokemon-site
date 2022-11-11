@@ -12,11 +12,12 @@ function SkillSection({ iconComponent, title, content }) {
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
+        gap: 2,
       }}
     >
       {iconComponent}
       <Typography variant="h4">
-        {title}
+        <strong>{title}</strong>
       </Typography>
       <Typography>
         {content}
