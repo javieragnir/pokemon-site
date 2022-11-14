@@ -30,7 +30,7 @@ app.use(errorHandler);
 const USEPORT = PORT || 3001;
 const start = async () => {
   await connectToDatabase();
-  app.listen(USEPORT, () => {
+  app.listen(USEPORT, '0.0.0.0', () => {
     console.log(`Server running on port ${USEPORT}`);
   });
 };
