@@ -46,6 +46,12 @@ function Posts() {
     tradeService.getAll(debouncedQuery)
       .then((trades) => {
         setPosts(trades);
+      })
+      .catch(() => {
+        setErrorMessage('Could not load trades.');
+        setPosts(null);
+      })
+      .finally(() => {
         handleLoadingClose();
       });
   }, [debouncedQuery]);
