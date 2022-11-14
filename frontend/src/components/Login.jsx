@@ -141,6 +141,16 @@ function Login({ setUser }) {
           </Stack>
         </Paper>
       </Box>
+      <Box sx={{
+        marginTop: 4,
+        textAlign: 'center',
+        width: '100',
+      }}
+      >
+        <Typography variant="body2">Note: try signing up or use guest credentials -</Typography>
+        <Typography variant="body2">Username: guest</Typography>
+        <Typography variant="body2">Password: password</Typography>
+      </Box>
     </Container>
   );
 }
