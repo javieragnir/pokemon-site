@@ -80,6 +80,7 @@ function Trade({ trade, handleDelete }) {
           display: 'flex',
           gap: 2,
           alignItems: 'center',
+          marginTop: 2,
         }}
         >
           <Box sx={{
