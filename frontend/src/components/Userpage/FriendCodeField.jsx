@@ -7,10 +7,12 @@ import {
   FormControl,
 } from '@mui/material';
 
+// uses the iMask library for custom form input
 const TextMaskCustom = forwardRef((props, ref) => {
-  const { onChange } = props;
+  const { onChange, ...other } = props;
   return (
     <IMaskInput
+      {...other}
       mask="0000-0000-0000"
       definitions={{
         '#': /[0-9]/,
@@ -26,14 +28,14 @@ export default function FriendCodeField({ value, onChange }) {
   return (
     <Box>
       <FormControl variant="standard">
-        <InputLabel htmlFor="friend-code-input">Friend Code</InputLabel>
+        <InputLabel htmlFor="formatted-text-mask-input">Friend Code</InputLabel>
         <Input
           value={value}
           onChange={onChange}
           name="textmask"
-          id="formatted-friend-code-input"
+          id="formatted-text-mask-input"
           inputComponent={TextMaskCustom}
-          variant="outlined"
+          variant="filled"
           size="small"
         />
       </FormControl>

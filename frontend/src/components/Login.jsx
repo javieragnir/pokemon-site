@@ -147,7 +147,7 @@ function Login({ setUser }) {
         width: '100',
       }}
       >
-        <Typography variant="body2">Note: try signing up or use guest credentials -</Typography>
+        <Typography variant="body2">Note: Try signing up or log in using guest credentials -</Typography>
         <Typography variant="body2">Username: guest</Typography>
         <Typography variant="body2">Password: password</Typography>
       </Box>
