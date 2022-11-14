@@ -28,7 +28,7 @@ function Features() {
         <Feature
           iconComponent={<ConnectWithoutContactIcon fontSize="large" />}
           title="Connect"
-          content="Search through trades posted by other users in our database."
+          content="Search through trades posted by other users to find exactly what you want."
         />
         <Feature
           iconComponent={<ChatBubbleIcon fontSize="large" />}
@@ -38,7 +38,7 @@ function Features() {
         <Feature
           iconComponent={<PersonIcon fontSize="large" />}
           title="Personalize"
-          content="Customize your personal page to show off the things you like!"
+          content="Customize your personal page with a profile picture and bio!"
         />
       </Box>
     </Container>

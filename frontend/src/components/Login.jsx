@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Container,
@@ -16,6 +16,7 @@ import loginService from '../services/login';
 import tradeService from '../services/trade';
 import commentService from '../services/comments';
 import userService from '../services/users';
+import { UserContext } from '../contexts/UserContext';
 
 function Login({ setUser }) {
   const [username, setUsername] = useState('');
@@ -27,7 +28,16 @@ function Login({ setUser }) {
   const [wrongCredentials, setWrongCredentials] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const loggedUser = useContext(UserContext);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(loggedUser);
+    if (loggedUser) {
+      navigate('/');
+    }
+  }, []);
 
   const handleLogin = async (event) => {
     event.preventDefault();
