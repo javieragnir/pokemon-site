@@ -17,6 +17,7 @@ const { errorHandler } = require('./util/middleware');
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('build'));
 
 app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
@@ -26,10 +27,11 @@ app.use('/api/comments', commentRouter);
 
 app.use(errorHandler);
 
+const USEPORT = PORT || 3001;
 const start = async () => {
   await connectToDatabase();
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  app.listen(USEPORT, () => {
+    console.log(`Server running on port ${USEPORT}`);
   });
 };
 

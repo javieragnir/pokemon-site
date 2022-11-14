@@ -24,9 +24,11 @@ function NavigationHeader({ logout }) {
         <Button color="inherit" component={RouterLink} to="/trade">
           Trades
         </Button>
+        {/*
         <Button color="inherit" component={RouterLink} to="/about">
           About
         </Button>
+        */}
         {!user
         && (
         <Button color="inherit" component={RouterLink} to="/login" sx={{ marginLeft: 'auto' }}>
