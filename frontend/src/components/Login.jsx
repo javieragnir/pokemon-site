@@ -33,7 +33,6 @@ function Login({ setUser }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(loggedUser);
     if (loggedUser) {
       navigate('/');
     }

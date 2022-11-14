@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Container,
@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import usersService from '../services/users';
+import { UserContext } from '../contexts/UserContext';
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -23,7 +24,15 @@ function Signup() {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const loggedUser = useContext(UserContext);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedUser) {
+      navigate('/');
+    }
+  }, []);
 
   const handleSignup = async (event) => {
     event.preventDefault();
