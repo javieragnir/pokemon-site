@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 require('express-async-errors');
 
-const { PORT } = require('./util/config');
+const { PORT, HOST } = require('./util/config');
 const { connectToDatabase } = require('./util/db');
 
 const usersRouter = require('./controllers/users');
@@ -29,8 +29,8 @@ app.use(errorHandler);
 
 const start = async () => {
   await connectToDatabase();
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
+  app.listen(PORT, HOST, () => {
+    console.log(`Server running on port ${HOST}:${PORT}`);
   });
 };
 

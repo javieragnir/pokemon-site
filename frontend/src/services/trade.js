@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { DEVURL } from './config';
 
-const baseUrl = '/api/trade';
+const baseUrl = `${DEVURL}/api/trade`;
 
 let token = null;
 let config = null;

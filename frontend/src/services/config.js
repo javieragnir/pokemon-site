@@ -8,4 +8,6 @@ const setToken = (newToken) => {
   };
 };
 
-export default { setToken, config };
+export const DEVURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : '';
+
+export default { setToken, config, DEVURL };

@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { DEVURL } from './config';
 
-const baseUrl = '/api/users';
+const baseUrl = `${DEVURL}/api/users`;
 
 let token = null;
 let config = null;

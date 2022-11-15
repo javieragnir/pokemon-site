@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { DEVURL } from './config';
 
-const baseUrl = '/api/login';
+const baseUrl = `${DEVURL}/api/login`;
 
 const login = async (credentials) => {
   const response = await axios.post(baseUrl, credentials);
