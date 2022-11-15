@@ -27,11 +27,10 @@ app.use('/api/comments', commentRouter);
 
 app.use(errorHandler);
 
-const USEPORT = PORT || 3001;
 const start = async () => {
   await connectToDatabase();
-  app.listen(USEPORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${USEPORT}`);
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`);
   });
 };
 

@@ -1,36 +1,15 @@
-FROM debian:bullseye as builder
-
-ARG NODE_VERSION=16.15.1
-
-RUN apt-get update; apt install -y curl
-RUN curl https://get.volta.sh | bash
-ENV VOLTA_HOME /root/.volta
-ENV PATH /root/.volta/bin:$PATH
-RUN volta install node@${NODE_VERSION}
-
-#######################################################################
-
-RUN mkdir /app
+# Stage 0, "build-stage", based on Node.js to build the frontend
+FROM node:16.17-alpine as build
 WORKDIR /app
-
-# NPM will not install any package listed in "devDependencies" when NODE_ENV is set to "production",
-# to install all modules: "npm install --production=false".
-# Ref: https://docs.npmjs.com/cli/v9/commands/npm-install#description
-
-ENV NODE_ENV production
-
-COPY . .
-
+COPY package*.json /app/
 RUN npm install
-FROM debian:bullseye
+COPY . /app/
+# RUN npm run build
 
-LABEL fly_launch_runtime="nodejs"
-
-COPY --from=builder /root/.volta /root/.volta
-COPY --from=builder /app /app
-
-WORKDIR /app
-ENV NODE_ENV production
-ENV PATH /root/.volta/bin:$PATH
-
-CMD [ "npm", "run", "start" ]
+# Stage 1, based on NGINX to provide a configuration to be used with react-router
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/conf.d
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]
