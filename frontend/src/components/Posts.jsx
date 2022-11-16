@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDebounce } from 'use-debounce';
 import {
   Container,
@@ -35,6 +36,7 @@ function Posts() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const user = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handlePostOpen = () => setNewPostOpen(true);
   const handlePostClose = () => setNewPostOpen(false);
@@ -42,6 +44,9 @@ function Posts() {
   const handleLoadingOpen = () => setLoadingOpen(true);
   const handleLoadingClose = () => setLoadingOpen(false);
 
+  const navigateHome = () => navigate('/login');
+
+  // query the database, debounced a split second after finished typing
   useEffect(() => {
     tradeService.getAll(debouncedQuery)
       .then((trades) => {
@@ -56,6 +61,7 @@ function Posts() {
       });
   }, [debouncedQuery]);
 
+  // submit a new post
   const handleSubmit = async () => {
     handleLoadingOpen();
     try {
@@ -105,12 +111,9 @@ function Posts() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
-          {user
-          && (
-          <Button onClick={handlePostOpen} variant="contained">
+          <Button onClick={user ? handlePostOpen : navigateHome} variant="contained">
             Add post
           </Button>
-          )}
         </Stack>
       </Box>
       <Modal

@@ -35,6 +35,7 @@ function Trade({ trade, handleDelete }) {
     setUserLiked(userLikedPost);
   }, []);
 
+  // change how the like button looks based on if the post is liked or not
   useEffect(() => {
     setLikeVariant(userLiked ? 'contained' : 'outlined');
   }, [userLiked]);

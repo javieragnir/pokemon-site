@@ -1,17 +1,14 @@
 /* eslint-disable global-require */
-import { useNavigate } from 'react-router-dom';
 import {
   Container,
-  Button,
   Typography,
   Grid,
   Box,
 } from '@mui/material';
 import Features from './Features';
+import SignUpButtonGroup from '../SignUpButtonGroup';
 
 function Home() {
-  const navigate = useNavigate();
-
   return (
     <>
       <Container
@@ -56,23 +53,7 @@ function Home() {
                   Join our growing community of trainers and find the perfect Pokemon
                   for your team.
                 </Typography>
-                <Box sx={{ display: 'flex', gap: 2, marginTop: 3 }}>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    sx={{ boxSizing: 'border-box', width: 90 }}
-                    onClick={() => navigate('/login')}
-                  >
-                    Log In
-                  </Button>
-                  <Button
-                    variant="contained"
-                    sx={{ boxSizing: 'border-box', width: 90 }}
-                    onClick={() => navigate('/signup')}
-                  >
-                    Sign Up
-                  </Button>
-                </Box>
+                <SignUpButtonGroup />
               </Box>
               <Box>
                 <img
