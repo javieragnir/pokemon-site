@@ -121,7 +121,7 @@ function Signup() {
             {success
                 && (
                 <Alert severity="success" sx={{ width: '100%' }}>
-                  Account creation successful! Redirecting to login screen.
+                  Account creation successful! Redirecting to login screen...
                 </Alert>
                 )}
             <LoadingButton

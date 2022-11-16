@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json /app/
 RUN npm install
 COPY . /app/
-# RUN npm run build
+RUN npm run build
 
 # Stage 1, based on NGINX to provide a configuration to be used with react-router
 FROM nginx:alpine

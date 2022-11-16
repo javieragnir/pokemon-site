@@ -9,7 +9,7 @@ import SignUpButtonGroup from './SignUpButtonGroup';
 
 const style = {
   ...defaultModalStyle,
-  width: '40%',
+  width: '400px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -27,7 +27,7 @@ function SignUpModal({ open, setOpen }) {
     >
       <Fade in={open}>
         <Box sx={style}>
-          <Typography><strong>Hi! Please sign in to use this feature.</strong></Typography>
+          <Typography><strong>Hello! Please sign in to use this feature.</strong></Typography>
           <SignUpButtonGroup />
         </Box>
       </Fade>
