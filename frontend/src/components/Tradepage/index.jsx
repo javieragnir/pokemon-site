@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Container,
@@ -11,6 +11,7 @@ import {
   Fade,
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { UserContext } from '../../contexts/UserContext';
 import Trade from '../Trade';
 import Comment from '../Comment';
 import tradeService from '../../services/trade';
@@ -18,6 +19,7 @@ import SpinnerOverlay from '../SpinnerOverlay';
 import defaultModalStyle from '../../styles/defaultModalStyle';
 import commentService from '../../services/comments';
 import ErrorAlert from '../ErrorAlert';
+import SignUpModal from '../SignUpModal';
 
 const style = {
   ...defaultModalStyle,
@@ -31,6 +33,9 @@ function TradePage() {
   const [content, setContent] = useState('');
   const [newCommentOpen, setNewCommentOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [signUpModal, setSignUpModal] = useState(false);
+
+  const user = useContext(UserContext);
   const { tradeId } = useParams();
 
   const handleLoadingOpen = () => setLoadingOpen(true);
@@ -39,6 +44,7 @@ function TradePage() {
   const handleButtonLoadingClose = () => setButtonLoadingOpen(false);
   const handleNewCommentOpen = () => setNewCommentOpen(true);
   const handleNewCommentClose = () => setNewCommentOpen(false);
+  const openSignUpModal = () => setSignUpModal(true);
 
   useEffect(() => {
     handleLoadingOpen();
@@ -99,6 +105,7 @@ function TradePage() {
 
   return (
     <Container>
+      <SignUpModal open={signUpModal} setOpen={setSignUpModal} />
       <SpinnerOverlay open={loadingOpen} />
       <ErrorAlert errorMessage={errorMessage} />
       <Trade trade={trade} />
@@ -115,7 +122,7 @@ function TradePage() {
         <Button
           variant="contained"
           sx={{ height: 'max-content' }}
-          onClick={handleNewCommentOpen}
+          onClick={user ? handleNewCommentOpen : openSignUpModal}
         >
           Post
         </Button>
