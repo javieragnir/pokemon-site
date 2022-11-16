@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { DEVURL } from './config';
+import { PRODURL } from './config';
 
-const baseUrl = `${DEVURL}/api/trade`;
+const baseUrl = `${PRODURL}/api/trade`;
 
 let token = null;
 let config = null;

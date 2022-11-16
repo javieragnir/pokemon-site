@@ -1,0 +1,15 @@
+Dockerfile
+.dockerignore
+node_modules
+.git
+
+!web/.docker
+!web/public
+!web/src
+!web/package.json
+!web/yarn.lock
+!web/tsconfig.json
+!web/.editorconfig
+!web/.eslintrc.json
+!web/.prettierrc
+!web/.stylelintrc

@@ -34,9 +34,11 @@ function Signup() {
     }
   }, []);
 
+  // Sign up function
   const handleSignup = async (event) => {
     event.preventDefault();
 
+    // reset states to default
     setLoading(true);
     setUsernameErrorState(false);
     setPasswordErrorState(false);
@@ -70,7 +72,7 @@ function Signup() {
         });
 
         setSuccess(true);
-        setTimeout(() => navigate('/login'), 3000);
+        setTimeout(() => navigate('/login'), 1000);
       } catch (exception) {
         setUsernameErrorState(true);
         setPasswordErrorState(true);
@@ -119,7 +121,7 @@ function Signup() {
             {success
                 && (
                 <Alert severity="success" sx={{ width: '100%' }}>
-                  Account creation successful!
+                  Account creation successful! Redirecting to login screen.
                 </Alert>
                 )}
             <LoadingButton

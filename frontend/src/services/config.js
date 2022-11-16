@@ -8,6 +8,6 @@ const setToken = (newToken) => {
   };
 };
 
-export const DEVURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : '';
+export const PRODURL = process.env.NODE_ENV === 'production' ? 'https://pokemon-trades.fly.dev' : '';
 
-export default { setToken, config, DEVURL };
+export default { setToken, config, PRODURL };
