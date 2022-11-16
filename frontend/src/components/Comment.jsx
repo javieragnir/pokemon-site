@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import PostHeader from './PostHeader';
+import SignUpModal from './SignUpModal';
 import { UserContext } from '../contexts/UserContext';
 import commentService from '../services/comments';
 import ErrorAlert from './ErrorAlert';
@@ -19,10 +20,13 @@ function Comment({ comment, handleDelete }) {
   const [userLiked, setUserLiked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [signUpModal, setSignUpModal] = useState(false);
 
   const user = useContext(UserContext);
   const navigate = useNavigate();
   const isLoggedUser = user && user.username === comment.user.username;
+
+  const openSignUpModal = () => setSignUpModal(true);
 
   useEffect(() => {
     const userLikedPost = (user && comment.users_liked.some(
@@ -68,67 +72,70 @@ function Comment({ comment, handleDelete }) {
   };
 
   return (
-    <Box>
-      <Paper>
-        <Box sx={{
-          padding: 2,
-          textAlign: 'justify',
-          paddingRight: 4,
-          display: 'flex',
-          gap: 2,
-          alignItems: 'center',
-        }}
-        >
-          <Stack spacing={2} sx={{ width: '100%' }}>
-            <Box
-              sx={{
-                width: '100%',
-                alignSelf: 'stretch',
-                display: 'flex',
-                flexDirection: 'column',
-              }}
-            >
-              <PostHeader post={comment} />
-              <Typography>{comment.content}</Typography>
-              <ErrorAlert errorMessage={errorMessage} />
-            </Box>
-            <Box sx={{ display: 'flex' }}>
+    <>
+      <SignUpModal open={signUpModal} setOpen={setSignUpModal} />
+      <Box>
+        <Paper>
+          <Box sx={{
+            padding: 2,
+            textAlign: 'justify',
+            paddingRight: 4,
+            display: 'flex',
+            gap: 2,
+            alignItems: 'center',
+          }}
+          >
+            <Stack spacing={2} sx={{ width: '100%' }}>
               <Box
                 sx={{
-                  display: 'inline-flex',
-                  flexDirection: 'row',
-                  gap: 2,
-                  alignItems: 'baseline',
-                  width: 'max-content',
+                  width: '100%',
+                  alignSelf: 'stretch',
+                  display: 'flex',
+                  flexDirection: 'column',
                 }}
               >
-                <LoadingButton
-                  variant={likeVariant}
-                  loading={loading}
-                  onClick={handleLike}
+                <PostHeader post={comment} />
+                <Typography>{comment.content}</Typography>
+                <ErrorAlert errorMessage={errorMessage} />
+              </Box>
+              <Box sx={{ display: 'flex' }}>
+                <Box
+                  sx={{
+                    display: 'inline-flex',
+                    flexDirection: 'row',
+                    gap: 2,
+                    alignItems: 'baseline',
+                    width: 'max-content',
+                  }}
                 >
-                  Like
-                </LoadingButton>
-                <Typography variant="body2"><strong>{`${likes}`}</strong></Typography>
+                  <LoadingButton
+                    variant={likeVariant}
+                    loading={loading}
+                    onClick={user ? handleLike : openSignUpModal}
+                  >
+                    Like
+                  </LoadingButton>
+                  <Typography variant="body2"><strong>{`${likes}`}</strong></Typography>
+                </Box>
+                <Box sx={{ marginLeft: 'auto' }}>
+                  {isLoggedUser
+                      && (
+                        <Button
+                          variant="text"
+                          color="error"
+                          size="small"
+                          onClick={handleDelete}
+                        >
+                          Delete
+                        </Button>
+                      )}
+                </Box>
               </Box>
-              <Box sx={{ marginLeft: 'auto' }}>
-                {isLoggedUser
-                    && (
-                      <Button
-                        variant="text"
-                        color="error"
-                        size="small"
-                        onClick={handleDelete}
-                      >
-                        Delete
-                      </Button>
-                    )}
-              </Box>
-            </Box>
-          </Stack>
-        </Box>
-      </Paper>
-    </Box>
+            </Stack>
+          </Box>
+        </Paper>
+      </Box>
+    </>
   );
 }
 

@@ -13,6 +13,7 @@ import PostHeader from './PostHeader';
 import LikeButton from './LikeButton';
 import tradeService from '../services/trade';
 import ErrorAlert from './ErrorAlert';
+import SignUpModal from './SignUpModal';
 
 function Trade({ trade, handleDelete }) {
   const [likes, setLikes] = useState(trade.users_liked.length);
@@ -20,9 +21,12 @@ function Trade({ trade, handleDelete }) {
   const [userLiked, setUserLiked] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [signUpModal, setSignUpModal] = useState(false);
 
   const user = useContext(UserContext);
   const navigate = useNavigate();
+
+  const openSignUpModal = () => setSignUpModal(true);
 
   const showDelete = user && user.username === trade.user.username;
 
@@ -72,84 +76,86 @@ function Trade({ trade, handleDelete }) {
   };
 
   return (
-    <Box>
-      <Paper>
-        <Box sx={{
-          padding: 2,
-          textAlign: 'justify',
-          paddingRight: 4,
-          display: 'flex',
-          gap: 2,
-          alignItems: 'center',
-          marginTop: 2,
-        }}
-        >
+    <>
+      <SignUpModal open={signUpModal} setOpen={setSignUpModal} />
+      <Box>
+        <Paper>
           <Box sx={{
-            boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0,
+            padding: 2,
+            textAlign: 'justify',
+            paddingRight: 4,
+            display: 'flex',
+            gap: 2,
+            alignItems: 'center',
+            marginTop: 2,
           }}
           >
-            <Paper elevation={3} sx={{ textAlign: 'center' }}>
-              <Typography variant="overline">Offering</Typography>
-              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${trade.offered.id}.png`} alt={trade.pokemonOffered} />
-              <Typography variant="overline">{trade.offered.name}</Typography>
-            </Paper>
-          </Box>
-          <SwapHorizIcon />
-          <Box sx={{
-            boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0,
-          }}
-          >
-            <Paper elevation={3} sx={{ textAlign: 'center' }}>
-              <Typography variant="overline">Requesting</Typography>
-              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${trade.requested.id}.png`} alt={trade.pokemonRequested} />
-              <Typography variant="overline">{trade.requested.name}</Typography>
-            </Paper>
-          </Box>
-          <Box
-            sx={{
-              width: '100%',
-              alignSelf: 'stretch',
-              display: 'flex',
-              flexDirection: 'column',
+            <Box sx={{
+              boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0,
             }}
-          >
-            <PostHeader post={trade} />
-            <Typography sx={{ flexGrow: 1 }}>{trade.content}</Typography>
-            <ErrorAlert errorMessage={errorMessage} />
+            >
+              <Paper elevation={3} sx={{ textAlign: 'center' }}>
+                <Typography variant="overline">Offering</Typography>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${trade.offered.id}.png`} alt={trade.pokemonOffered} />
+                <Typography variant="overline">{trade.offered.name}</Typography>
+              </Paper>
+            </Box>
+            <SwapHorizIcon />
+            <Box sx={{
+              boxSizing: 'border-box', height: 'max-content', width: 120, flexShrink: 0,
+            }}
+            >
+              <Paper elevation={3} sx={{ textAlign: 'center' }}>
+                <Typography variant="overline">Requesting</Typography>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${trade.requested.id}.png`} alt={trade.pokemonRequested} />
+                <Typography variant="overline">{trade.requested.name}</Typography>
+              </Paper>
+            </Box>
             <Box
               sx={{
-                display: 'flex',
-                gap: 4,
                 width: '100%',
-                alignItems: 'baseline',
+                alignSelf: 'stretch',
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
+              <PostHeader post={trade} />
+              <Typography sx={{ flexGrow: 1 }}>{trade.content}</Typography>
+              <ErrorAlert errorMessage={errorMessage} />
               <Box
                 sx={{
-                  display: 'inline-flex',
-                  flexDirection: 'row',
-                  gap: 2,
+                  display: 'flex',
+                  gap: 4,
+                  width: '100%',
                   alignItems: 'baseline',
-                  width: 'max-content',
                 }}
               >
-                <LikeButton
-                  variant={likeVariant}
-                  onClick={handleLike}
-                  loading={loading}
-                />
-                <Typography variant="body2"><strong>{`${likes}`}</strong></Typography>
-              </Box>
-              <Link
-                component={RouterLink}
-                to={`/trade/${trade.id}`}
-                color="inherit"
-                size="small"
-              >
-                {`Comments (${trade.trade_comments.length})`}
-              </Link>
-              <Box sx={{ marginLeft: 'auto' }}>
-                {showDelete
+                <Box
+                  sx={{
+                    display: 'inline-flex',
+                    flexDirection: 'row',
+                    gap: 2,
+                    alignItems: 'baseline',
+                    width: 'max-content',
+                  }}
+                >
+                  <LikeButton
+                    variant={likeVariant}
+                    onClick={user ? handleLike : openSignUpModal}
+                    loading={loading}
+                  />
+                  <Typography variant="body2"><strong>{`${likes}`}</strong></Typography>
+                </Box>
+                <Link
+                  component={RouterLink}
+                  to={`/trade/${trade.id}`}
+                  color="inherit"
+                  size="small"
+                >
+                  {`Comments (${trade.trade_comments.length})`}
+                </Link>
+                <Box sx={{ marginLeft: 'auto' }}>
+                  {showDelete
                     && (
                       <Button
                         variant="text"
@@ -160,12 +166,13 @@ function Trade({ trade, handleDelete }) {
                         Delete
                       </Button>
                     )}
+                </Box>
               </Box>
             </Box>
           </Box>
-        </Box>
-      </Paper>
-    </Box>
+        </Paper>
+      </Box>
+    </>
   );
 }
 

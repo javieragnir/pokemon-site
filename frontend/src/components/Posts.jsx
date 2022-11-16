@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDebounce } from 'use-debounce';
 import {
   Container,
@@ -18,6 +17,7 @@ import Trade from './Trade';
 import defaultModalStyle from '../styles/defaultModalStyle';
 import SpinnerOverlay from './SpinnerOverlay';
 import ErrorAlert from './ErrorAlert';
+import SignUpModal from './SignUpModal';
 
 const style = {
   ...defaultModalStyle,
@@ -34,9 +34,9 @@ function Posts() {
   const [query, setQuery] = useState('');
   const [debouncedQuery] = useDebounce(query, 500);
   const [errorMessage, setErrorMessage] = useState('');
+  const [signUpModal, setSignUpModal] = useState(false);
 
   const user = useContext(UserContext);
-  const navigate = useNavigate();
 
   const handlePostOpen = () => setNewPostOpen(true);
   const handlePostClose = () => setNewPostOpen(false);
@@ -44,7 +44,7 @@ function Posts() {
   const handleLoadingOpen = () => setLoadingOpen(true);
   const handleLoadingClose = () => setLoadingOpen(false);
 
-  const navigateHome = () => navigate('/login');
+  const openSignUpModal = () => setSignUpModal(true);
 
   // query the database, debounced a split second after finished typing
   useEffect(() => {
@@ -111,11 +111,12 @@ function Posts() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
           />
-          <Button onClick={user ? handlePostOpen : navigateHome} variant="contained">
+          <Button onClick={user ? handlePostOpen : openSignUpModal} variant="contained">
             Add post
           </Button>
         </Stack>
       </Box>
+      <SignUpModal open={signUpModal} setOpen={setSignUpModal} />
       <Modal
         open={newPostOpen}
         onClose={handlePostClose}
